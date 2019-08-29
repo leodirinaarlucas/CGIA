@@ -3,4 +3,5 @@
 
 ## Atividades realizadas
 * Historia de Usuario
+* Levantamento de Requisitos
 * Diagrama de Casos de Uso
