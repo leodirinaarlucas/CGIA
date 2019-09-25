@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0294E083233ADD8800A5308C /* LoginAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E082233ADD8800A5308C /* LoginAnswer.swift */; };
+		0294E085233ADE6500A5308C /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0294E084233ADE6500A5308C /* Admin.storyboard */; };
+		0294E087233ADE7000A5308C /* Professor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0294E086233ADE7000A5308C /* Professor.storyboard */; };
+		0294E089233ADE7C00A5308C /* Aluno.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0294E088233ADE7C00A5308C /* Aluno.storyboard */; };
+		0294E08A233AEE4400A5308C /* LoginAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E082233ADD8800A5308C /* LoginAnswer.swift */; };
+		0294E08B233AEE4500A5308C /* LoginAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E082233ADD8800A5308C /* LoginAnswer.swift */; };
 		02C3152E233AD1080058054D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3152D233AD1080058054D /* AppDelegate.swift */; };
 		02C31530233AD1080058054D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3152F233AD1080058054D /* SceneDelegate.swift */; };
 		02C31532233AD1080058054D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31531233AD1080058054D /* LoginController.swift */; };
@@ -65,6 +71,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0294E082233ADD8800A5308C /* LoginAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnswer.swift; sourceTree = "<group>"; };
+		0294E084233ADE6500A5308C /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
+		0294E086233ADE7000A5308C /* Professor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Professor.storyboard; sourceTree = "<group>"; };
+		0294E088233ADE7C00A5308C /* Aluno.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Aluno.storyboard; sourceTree = "<group>"; };
 		02C3152A233AD1080058054D /* CGIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CGIA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C3152D233AD1080058054D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02C3152F233AD1080058054D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,11 +180,11 @@
 		02C3155D233AD21B0058054D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0294E082233ADD8800A5308C /* LoginAnswer.swift */,
+				02C31560233AD2C40058054D /* ServerManager.swift */,
 				02C31564233AD4980058054D /* Entidades */,
 				02C3152D233AD1080058054D /* AppDelegate.swift */,
 				02C3152F233AD1080058054D /* SceneDelegate.swift */,
-				02C31560233AD2C40058054D /* ServerManager.swift */,
-				02C31586233AD9130058054D /* PeriodoEnum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +193,9 @@
 			isa = PBXGroup;
 			children = (
 				02C31533233AD1080058054D /* Main.storyboard */,
+				0294E084233ADE6500A5308C /* Admin.storyboard */,
+				0294E086233ADE7000A5308C /* Professor.storyboard */,
+				0294E088233ADE7C00A5308C /* Aluno.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,6 +211,7 @@
 		02C31564233AD4980058054D /* Entidades */ = {
 			isa = PBXGroup;
 			children = (
+				02C31586233AD9130058054D /* PeriodoEnum.swift */,
 				02C3157D233AD5DD0058054D /* Users */,
 				02C31565233AD4A60058054D /* Instituicao.swift */,
 				02C31579233AD5CB0058054D /* Disciplina.swift */,
@@ -322,7 +336,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0294E085233ADE6500A5308C /* Admin.storyboard in Resources */,
 				02C3153A233AD10B0058054D /* LaunchScreen.storyboard in Resources */,
+				0294E089233ADE7C00A5308C /* Aluno.storyboard in Resources */,
+				0294E087233ADE7000A5308C /* Professor.storyboard in Resources */,
 				02C31537233AD10B0058054D /* Assets.xcassets in Resources */,
 				02C31535233AD1080058054D /* Main.storyboard in Resources */,
 			);
@@ -362,6 +379,7 @@
 				02C3152E233AD1080058054D /* AppDelegate.swift in Sources */,
 				02C31530233AD1080058054D /* SceneDelegate.swift in Sources */,
 				02C31583233AD6060058054D /* Nota.swift in Sources */,
+				0294E083233ADD8800A5308C /* LoginAnswer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +396,7 @@
 				02C31584233AD6060058054D /* Nota.swift in Sources */,
 				02C31573233AD53C0058054D /* Aluno.swift in Sources */,
 				02C3156F233AD4F90058054D /* Usuario.swift in Sources */,
+				0294E08A233AEE4400A5308C /* LoginAnswer.swift in Sources */,
 				02C3156B233AD4E80058054D /* Admin.swift in Sources */,
 				02C31580233AD5FE0058054D /* Turma.swift in Sources */,
 			);
@@ -396,6 +415,7 @@
 				02C31585233AD6060058054D /* Nota.swift in Sources */,
 				02C31574233AD53C0058054D /* Aluno.swift in Sources */,
 				02C31570233AD4F90058054D /* Usuario.swift in Sources */,
+				0294E08B233AEE4500A5308C /* LoginAnswer.swift in Sources */,
 				02C3156C233AD4E80058054D /* Admin.swift in Sources */,
 				02C31581233AD5FE0058054D /* Turma.swift in Sources */,
 			);
