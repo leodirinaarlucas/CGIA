@@ -9,7 +9,7 @@
 import Foundation
 
 public enum Periodo {
-    case Matutino
-    case Vespertino
-    case Noturno
+    case matutino
+    case vespertino
+    case noturno
 }

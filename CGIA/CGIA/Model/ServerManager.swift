@@ -11,8 +11,8 @@ import Foundation
 public class ServerManager {
 
     // MARK: Login
-    public func AuthenticateLogin(username: String, completionHandler: (LoginAnswer) -> Void) {
-        completionHandler(.successful(Admin(instituicao: Instituicao())))
+    public func authenticateLogin(username: String, completionHandler: (LoginAnswer) -> Void) {
+        completionHandler(.successful(Aluno(instituicao: Instituicao())))
     }
 
     // MARK: Fetchs

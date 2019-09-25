@@ -28,7 +28,7 @@ class LoginController: UIViewController {
             self.present(alertFail, animated: true)
             return
         }
-        ServerManager.shared().AuthenticateLogin(username: txt, completionHandler: {(authenticated) in
+        ServerManager.shared().authenticateLogin(username: txt, completionHandler: {(authenticated) in
             switch authenticated {
             case .fail:
                 self.present(alertFail, animated: true)

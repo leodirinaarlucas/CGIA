@@ -51,6 +51,8 @@
 		02C31587233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
 		02C31588233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
 		02C31589233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
+		F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
+		F26E8DD8233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,7 @@
 		02C3157E233AD5FE0058054D /* Turma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turma.swift; sourceTree = "<group>"; };
 		02C31582233AD6060058054D /* Nota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nota.swift; sourceTree = "<group>"; };
 		02C31586233AD9130058054D /* PeriodoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodoEnum.swift; sourceTree = "<group>"; };
+		F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlunoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				02C31531233AD1080058054D /* LoginController.swift */,
+				F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,6 +246,7 @@
 				02C31526233AD1080058054D /* Sources */,
 				02C31527233AD1080058054D /* Frameworks */,
 				02C31528233AD1080058054D /* Resources */,
+				F26E8DD9233AF85400D29766 /* Run SwiftLint Script */,
 			);
 			buildRules = (
 			);
@@ -361,6 +366,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F26E8DD9233AF85400D29766 /* Run SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		02C31526233AD1080058054D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -370,6 +396,7 @@
 				02C31566233AD4A60058054D /* Instituicao.swift in Sources */,
 				02C31576233AD56F0058054D /* Professor.swift in Sources */,
 				02C3156A233AD4E80058054D /* Admin.swift in Sources */,
+				F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */,
 				02C3156E233AD4F90058054D /* Usuario.swift in Sources */,
 				02C31561233AD2C40058054D /* ServerManager.swift in Sources */,
 				02C3157A233AD5CB0058054D /* Disciplina.swift in Sources */,
@@ -398,6 +425,7 @@
 				02C3156F233AD4F90058054D /* Usuario.swift in Sources */,
 				0294E08A233AEE4400A5308C /* LoginAnswer.swift in Sources */,
 				02C3156B233AD4E80058054D /* Admin.swift in Sources */,
+				F26E8DD8233AF57400D29766 /* AlunoTableViewController.swift in Sources */,
 				02C31580233AD5FE0058054D /* Turma.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
