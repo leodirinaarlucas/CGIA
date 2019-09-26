@@ -13,6 +13,11 @@
 		0294E089233ADE7C00A5308C /* Aluno.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0294E088233ADE7C00A5308C /* Aluno.storyboard */; };
 		0294E08A233AEE4400A5308C /* LoginAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E082233ADD8800A5308C /* LoginAnswer.swift */; };
 		0294E08B233AEE4500A5308C /* LoginAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E082233ADD8800A5308C /* LoginAnswer.swift */; };
+		0294E08E233AF28E00A5308C /* EntityShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E08D233AF28E00A5308C /* EntityShowerTableViewController.swift */; };
+		0294E090233AF65C00A5308C /* EntitySelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E08F233AF65C00A5308C /* EntitySelectionTableViewController.swift */; };
+		0294E092233AF89400A5308C /* DisplayableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E091233AF89400A5308C /* DisplayableProtocol.swift */; };
+		0294E093233AF89B00A5308C /* DisplayableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E091233AF89400A5308C /* DisplayableProtocol.swift */; };
+		0294E094233AF89B00A5308C /* DisplayableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E091233AF89400A5308C /* DisplayableProtocol.swift */; };
 		02C3152E233AD1080058054D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3152D233AD1080058054D /* AppDelegate.swift */; };
 		02C31530233AD1080058054D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3152F233AD1080058054D /* SceneDelegate.swift */; };
 		02C31532233AD1080058054D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31531233AD1080058054D /* LoginController.swift */; };
@@ -75,6 +80,9 @@
 		0294E084233ADE6500A5308C /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		0294E086233ADE7000A5308C /* Professor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Professor.storyboard; sourceTree = "<group>"; };
 		0294E088233ADE7C00A5308C /* Aluno.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Aluno.storyboard; sourceTree = "<group>"; };
+		0294E08D233AF28E00A5308C /* EntityShowerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityShowerTableViewController.swift; sourceTree = "<group>"; };
+		0294E08F233AF65C00A5308C /* EntitySelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitySelectionTableViewController.swift; sourceTree = "<group>"; };
+		0294E091233AF89400A5308C /* DisplayableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableProtocol.swift; sourceTree = "<group>"; };
 		02C3152A233AD1080058054D /* CGIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CGIA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C3152D233AD1080058054D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02C3152F233AD1080058054D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +134,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0294E08C233AF26C00A5308C /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				0294E08D233AF28E00A5308C /* EntityShowerTableViewController.swift */,
+				0294E08F233AF65C00A5308C /* EntitySelectionTableViewController.swift */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
 		02C31521233AD1080058054D = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +220,7 @@
 		02C3155F233AD2240058054D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0294E08C233AF26C00A5308C /* Admin */,
 				02C31531233AD1080058054D /* LoginController.swift */,
 			);
 			path = Controller;
@@ -217,6 +235,7 @@
 				02C31579233AD5CB0058054D /* Disciplina.swift */,
 				02C3157E233AD5FE0058054D /* Turma.swift */,
 				02C31582233AD6060058054D /* Nota.swift */,
+				0294E091233AF89400A5308C /* DisplayableProtocol.swift */,
 			);
 			path = Entidades;
 			sourceTree = "<group>";
@@ -371,13 +390,16 @@
 				02C31576233AD56F0058054D /* Professor.swift in Sources */,
 				02C3156A233AD4E80058054D /* Admin.swift in Sources */,
 				02C3156E233AD4F90058054D /* Usuario.swift in Sources */,
+				0294E092233AF89400A5308C /* DisplayableProtocol.swift in Sources */,
 				02C31561233AD2C40058054D /* ServerManager.swift in Sources */,
 				02C3157A233AD5CB0058054D /* Disciplina.swift in Sources */,
 				02C3157F233AD5FE0058054D /* Turma.swift in Sources */,
 				02C31532233AD1080058054D /* LoginController.swift in Sources */,
+				0294E08E233AF28E00A5308C /* EntityShowerTableViewController.swift in Sources */,
 				02C31572233AD53C0058054D /* Aluno.swift in Sources */,
 				02C3152E233AD1080058054D /* AppDelegate.swift in Sources */,
 				02C31530233AD1080058054D /* SceneDelegate.swift in Sources */,
+				0294E090233AF65C00A5308C /* EntitySelectionTableViewController.swift in Sources */,
 				02C31583233AD6060058054D /* Nota.swift in Sources */,
 				0294E083233ADD8800A5308C /* LoginAnswer.swift in Sources */,
 			);
@@ -391,6 +413,7 @@
 				02C31567233AD4A60058054D /* Instituicao.swift in Sources */,
 				02C31562233AD2C40058054D /* ServerManager.swift in Sources */,
 				02C3157B233AD5CB0058054D /* Disciplina.swift in Sources */,
+				0294E093233AF89B00A5308C /* DisplayableProtocol.swift in Sources */,
 				02C31588233AD9130058054D /* PeriodoEnum.swift in Sources */,
 				02C31545233AD10B0058054D /* CGIATests.swift in Sources */,
 				02C31584233AD6060058054D /* Nota.swift in Sources */,
@@ -410,6 +433,7 @@
 				02C31568233AD4A60058054D /* Instituicao.swift in Sources */,
 				02C31563233AD2C40058054D /* ServerManager.swift in Sources */,
 				02C3157C233AD5CB0058054D /* Disciplina.swift in Sources */,
+				0294E094233AF89B00A5308C /* DisplayableProtocol.swift in Sources */,
 				02C31589233AD9130058054D /* PeriodoEnum.swift in Sources */,
 				02C31550233AD10B0058054D /* CGIAUITests.swift in Sources */,
 				02C31585233AD6060058054D /* Nota.swift in Sources */,

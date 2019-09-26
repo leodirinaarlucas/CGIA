@@ -8,7 +8,10 @@
 
 import Foundation
 
-public class Turma {
+public class Turma: Displayable {
+    public var displayName: String {
+        return identificador
+    }
     public private(set) var identificador: String
 
     public private(set) var instituicao: Instituicao

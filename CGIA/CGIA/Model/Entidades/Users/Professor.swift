@@ -12,8 +12,13 @@ public class Professor: Usuario {
     public private(set) var instituicao: Instituicao
     public private(set) var turmas: [Turma] = []
 
-    public init(instituicao: Instituicao) {
+    public init(instituicao: Instituicao, nome: String, username: String) {
         self.instituicao = instituicao
-        super.init()
+        super.init(nome: nome, username: username)
+    }
+
+    public init(instituicao: Instituicao, usuario: Usuario) {
+        self.instituicao = instituicao
+        super.init(nome: usuario.nome, username: usuario.username)
     }
 }

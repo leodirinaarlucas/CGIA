@@ -11,11 +11,11 @@ import Foundation
 public class Instituicao {
     public private(set) var nome: String
 
-    public private(set) var Admins: [Admin] = []
-    public private(set) var Professores: [Professor] = []
-    public private(set) var Alunos: [Aluno] = []
+    public private(set) var admins: [Admin] = []
+    public private(set) var professores: [Professor] = []
+    public private(set) var alunos: [Aluno] = []
 
-    public private(set) var Disciplinas: [Disciplina] = []
+    public private(set) var disciplinas: [Disciplina] = []
 
     public init() {
         nome = "Colégio Angélica"
