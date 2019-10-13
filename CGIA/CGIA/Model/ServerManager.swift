@@ -16,7 +16,7 @@ public class ServerManager {
     public private(set) var professores: [Professor] = []
     public private(set) var disciplinas: [Disciplina] = []
     public private(set) var turmas: [Turma] = []
-    public private(set) var alunos: [Aluno] = []
+    public private(set) var alunos: [Student] = []
 
     // MARK: Login
     public func authenticateLogin(username: String, completionHandler: (LoginAnswer) -> Void) {
@@ -28,9 +28,23 @@ public class ServerManager {
     }
 
     /// MARK: Fetchs
+    public func fetchStudents() {
+        APIRequests.getRequest(url: "https://cgia.herokuapp.com/api/students", decodableType: [Student].self) { (answer) in
+            switch answer {
+            case .result(let retorno):
+                guard let retorno = retorno as? [Student] else {
+                    fatalError("Não foi possível dar fetch nos alunos")
+                }
+                self.alunos = retorno
+            case .error(let error):
+                fatalError(error.localizedDescription)
+            }
+        }
+    }
 
     // MARK: Singleton Properties
     private init() {
+        fetchStudents()
     }
 
     class func shared() -> ServerManager {
@@ -51,8 +65,6 @@ public class ServerManager {
         admins.append(admin)
         usuario = admin
 
-        let aluno = Aluno(instituicao: instituicao, nome: "Rafael", username: "12345")
-        alunos.append(aluno)
         let professor = Professor(instituicao: instituicao, nome: "Artur", username: "54321")
         professores.append(professor)
         let disciplina = Disciplina(instituicao: instituicao, nome: "Matemágica")

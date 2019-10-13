@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02114D43235395DB004F6ADC /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02114D42235395DB004F6ADC /* Student.swift */; };
+		025B9745234EB42C0037E64B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025B9744234EB42C0037E64B /* APIRequest.swift */; };
+		025B9747234EB4490037E64B /* NotURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025B9746234EB4490037E64B /* NotURLProtocol.swift */; };
 		0294E083233ADD8800A5308C /* LoginAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E082233ADD8800A5308C /* LoginAnswer.swift */; };
 		0294E085233ADE6500A5308C /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0294E084233ADE6500A5308C /* Admin.storyboard */; };
 		0294E087233ADE7000A5308C /* Professor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0294E086233ADE7000A5308C /* Professor.storyboard */; };
@@ -78,6 +81,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02114D42235395DB004F6ADC /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		025B9744234EB42C0037E64B /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		025B9746234EB4490037E64B /* NotURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotURLProtocol.swift; sourceTree = "<group>"; };
 		0294E082233ADD8800A5308C /* LoginAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnswer.swift; sourceTree = "<group>"; };
 		0294E084233ADE6500A5308C /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		0294E086233ADE7000A5308C /* Professor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Professor.storyboard; sourceTree = "<group>"; };
@@ -137,6 +143,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		025B9748234EB4500037E64B /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				025B9744234EB42C0037E64B /* APIRequest.swift */,
+				025B9746234EB4490037E64B /* NotURLProtocol.swift */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
 		0294E08C233AF26C00A5308C /* Admin */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +215,7 @@
 		02C3155D233AD21B0058054D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				025B9748234EB4500037E64B /* Backend */,
 				0294E082233ADD8800A5308C /* LoginAnswer.swift */,
 				02C31560233AD2C40058054D /* ServerManager.swift */,
 				02C31564233AD4980058054D /* Entidades */,
@@ -247,6 +263,7 @@
 		02C3157D233AD5DD0058054D /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				02114D42235395DB004F6ADC /* Student.swift */,
 				02C3156D233AD4F90058054D /* Usuario.swift */,
 				02C31569233AD4E80058054D /* Admin.swift */,
 				02C31571233AD53C0058054D /* Aluno.swift */,
@@ -417,6 +434,7 @@
 				02C3156A233AD4E80058054D /* Admin.swift in Sources */,
 				02C3156E233AD4F90058054D /* Usuario.swift in Sources */,
 				0294E092233AF89400A5308C /* DisplayableProtocol.swift in Sources */,
+				025B9745234EB42C0037E64B /* APIRequest.swift in Sources */,
 				F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */,
 				02C31561233AD2C40058054D /* ServerManager.swift in Sources */,
 				02C3157A233AD5CB0058054D /* Disciplina.swift in Sources */,
@@ -427,7 +445,9 @@
 				02C3152E233AD1080058054D /* AppDelegate.swift in Sources */,
 				02C31530233AD1080058054D /* SceneDelegate.swift in Sources */,
 				0294E090233AF65C00A5308C /* EntitySelectionTableViewController.swift in Sources */,
+				025B9747234EB4490037E64B /* NotURLProtocol.swift in Sources */,
 				02C31583233AD6060058054D /* Nota.swift in Sources */,
+				02114D43235395DB004F6ADC /* Student.swift in Sources */,
 				0294E083233ADD8800A5308C /* LoginAnswer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
