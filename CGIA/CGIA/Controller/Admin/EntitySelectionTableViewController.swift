@@ -9,7 +9,7 @@
 import UIKit
 
 public class EntitySelectionTableViewController: UITableViewController {
-    private var type:Any?
+    private var type: Any?
 
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
@@ -32,5 +32,4 @@ public class EntitySelectionTableViewController: UITableViewController {
             cont.type = type
         }
     }
-    
 }

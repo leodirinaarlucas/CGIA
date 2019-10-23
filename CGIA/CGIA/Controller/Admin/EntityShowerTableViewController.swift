@@ -11,6 +11,7 @@ import UIKit
 public class EntityShowerTableViewController: UITableViewController {
     public var type: Any?
     private var data: [Displayable] = []
+    private var selected: Displayable?
     public override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -39,5 +40,21 @@ public class EntityShowerTableViewController: UITableViewController {
         cell.textLabel?.text = data[indexPath.row].displayName
 
         return cell
+    }
+
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selected = data[indexPath.row]
+        performSegue(withIdentifier: "selected", sender: self)
+    }
+
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navCont = segue.destination as? UINavigationController,
+            let cont = navCont.topViewController as? EntityInfoController {
+            guard let selected = selected else {
+                fatalError("Não havia uma entidade selecionada")
+            }
+            cont.type = self.type
+            cont.entity = selected
+        }
     }
 }

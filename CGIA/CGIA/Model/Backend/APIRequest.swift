@@ -58,10 +58,7 @@ public class APIRequests {
             do {
                 //A resposta chegou
                 let response = try JSONSerialization.jsonObject(with: data, options: [])
-                //completion(TaskAnswer.result(response))
-                if let response = response as? [[String: Any]] {
-                    completion(TaskAnswer.result(response))
-                }
+                completion(TaskAnswer.result(response))
             } catch let error as NSError {
                 // Houve um erro na comunicao com o servidor
                 completion(TaskAnswer.error(error))

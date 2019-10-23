@@ -21,6 +21,7 @@
 		0294E092233AF89400A5308C /* DisplayableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E091233AF89400A5308C /* DisplayableProtocol.swift */; };
 		0294E093233AF89B00A5308C /* DisplayableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E091233AF89400A5308C /* DisplayableProtocol.swift */; };
 		0294E094233AF89B00A5308C /* DisplayableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E091233AF89400A5308C /* DisplayableProtocol.swift */; };
+		02A36467235FD3AA001B626C /* EntityInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A36466235FD3AA001B626C /* EntityInfoController.swift */; };
 		02C3152E233AD1080058054D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3152D233AD1080058054D /* AppDelegate.swift */; };
 		02C31530233AD1080058054D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3152F233AD1080058054D /* SceneDelegate.swift */; };
 		02C31532233AD1080058054D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31531233AD1080058054D /* LoginController.swift */; };
@@ -91,6 +92,7 @@
 		0294E08D233AF28E00A5308C /* EntityShowerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityShowerTableViewController.swift; sourceTree = "<group>"; };
 		0294E08F233AF65C00A5308C /* EntitySelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitySelectionTableViewController.swift; sourceTree = "<group>"; };
 		0294E091233AF89400A5308C /* DisplayableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableProtocol.swift; sourceTree = "<group>"; };
+		02A36466235FD3AA001B626C /* EntityInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityInfoController.swift; sourceTree = "<group>"; };
 		02C3152A233AD1080058054D /* CGIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CGIA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C3152D233AD1080058054D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02C3152F233AD1080058054D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,8 +157,9 @@
 		0294E08C233AF26C00A5308C /* Admin */ = {
 			isa = PBXGroup;
 			children = (
-				0294E08D233AF28E00A5308C /* EntityShowerTableViewController.swift */,
 				0294E08F233AF65C00A5308C /* EntitySelectionTableViewController.swift */,
+				0294E08D233AF28E00A5308C /* EntityShowerTableViewController.swift */,
+				02A36466235FD3AA001B626C /* EntityInfoController.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				0294E092233AF89400A5308C /* DisplayableProtocol.swift in Sources */,
 				025B9745234EB42C0037E64B /* APIRequest.swift in Sources */,
 				F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */,
+				02A36467235FD3AA001B626C /* EntityInfoController.swift in Sources */,
 				02C31561233AD2C40058054D /* ServerManager.swift in Sources */,
 				02C3157A233AD5CB0058054D /* Disciplina.swift in Sources */,
 				02C3157F233AD5FE0058054D /* Turma.swift in Sources */,

@@ -22,7 +22,7 @@ class LoginController: UIViewController {
     }()
 
     @IBOutlet weak var txtUsername: UITextField!
-    
+
     @IBAction func loginTap(_ sender: UIButton) {
         guard let txt = txtUsername.text, txt != "" else {
             self.present(alertFail, animated: true)
@@ -42,7 +42,7 @@ class LoginController: UIViewController {
                 case is Admin:
                     identifier = "admin"
                 default:
-                    fatalError()
+                    fatalError("No existe")
                 }
                 self.performSegue(withIdentifier: identifier, sender: self)
             }
