@@ -7,7 +7,7 @@
   - Administrador dá a permissão aos professores de lançar dados de avaliação e frequência para os seus alunos
   - Administrador possui acesso aos dados dos alunos e professores por meio dos campos **ALUNOS** e **PROFESSORES** na interface
 
-> **PROFESSOR**
+> PROFESSOR
   - **1** professor para **0** ou **n** turmas.
   - Professor atribui a nota de avaliação a partir de uma média de notas definidas
   - Professor atribui número de faltas
