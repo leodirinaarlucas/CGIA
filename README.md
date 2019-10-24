@@ -1,17 +1,18 @@
-# CGIA - Controle Genérico de Instituição Acadêmica
+# CGIA - Controle Genérico de Instituição Acadêmica :+1:
 
-O sistema deve funcionar seguindo os critérios a seguir:
+### O sistema deve funcionar a partir dos critérios a seguir:
 
-Cada 1 administrador deve ter permissão para gerir apenas 1 instituição de ensino.
+- 1 ou mais administradores com permissão para gerir apenas 1 instituição de ensino. <br>
+  - Administrador dá a permissão aos professores de lançar dados de avaliação e frequência para os seus alunos.
+  - Administrador possui acesso aos dados dos alunos e professores por meio dos campos ALUNOS e PROFESSORES na interface.
 
-Cada 1 professor para cada 1 disciplina.
-
-O administrador, além de possuir acesso aos dados dos alunos e professores por meio dos campos ALUNOS e PROFESSORES na interface, dá a permissão aos professores de lançar dados de avaliação e frequência para os seus alunos.
+- 1 professor para **0** ou **n** turmas.
 
 Nota de avaliação consiste em uma média de notas a serem definidas por pcada professor.
 
 Frequência consiste em número de faltas considerando um total de aulas.
 
-Os dados pessoais de cada aluno são automaticamente lançados na classe ALUNOS do banco de dados após concluir seu cadastro no aplicativo, no qual a matrícula é feita.
+Os dados pessoais de cada aluno são automaticamente lançados na classe ALUNOS do banco de dados <br> 
+após concluir seu cadastro no aplicativo, no qual a matrícula é feita.
 
 Talvez seja melhor decidir por instituição de Ensino Fundamental ou Médio, visto que podemos consideradar menos disciplinas e são iguais em todos os anos e turmas?
