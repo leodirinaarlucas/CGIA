@@ -48,13 +48,14 @@ public class EntityShowerTableViewController: UITableViewController {
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let navCont = segue.destination as? UINavigationController,
-            let cont = navCont.topViewController as? EntityInfoController {
+        if let cont = segue.destination as? EntityInfoController {
             guard let selected = selected else {
                 fatalError("Não havia uma entidade selecionada")
             }
-            cont.type = self.type
             cont.entity = selected
+        } else if let navCont = segue.destination as? UINavigationController,
+            let cont = navCont.topViewController as? EntityAdderController {
+            cont.type = self.type
         }
     }
 }

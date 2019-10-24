@@ -127,10 +127,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="CpL-hh-N5q">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="BxC-Pt-2Sh"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="BxC-Pt-2Sh">
+                            <connections>
+                                <segue destination="GhG-Ih-s0G" kind="presentation" id="tUQ-ZV-D39"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Z61-ky-HT6" kind="presentation" identifier="selected" id="pa3-Y4-Ihe"/>
+                        <segue destination="HhX-X8-cr4" kind="show" identifier="selected" id="hvB-CU-tK8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ubw-xq-VcF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -142,7 +146,7 @@
             <objects>
                 <viewController id="HhX-X8-cr4" customClass="EntityInfoController" customModule="CGIA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9G5-0b-AaP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="E5r-Hj-GZR"/>
@@ -151,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omB-Vi-dSd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4420.289855072464" y="53.571428571428569"/>
+            <point key="canvasLocation" x="3562" y="-48"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WEx-cB-Uw3">
@@ -175,27 +179,39 @@
             </objects>
             <point key="canvasLocation" x="200.00000000000003" y="167.41071428571428"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dsx-Ni-5mZ">
+        <!--Entity Adder Controller-->
+        <scene sceneID="4uH-Pv-sG1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z61-ky-HT6" sceneMemberID="viewController">
+                <viewController id="gM0-yg-XPO" customClass="EntityAdderController" customModule="CGIA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f9Q-F6-RZL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="rhi-Ak-ma9"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="weu-GV-iNA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qaS-15-Dc9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4555.072463768116" y="-760.04464285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ccE-Oe-Qsm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GhG-Ih-s0G" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wPO-p4-GuT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qmr-uH-6mn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="HhX-X8-cr4" kind="relationship" relationship="rootViewController" id="mAk-FU-5jc"/>
+                        <segue destination="gM0-yg-XPO" kind="relationship" relationship="rootViewController" id="ZAV-0S-SaG"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i3N-Za-kFT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="APr-8E-gYz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3508.6956521739135" y="53.571428571428569"/>
+            <point key="canvasLocation" x="3644.9275362318845" y="-760.04464285714278"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

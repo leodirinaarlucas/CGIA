@@ -1,34 +1,48 @@
 //
-//  EntityInfoController.swift
+//  EntityAdderController.swift
 //  CGIA
 //
-//  Created by Pedro Giuliano Farina on 22/10/19.
+//  Created by Pedro Giuliano Farina on 23/10/19.
 //  Copyright © 2019 Pedro Giuliano Farina. All rights reserved.
 //
 
 import UIKit
 
-public class EntityInfoController: UIViewController {
-    public var entity: Displayable?
+public class EntityAdderController: UIViewController {
+    public var type: Any?
 
     public override func viewDidLoad() {
-        guard let entity = entity else {
-            fatalError("Não havia um tipo e/ou entidade")
+        guard let type = type else {
+            fatalError("Não havia um tipo")
         }
-        navigationItem.title = entity.displayName
-        if let aluno = entity as? Student {
+
+        switch type {
+        case is Professor.Type:
+            break
+        case is Admin.Type:
+            break
+        case is Aluno.Type:
+            let lblUserName = makeLabel()
+            let txtUsername = makeTextField()
+            lblUserName.text = "Usuário"
+
+            let lblName = makeLabel()
+            let txtName = makeTextField()
+            lblName.text = "Nome"
+
             let lblLastName = makeLabel()
-            lblLastName.text = aluno.lastName
+            let txtLastName = makeTextField()
+            lblLastName.text = "Sobrenome"
+
             let lblDateOfBirth = makeLabel()
-            lblDateOfBirth.text = aluno.dateOfBirth
-        } else if entity is Professor {
-
-        } else if entity is Admin {
-
+            let txtDateOfBirth = makeTextField()
+            lblDateOfBirth.text = "Data de nascimento"
+        default:
+            fatalError("Tipagem não prevista")
         }
     }
 
-    var lastView: UIView?
+    private var lastView: UIView?
     func makeLabel() -> UILabel {
         let lbl = UILabel()
         view.addSubview(lbl)
@@ -40,6 +54,18 @@ public class EntityInfoController: UIViewController {
         makeHeigthConstraint(to: lbl)
         lastView = lbl
         return lbl
+    }
+
+    func makeTextField() -> UITextField {
+        let txt = UITextField()
+        view.addSubview(txt)
+        txt.translatesAutoresizingMaskIntoConstraints = false
+        makeUpperConstraint(to: txt)
+        makeMiddleConstraint(to: txt)
+        makeWidthConstraint(to: txt)
+        makeHeigthConstraint(to: txt)
+        lastView = txt
+        return txt
     }
 
     func makeMiddleConstraint(to view: UIView) {
@@ -80,7 +106,7 @@ public class EntityInfoController: UIViewController {
                                        toItem: nil,
                                        attribute: .width,
                                        multiplier: 1,
-                                       constant: self.view.frame.size.width)
+                                       constant: self.view.frame.size.width/2)
         const.isActive = true
     }
     func makeHeigthConstraint(to view: UIView) {

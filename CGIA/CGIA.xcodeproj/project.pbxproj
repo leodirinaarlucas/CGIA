@@ -22,6 +22,7 @@
 		0294E093233AF89B00A5308C /* DisplayableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E091233AF89400A5308C /* DisplayableProtocol.swift */; };
 		0294E094233AF89B00A5308C /* DisplayableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E091233AF89400A5308C /* DisplayableProtocol.swift */; };
 		02A36467235FD3AA001B626C /* EntityInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A36466235FD3AA001B626C /* EntityInfoController.swift */; };
+		02A3646F23612B46001B626C /* EntityAdderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3646E23612B46001B626C /* EntityAdderController.swift */; };
 		02C3152E233AD1080058054D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3152D233AD1080058054D /* AppDelegate.swift */; };
 		02C31530233AD1080058054D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3152F233AD1080058054D /* SceneDelegate.swift */; };
 		02C31532233AD1080058054D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31531233AD1080058054D /* LoginController.swift */; };
@@ -93,6 +94,7 @@
 		0294E08F233AF65C00A5308C /* EntitySelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitySelectionTableViewController.swift; sourceTree = "<group>"; };
 		0294E091233AF89400A5308C /* DisplayableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableProtocol.swift; sourceTree = "<group>"; };
 		02A36466235FD3AA001B626C /* EntityInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityInfoController.swift; sourceTree = "<group>"; };
+		02A3646E23612B46001B626C /* EntityAdderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityAdderController.swift; sourceTree = "<group>"; };
 		02C3152A233AD1080058054D /* CGIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CGIA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C3152D233AD1080058054D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02C3152F233AD1080058054D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				0294E08F233AF65C00A5308C /* EntitySelectionTableViewController.swift */,
 				0294E08D233AF28E00A5308C /* EntityShowerTableViewController.swift */,
 				02A36466235FD3AA001B626C /* EntityInfoController.swift */,
+				02A3646E23612B46001B626C /* EntityAdderController.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				0294E090233AF65C00A5308C /* EntitySelectionTableViewController.swift in Sources */,
 				025B9747234EB4490037E64B /* NotURLProtocol.swift in Sources */,
 				02C31583233AD6060058054D /* Nota.swift in Sources */,
+				02A3646F23612B46001B626C /* EntityAdderController.swift in Sources */,
 				02114D43235395DB004F6ADC /* Student.swift in Sources */,
 				0294E083233ADD8800A5308C /* LoginAnswer.swift in Sources */,
 			);
