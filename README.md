@@ -17,4 +17,4 @@
   - Os dados pessoais de cada aluno são automaticamente lançados na classe ALUNOS do banco de dados
   após concluir seu cadastro no aplicativo, no qual a matrícula é feita.
 
-- Talvez seja melhor decidir por instituição de Ensino Fundamental ou Médio, visto que podemos consideradar menos disciplinas e são iguais     em todos os anos e turmas?
+> Talvez seja melhor decidir por instituição de Ensino Fundamental ou Médio, visto que podemos consideradar menos disciplinas e são iguais     em todos os anos e turmas?
