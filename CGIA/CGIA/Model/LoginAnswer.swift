@@ -8,7 +8,13 @@
 
 import Foundation
 
+public enum UserType: String {
+    case student
+    case instructor
+    case admin
+}
+
 public enum LoginAnswer {
-    case successful(Usuario)
+    case successful(User)
     case fail
 }

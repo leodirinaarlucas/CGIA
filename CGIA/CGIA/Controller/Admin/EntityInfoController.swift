@@ -21,7 +21,7 @@ public class EntityInfoController: UIViewController {
             lblLastName.text = aluno.lastName
             let lblDateOfBirth = makeLabel()
             lblDateOfBirth.text = aluno.dateOfBirth
-        } else if entity is Professor {
+        } else if entity is Instructor {
 
         } else if entity is Admin {
 

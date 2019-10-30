@@ -17,7 +17,7 @@ public class EntityAdderController: UIViewController {
         }
 
         switch type {
-        case is Professor.Type:
+        case is Instructor.Type:
             break
         case is Admin.Type:
             break

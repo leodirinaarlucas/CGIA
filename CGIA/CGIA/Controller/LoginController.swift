@@ -34,12 +34,12 @@ class LoginController: UIViewController {
                 self.present(alertFail, animated: true)
             case .successful(let user):
                 var identifier: String = ""
-                switch user {
-                case is Aluno:
+                switch user.type {
+                case UserType.student.rawValue:
                     identifier = "aluno"
-                case is Professor:
+                case UserType.instructor.rawValue:
                     identifier = "professor"
-                case is Admin:
+                case UserType.admin.rawValue:
                     identifier = "admin"
                 default:
                     fatalError("No existe")
