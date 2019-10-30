@@ -1,17 +1,17 @@
 //
-//  Admin.swift
+//  Usuario.swift
 //  CGIA
 //
 //  Created by Pedro Giuliano Farina on 24/09/19.
 //  Copyright © 2019 Pedro Giuliano Farina. All rights reserved.
 //
+// swiftlint:disable identifier_name
 
 import Foundation
 
-public struct Admin: Codable {
+public struct User: Codable {
     var id: Int?
-    var name: String?
-    var lastName: String?
     var username: String?
-    var dateOfBirth: String?
+    var password: String?
+    var type: String?
 }

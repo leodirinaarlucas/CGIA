@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct Professor: Codable, Displayable {
+public struct Instructor: Codable, Displayable {
     public var displayName: String {
         return name ?? ""
     }
-    let id: Int
-    let name: String
-    let lastName: String
-    let username: String
-    let dateOfBirth: String
+    let id: Int?
+    let name: String?
+    let lastName: String?
+    let username: String?
+    let dateOfBirth: String?
 }

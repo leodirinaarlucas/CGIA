@@ -12,10 +12,10 @@ public class Instituicao {
     public private(set) var nome: String
 
     public private(set) var admins: [Admin] = []
-    public private(set) var professores: [Professor] = []
+    public private(set) var professores: [Instructor] = []
     public private(set) var alunos: [Aluno] = []
 
-    public private(set) var disciplinas: [Disciplina] = []
+    public private(set) var disciplinas: [Subject] = []
 
     public init() {
         nome = "Colégio Angélica"

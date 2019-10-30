@@ -21,13 +21,13 @@ public class EntityShowerTableViewController: UITableViewController {
             fatalError("Tipo era nulo")
         }
         switch type {
-        case is Professor.Type:
+        case is Instructor.Type:
             data = ServerManager.shared().professores
-        case is Disciplina.Type:
+        case is Subject.Type:
             data = ServerManager.shared().disciplinas
-        case is Turma.Type:
+        case is Classroom.Type:
             data = ServerManager.shared().turmas
-        case is Aluno.Type:
+        case is Student.Type:
             data = ServerManager.shared().alunos
         default:
             fatalError("Não houve uma tipagem esperada para mostrar os dados")

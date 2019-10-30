@@ -14,13 +14,13 @@ public class EntitySelectionTableViewController: UITableViewController {
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            type = Professor.self
+            type = Instructor.self
         case 1:
-            type = Disciplina.self
+            type = Subject.self
         case 2:
-            type = Turma.self
+            type = Classroom.self
         case 3, 4:
-            type = Aluno.self
+            type = Student.self
         default:
             fatalError("Foi selecionada uma opção não prevista")
         }
