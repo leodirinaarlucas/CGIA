@@ -41,10 +41,25 @@ public class ServerManager {
             }
         }
     }
+    
+    public func fetchProfessors() {
+        APIRequests.getRequest(url: "https://cgia.herokuapp.com/api/instructors", decodableType: [Professor].self) { (answer) in
+            switch answer {
+            case .result(let retorno):
+                guard let retorno = retorno as? [Professor] else {
+                    fatalError("Não foi possível dar fetch nos professores")
+                }
+                self.professores = retorno
+            case .error(let error):
+                fatalError(error.localizedDescription)
+            }
+        }
+    }
 
     // MARK: Singleton Properties
     private init() {
         fetchStudents()
+        fetchProfessors()
     }
 
     class func shared() -> ServerManager {

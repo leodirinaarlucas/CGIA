@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Turma: Displayable {
+public class Classroom: Displayable {
     public var displayName: String {
         return identificador
     }

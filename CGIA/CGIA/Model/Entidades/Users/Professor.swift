@@ -8,17 +8,13 @@
 
 import Foundation
 
-public class Professor: Usuario {
-    public private(set) var instituicao: Instituicao
-    public private(set) var turmas: [Turma] = []
-
-    public init(instituicao: Instituicao, nome: String, username: String) {
-        self.instituicao = instituicao
-        super.init(nome: nome, username: username)
+public struct Professor: Codable, Displayable {
+    public var displayName: String {
+        return name ?? ""
     }
-
-    public init(instituicao: Instituicao, usuario: Usuario) {
-        self.instituicao = instituicao
-        super.init(nome: usuario.nome, username: usuario.username)
-    }
+    let id: Int
+    let name: String
+    let lastName: String
+    let username: String
+    let dateOfBirth: String
 }
