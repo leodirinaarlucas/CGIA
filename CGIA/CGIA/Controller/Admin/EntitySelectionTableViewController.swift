@@ -19,8 +19,12 @@ public class EntitySelectionTableViewController: UITableViewController {
             type = Subject.self
         case 2:
             type = Classroom.self
-        case 3, 4:
+        case 3:
             type = Student.self
+        case 4:
+            type = Subject.self
+        case 5:
+            type = Classroom.self
         default:
             fatalError("Foi selecionada uma opção não prevista")
         }

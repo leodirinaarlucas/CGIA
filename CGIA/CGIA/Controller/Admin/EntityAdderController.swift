@@ -10,13 +10,7 @@ import UIKit
 
 public class EntityAdderController: UIViewController {
     public var type: Any?
-    var txtUsername: UITextField?
-    var txtName: UITextField?
-    var txtLastName: UITextField?
-    var txtDateOfBirth: UITextField?
-    var txtStudentID: UITextField?
-    var txtInstructorID: UITextField?
-    var txtClassroomID: UITextField?
+    private var textFields: [String: UITextField] = [:]
 
     public override func viewDidLoad() {
         guard let type = type else {
@@ -24,42 +18,54 @@ public class EntityAdderController: UIViewController {
         }
 
         switch type {
-        case is Admin.Type,
-             is Student.Type,
-             is Instructor.Type:
-            let lblUserName = makeLabel()
-            txtUsername = makeTextField()
-            lblUserName.text = "Usuário"
+        case is Admin.Type, is Instructor.Type, is Student.Type:
+            _ = makeLabel("Usuário")
+            textFields["userID"] = makeTextField()
 
-            let lblName = makeLabel()
-            txtName = makeTextField()
-            lblName.text = "Nome"
+            _ = makeLabel("Nome")
+            textFields["name"] = makeTextField()
 
-            let lblLastName = makeLabel()
-            txtLastName = makeTextField()
-            lblLastName.text = "Sobrenome"
+            _ = makeLabel("Sobrenome")
+            textFields["surname"] = makeTextField()
 
-            let lblDateOfBirth = makeLabel()
-            txtDateOfBirth = makeTextField()
-            lblDateOfBirth.text = "Data de nascimento"
-//        case is Subject.Type:
-//
+            _ = makeLabel("Data de nascimento")
+            textFields["dateOfBirth"] = makeTextField()
+        case is Subject.Type:
+            _ = makeLabel("Nome")
+            textFields["name"] = makeTextField()
+
+            _ = makeLabel("IDs de classes separados por ','")
+            textFields["classroom"] = makeTextField()
+        case is Classroom.Type:
+            _ = makeLabel("Nome")
+            textFields["name"] =  makeTextField()
+
+            _ = makeLabel("ID de matéria")
+            textFields["subjectID"] = makeTextField()
+
+            _ = makeLabel("ID de instrutor")
+            textFields["instructorID"] = makeTextField()
+
+            _ = makeLabel("IDs de estudantes separados por ','")
+            textFields["subjectID"] = makeTextField()
         default:
             fatalError("Tipagem não prevista")
         }
     }
 
-    @IBAction func post() {
-        guard let username = txtUsername?.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            let name = txtName?.text?.trimmingCharacters(in: .whitespacesAndNewlines), let username else { return }
-        
-        
-        json["username"] =
+    func getPostData() -> [String: Any] {
+        var postData: [String: Any] = [:]
+        for dicEntry in textFields {
+            postData[dicEntry.key] = dicEntry.value.text
+        }
+
+        return postData
     }
 
     private var lastView: UIView?
-    func makeLabel() -> UILabel {
+    func makeLabel(_ text: String? = nil) -> UILabel {
         let lbl = UILabel()
+        lbl.text = text
         view.addSubview(lbl)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center

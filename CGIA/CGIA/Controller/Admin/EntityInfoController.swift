@@ -17,20 +17,31 @@ public class EntityInfoController: UIViewController {
         }
         navigationItem.title = entity.displayName
         if let aluno = entity as? Student {
-            let lblLastName = makeLabel()
-            lblLastName.text = aluno.lastName
-            let lblDateOfBirth = makeLabel()
-            lblDateOfBirth.text = aluno.dateOfBirth
-        } else if entity is Instructor {
-
-        } else if entity is Admin {
-
+            _ = makeLabel(aluno.lastName)
+            _ = makeLabel(aluno.dateOfBirth)
+        } else if let instrutor = entity as? Instructor {
+            _ = makeLabel(instrutor.lastName)
+            _ = makeLabel(instrutor.dateOfBirth)
+        } else if let admin = entity as? Admin {
+            _ = makeLabel(admin.lastName)
+            _ = makeLabel(admin.dateOfBirth)
+        } else if let subject = entity as? Subject {
+            for classRoom in subject.classrooms ?? [] {
+                _ = makeLabel(classRoom.displayName)
+            }
+        } else if let classRoom = entity as? Classroom {
+            _ = makeLabel(classRoom.subject?.displayName)
+            _ = makeLabel(classRoom.instructor?.displayName)
+            for student in classRoom.students {
+                _ = makeLabel(student.displayName)
+            }
         }
     }
 
     var lastView: UIView?
-    func makeLabel() -> UILabel {
+    func makeLabel(_ text: String? = nil) -> UILabel {
         let lbl = UILabel()
+        lbl.text = text
         view.addSubview(lbl)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
