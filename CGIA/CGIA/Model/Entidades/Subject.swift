@@ -14,5 +14,4 @@ public struct Subject: Codable, Displayable {
     }
     let id: Int?
     let name: String?
-    var classrooms: [Classroom]?
 }

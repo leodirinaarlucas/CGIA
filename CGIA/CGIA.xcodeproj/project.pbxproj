@@ -34,18 +34,12 @@
 		02C31561233AD2C40058054D /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31560233AD2C40058054D /* ServerManager.swift */; };
 		02C31562233AD2C40058054D /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31560233AD2C40058054D /* ServerManager.swift */; };
 		02C31563233AD2C40058054D /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31560233AD2C40058054D /* ServerManager.swift */; };
-		02C31566233AD4A60058054D /* Instituicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31565233AD4A60058054D /* Instituicao.swift */; };
-		02C31567233AD4A60058054D /* Instituicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31565233AD4A60058054D /* Instituicao.swift */; };
-		02C31568233AD4A60058054D /* Instituicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31565233AD4A60058054D /* Instituicao.swift */; };
 		02C3156A233AD4E80058054D /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31569233AD4E80058054D /* Admin.swift */; };
 		02C3156B233AD4E80058054D /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31569233AD4E80058054D /* Admin.swift */; };
 		02C3156C233AD4E80058054D /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31569233AD4E80058054D /* Admin.swift */; };
 		02C3156E233AD4F90058054D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3156D233AD4F90058054D /* User.swift */; };
 		02C3156F233AD4F90058054D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3156D233AD4F90058054D /* User.swift */; };
 		02C31570233AD4F90058054D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3156D233AD4F90058054D /* User.swift */; };
-		02C31572233AD53C0058054D /* Aluno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31571233AD53C0058054D /* Aluno.swift */; };
-		02C31573233AD53C0058054D /* Aluno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31571233AD53C0058054D /* Aluno.swift */; };
-		02C31574233AD53C0058054D /* Aluno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31571233AD53C0058054D /* Aluno.swift */; };
 		02C31576233AD56F0058054D /* Instructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31575233AD56F0058054D /* Instructor.swift */; };
 		02C31577233AD56F0058054D /* Instructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31575233AD56F0058054D /* Instructor.swift */; };
 		02C31578233AD56F0058054D /* Instructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31575233AD56F0058054D /* Instructor.swift */; };
@@ -110,10 +104,8 @@
 		02C3154F233AD10B0058054D /* CGIAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGIAUITests.swift; sourceTree = "<group>"; };
 		02C31551233AD10B0058054D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02C31560233AD2C40058054D /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
-		02C31565233AD4A60058054D /* Instituicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instituicao.swift; sourceTree = "<group>"; };
 		02C31569233AD4E80058054D /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
 		02C3156D233AD4F90058054D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		02C31571233AD53C0058054D /* Aluno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aluno.swift; sourceTree = "<group>"; };
 		02C31575233AD56F0058054D /* Instructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructor.swift; sourceTree = "<group>"; };
 		02C31579233AD5CB0058054D /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		02C3157E233AD5FE0058054D /* Classroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
@@ -257,7 +249,6 @@
 			children = (
 				02C31586233AD9130058054D /* PeriodoEnum.swift */,
 				02C3157D233AD5DD0058054D /* Users */,
-				02C31565233AD4A60058054D /* Instituicao.swift */,
 				02C31579233AD5CB0058054D /* Subject.swift */,
 				02C3157E233AD5FE0058054D /* Classroom.swift */,
 				02C31582233AD6060058054D /* Grade.swift */,
@@ -272,7 +263,6 @@
 				02114D42235395DB004F6ADC /* Student.swift */,
 				02C3156D233AD4F90058054D /* User.swift */,
 				02C31569233AD4E80058054D /* Admin.swift */,
-				02C31571233AD53C0058054D /* Aluno.swift */,
 				02C31575233AD56F0058054D /* Instructor.swift */,
 			);
 			path = Users;
@@ -435,7 +425,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				02C31587233AD9130058054D /* PeriodoEnum.swift in Sources */,
-				02C31566233AD4A60058054D /* Instituicao.swift in Sources */,
 				02C31576233AD56F0058054D /* Instructor.swift in Sources */,
 				02C3156A233AD4E80058054D /* Admin.swift in Sources */,
 				02C3156E233AD4F90058054D /* User.swift in Sources */,
@@ -448,7 +437,6 @@
 				02C3157F233AD5FE0058054D /* Classroom.swift in Sources */,
 				02C31532233AD1080058054D /* LoginController.swift in Sources */,
 				0294E08E233AF28E00A5308C /* EntityShowerTableViewController.swift in Sources */,
-				02C31572233AD53C0058054D /* Aluno.swift in Sources */,
 				02C3152E233AD1080058054D /* AppDelegate.swift in Sources */,
 				02C31530233AD1080058054D /* SceneDelegate.swift in Sources */,
 				0294E090233AF65C00A5308C /* EntitySelectionTableViewController.swift in Sources */,
@@ -465,14 +453,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				02C31577233AD56F0058054D /* Instructor.swift in Sources */,
-				02C31567233AD4A60058054D /* Instituicao.swift in Sources */,
 				02C31562233AD2C40058054D /* ServerManager.swift in Sources */,
 				02C3157B233AD5CB0058054D /* Subject.swift in Sources */,
 				0294E093233AF89B00A5308C /* DisplayableProtocol.swift in Sources */,
 				02C31588233AD9130058054D /* PeriodoEnum.swift in Sources */,
 				02C31545233AD10B0058054D /* CGIATests.swift in Sources */,
 				02C31584233AD6060058054D /* Grade.swift in Sources */,
-				02C31573233AD53C0058054D /* Aluno.swift in Sources */,
 				02C3156F233AD4F90058054D /* User.swift in Sources */,
 				0294E08A233AEE4400A5308C /* LoginAnswer.swift in Sources */,
 				02C3156B233AD4E80058054D /* Admin.swift in Sources */,
@@ -486,14 +472,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				02C31578233AD56F0058054D /* Instructor.swift in Sources */,
-				02C31568233AD4A60058054D /* Instituicao.swift in Sources */,
 				02C31563233AD2C40058054D /* ServerManager.swift in Sources */,
 				02C3157C233AD5CB0058054D /* Subject.swift in Sources */,
 				0294E094233AF89B00A5308C /* DisplayableProtocol.swift in Sources */,
 				02C31589233AD9130058054D /* PeriodoEnum.swift in Sources */,
 				02C31550233AD10B0058054D /* CGIAUITests.swift in Sources */,
 				02C31585233AD6060058054D /* Grade.swift in Sources */,
-				02C31574233AD53C0058054D /* Aluno.swift in Sources */,
 				02C31570233AD4F90058054D /* User.swift in Sources */,
 				0294E08B233AEE4500A5308C /* LoginAnswer.swift in Sources */,
 				02C3156C233AD4E80058054D /* Admin.swift in Sources */,

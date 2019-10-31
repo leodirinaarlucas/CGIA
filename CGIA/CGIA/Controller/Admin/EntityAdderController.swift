@@ -10,6 +10,13 @@ import UIKit
 
 public class EntityAdderController: UIViewController {
     public var type: Any?
+    var txtUsername: UITextField?
+    var txtName: UITextField?
+    var txtLastName: UITextField?
+    var txtDateOfBirth: UITextField?
+    var txtStudentID: UITextField?
+    var txtInstructorID: UITextField?
+    var txtClassroomID: UITextField?
 
     public override func viewDidLoad() {
         guard let type = type else {
@@ -17,26 +24,26 @@ public class EntityAdderController: UIViewController {
         }
 
         switch type {
-        case is Instructor.Type:
-            break
-        case is Admin.Type:
-            break
-        case is Aluno.Type:
+        case is Admin.Type,
+             is Student.Type,
+             is Instructor.Type:
             let lblUserName = makeLabel()
-            let txtUsername = makeTextField()
+            txtUsername = makeTextField()
             lblUserName.text = "Usuário"
 
             let lblName = makeLabel()
-            let txtName = makeTextField()
+            txtName = makeTextField()
             lblName.text = "Nome"
 
             let lblLastName = makeLabel()
-            let txtLastName = makeTextField()
+            txtLastName = makeTextField()
             lblLastName.text = "Sobrenome"
 
             let lblDateOfBirth = makeLabel()
-            let txtDateOfBirth = makeTextField()
+            txtDateOfBirth = makeTextField()
             lblDateOfBirth.text = "Data de nascimento"
+//        case is Subject.Type:
+//
         default:
             fatalError("Tipagem não prevista")
         }
@@ -58,6 +65,7 @@ public class EntityAdderController: UIViewController {
 
     func makeTextField() -> UITextField {
         let txt = UITextField()
+        txt.borderStyle = .roundedRect
         view.addSubview(txt)
         txt.translatesAutoresizingMaskIntoConstraints = false
         makeUpperConstraint(to: txt)

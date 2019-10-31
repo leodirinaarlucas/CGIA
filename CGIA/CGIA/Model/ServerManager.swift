@@ -74,7 +74,6 @@ public class ServerManager {
 
     // MARK: Mockup
     private func mockDatabase() {
-        let instituicao = Instituicao()
 
         usuario = User(id: 54319, username: "54319", password: "ohYeah", type: UserType.admin.rawValue)
 
@@ -85,12 +84,11 @@ public class ServerManager {
             "Carneiro", username: "54321", dateOfBirth: "1993-01-08")
         professores.append(professor)
 
-        let disciplina = Subject(id: 54322, name: "Matemágica", classrooms: turmas)
+        let disciplina = Subject(id: 54322, name: "Matemágica")
         disciplinas.append(disciplina)
 
         let turma = Classroom(id: 54323, name: "06N", subjectID:
-            disciplina.id, instructorID: professor.id, instructor:
-            professor, students: alunos)
+            disciplina.id, instructorID: professor.id)
         turmas.append(turma)
 
         let aluno = Student(id: 54324, username: "54324", name: "Pedro", lastName: "Shun", dateOfBirth: "1998-01-02")
