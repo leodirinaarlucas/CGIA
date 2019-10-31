@@ -50,4 +50,4 @@
 > **USUÁRIO**
   - **1** opção designada somente, dentre as seguintes: administrador, aluno ou professor.
 
-### Instituição de Ensino Fundamental ou Médio ou Universitário a ser decidido
+### Instituição de Ensino Fundamental, Médio ou Universitário a ser decidido
