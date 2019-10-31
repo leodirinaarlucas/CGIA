@@ -9,6 +9,8 @@ opt_in_rules:
   - force_unwrapping
   - implicitly_unwrapped_optional
 
+disabled_rules:
+  - identifier_name
 
 # special configuration for rules
 colon:
