@@ -42,7 +42,7 @@ public class ServerManager {
         }
     }
 
-    public func fetchProfessors() {
+    public func fetchInstructors() {
         APIRequests.getRequest(url: "https://cgia.herokuapp.com/api/instructors", decodableType: [Instructor].self) { (answer) in
             switch answer {
             case .result(let retorno):
@@ -59,7 +59,7 @@ public class ServerManager {
     // MARK: Singleton Properties
     private init() {
         fetchStudents()
-        fetchProfessors()
+        fetchInstructors()
     }
 
     class func shared() -> ServerManager {
