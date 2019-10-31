@@ -47,17 +47,17 @@ public class APIRequests {
         createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
     }
 
-    public static func postRequest(url: String, params: [String: String], completion: @escaping (TaskAnswer<Any>) -> Void) {
+    public static func postRequest(url: String, params: [String: Any], completion: @escaping (TaskAnswer<Any>) -> Void) {
         postRequest(url: url, params: params, decodableType: NilCodable.self, completion: completion)
     }
 
-    public static func postRequest<T: Codable>(url: String, params: [String: String], decodableType: T.Type, completion: @escaping (TaskAnswer<Any>) -> Void) {
+    public static func postRequest<T: Codable>(url: String, params: [String: Any], decodableType: T.Type, completion: @escaping (TaskAnswer<Any>) -> Void) {
         guard let request = createRequest(url: url, method: .post) else {
             completion(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
             return
         }
 
-        let postString = params.map { "\($0.0)=\($0.1)" }.joined(separator: "&")
+        let postString = params.percentEscaped()
         request.httpBody = postString.data(using: String.Encoding.utf8)
         createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
     }

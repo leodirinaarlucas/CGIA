@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02114D43235395DB004F6ADC /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02114D42235395DB004F6ADC /* Student.swift */; };
+		02224D87236BA2520063CB39 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02224D86236BA2520063CB39 /* Extensions.swift */; };
 		025B9745234EB42C0037E64B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025B9744234EB42C0037E64B /* APIRequest.swift */; };
 		025B9747234EB4490037E64B /* NotURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025B9746234EB4490037E64B /* NotURLProtocol.swift */; };
 		0294E083233ADD8800A5308C /* LoginAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E082233ADD8800A5308C /* LoginAnswer.swift */; };
@@ -84,6 +85,7 @@
 
 /* Begin PBXFileReference section */
 		02114D42235395DB004F6ADC /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		02224D86236BA2520063CB39 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		025B9744234EB42C0037E64B /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		025B9746234EB4490037E64B /* NotURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotURLProtocol.swift; sourceTree = "<group>"; };
 		0294E082233ADD8800A5308C /* LoginAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnswer.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				025B9744234EB42C0037E64B /* APIRequest.swift */,
 				025B9746234EB4490037E64B /* NotURLProtocol.swift */,
+				02224D86236BA2520063CB39 /* Extensions.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				02C31532233AD1080058054D /* LoginController.swift in Sources */,
 				0294E08E233AF28E00A5308C /* EntityShowerTableViewController.swift in Sources */,
 				02C31572233AD53C0058054D /* Aluno.swift in Sources */,
+				02224D87236BA2520063CB39 /* Extensions.swift in Sources */,
 				02C3152E233AD1080058054D /* AppDelegate.swift in Sources */,
 				02C31530233AD1080058054D /* SceneDelegate.swift in Sources */,
 				0294E090233AF65C00A5308C /* EntitySelectionTableViewController.swift in Sources */,
