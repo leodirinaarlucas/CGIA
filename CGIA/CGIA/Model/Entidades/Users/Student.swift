@@ -13,7 +13,7 @@ public struct Student: Codable, Displayable {
         return name ?? ""
     }
     var id: Int?
-    var username: String?
+    var userID: Int?
     var name: String?
     var lastName: String?
     var dateOfBirth: String?
