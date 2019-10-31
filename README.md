@@ -15,6 +15,13 @@
   - **0** ou **n** disciplinas pertencem a apenas **1** instituição de ensino.
   - **1** única disciplina está associada a **0** ou **n** turmas.
   
+> **INSTITUIÇÃO**
+  - **1** única instituição é gerida por **1** ou **n** administradores.
+  - **1** única instituição possui **0** ou **n** disciplinas.
+  - **1** única instituição possui **0** ou **n** turmas.
+  - **1** única instituição possui **0** ou **n** professores.
+  - **1** única instituição possui **0** ou **n** alunos.
+  
 > **PROFESSOR**
   - **1** professor para **0** ou **n** turmas.
   - Professor atribui a nota de avaliação a partir de uma média de notas definidas
