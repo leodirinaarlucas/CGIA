@@ -1,4 +1,5 @@
-# CGIA - Controle Genérico de Instituição Acadêmica :+1:
+# CGIA
+Controle Genérico de Instituição Acadêmica
 
 ### O sistema deve funcionar a partir dos critérios a seguir:
 
