@@ -16,4 +16,5 @@ public struct Classroom: Codable, Displayable {
     let name: String?
     let subjectID: Int?
     let instructorID: Int?
+    let active: Bool?
 }

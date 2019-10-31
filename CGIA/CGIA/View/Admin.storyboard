@@ -192,6 +192,9 @@
                     <navigationItem key="navigationItem" id="weu-GV-iNA">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="slu-vO-VZZ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="post" destination="gM0-yg-XPO" id="DBk-3M-5ga"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>

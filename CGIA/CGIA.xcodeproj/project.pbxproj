@@ -56,6 +56,10 @@
 		02C31587233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
 		02C31588233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
 		02C31589233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
+		B669AF66236BAADC00D89C38 /* CompleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF65236BAADC00D89C38 /* CompleteUser.swift */; };
+		B669AF68236BAB3900D89C38 /* CompleteStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF67236BAB3900D89C38 /* CompleteStudent.swift */; };
+		B669AF6A236BAB6D00D89C38 /* CompleteInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */; };
+		B669AF6C236BAC0200D89C38 /* CompleteSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF6B236BAC0200D89C38 /* CompleteSubject.swift */; };
 		F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
 		F26E8DD8233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +117,10 @@
 		02C3157E233AD5FE0058054D /* Classroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
 		02C31582233AD6060058054D /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		02C31586233AD9130058054D /* PeriodoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodoEnum.swift; sourceTree = "<group>"; };
+		B669AF65236BAADC00D89C38 /* CompleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteUser.swift; sourceTree = "<group>"; };
+		B669AF67236BAB3900D89C38 /* CompleteStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteStudent.swift; sourceTree = "<group>"; };
+		B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteInstructor.swift; sourceTree = "<group>"; };
+		B669AF6B236BAC0200D89C38 /* CompleteSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSubject.swift; sourceTree = "<group>"; };
 		F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlunoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +224,7 @@
 		02C3155D233AD21B0058054D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B669AF64236BAAC400D89C38 /* CompleteEntidades */,
 				025B9748234EB4500037E64B /* Backend */,
 				0294E082233ADD8800A5308C /* LoginAnswer.swift */,
 				02C31560233AD2C40058054D /* ServerManager.swift */,
@@ -269,6 +278,17 @@
 				02C31575233AD56F0058054D /* Instructor.swift */,
 			);
 			path = Users;
+			sourceTree = "<group>";
+		};
+		B669AF64236BAAC400D89C38 /* CompleteEntidades */ = {
+			isa = PBXGroup;
+			children = (
+				B669AF65236BAADC00D89C38 /* CompleteUser.swift */,
+				B669AF67236BAB3900D89C38 /* CompleteStudent.swift */,
+				B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */,
+				B669AF6B236BAC0200D89C38 /* CompleteSubject.swift */,
+			);
+			path = CompleteEntidades;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,7 +447,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B669AF68236BAB3900D89C38 /* CompleteStudent.swift in Sources */,
 				02C31587233AD9130058054D /* PeriodoEnum.swift in Sources */,
+				B669AF6A236BAB6D00D89C38 /* CompleteInstructor.swift in Sources */,
 				02C31576233AD56F0058054D /* Instructor.swift in Sources */,
 				02C3156A233AD4E80058054D /* Admin.swift in Sources */,
 				02C3156E233AD4F90058054D /* User.swift in Sources */,
@@ -440,12 +462,13 @@
 				02C3157F233AD5FE0058054D /* Classroom.swift in Sources */,
 				02C31532233AD1080058054D /* LoginController.swift in Sources */,
 				0294E08E233AF28E00A5308C /* EntityShowerTableViewController.swift in Sources */,
-				02C31572233AD53C0058054D /* Aluno.swift in Sources */,
+				B669AF6C236BAC0200D89C38 /* CompleteSubject.swift in Sources */,
 				02224D87236BA2520063CB39 /* Extensions.swift in Sources */,
 				02C3152E233AD1080058054D /* AppDelegate.swift in Sources */,
 				02C31530233AD1080058054D /* SceneDelegate.swift in Sources */,
 				0294E090233AF65C00A5308C /* EntitySelectionTableViewController.swift in Sources */,
 				025B9747234EB4490037E64B /* NotURLProtocol.swift in Sources */,
+				B669AF66236BAADC00D89C38 /* CompleteUser.swift in Sources */,
 				02C31583233AD6060058054D /* Grade.swift in Sources */,
 				02A3646F23612B46001B626C /* EntityAdderController.swift in Sources */,
 				02114D43235395DB004F6ADC /* Student.swift in Sources */,

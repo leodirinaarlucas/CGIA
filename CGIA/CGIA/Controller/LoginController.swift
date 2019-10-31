@@ -34,7 +34,7 @@ class LoginController: UIViewController {
                 self.present(alertFail, animated: true)
             case .successful(let user):
                 var identifier: String = ""
-                switch user.type {
+                switch user.profile {
                 case UserType.student.rawValue:
                     identifier = "aluno"
                 case UserType.instructor.rawValue:

@@ -49,6 +49,14 @@ public class EntityAdderController: UIViewController {
         }
     }
 
+    @IBAction func post() {
+        guard let username = txtUsername?.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let name = txtName?.text?.trimmingCharacters(in: .whitespacesAndNewlines), let username else { return }
+        
+        
+        json["username"] =
+    }
+
     private var lastView: UIView?
     func makeLabel() -> UILabel {
         let lbl = UILabel()
