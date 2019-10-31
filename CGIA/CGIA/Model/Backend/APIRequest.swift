@@ -8,6 +8,9 @@
 
 import Foundation
 
+private struct NilCodable: Codable {
+}
+
 public enum HttpMethods: String {
     case get = "GET"
     case post = "POST"
@@ -22,26 +25,21 @@ public class APIRequests {
     private init() {
     }
 
-    private static func createRequest(url: String) -> NSMutableURLRequest? {
+    private static func createRequest(url: String, method: HttpMethods) -> NSMutableURLRequest? {
         guard let URL = URL(string: url) else {
             return nil
         }
         let request = NSMutableURLRequest(url: URL)
-        request.httpMethod = HttpMethods.get.rawValue
+        request.httpMethod = method.rawValue
         return request
     }
 
     public static func getRequest(url: String, completion: @escaping (TaskAnswer<Any>) -> Void) {
-        guard let request = createRequest(url: url) else {
-            completion(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
-            return
-        }
-
-        createTask(request: request as URLRequest, completion: completion).resume()
+        getRequest(url: url, decodableType: NilCodable.self, completion: completion)
     }
 
     public static func getRequest<T: Codable>(url: String, decodableType: T.Type, completion: @escaping (TaskAnswer<Any>) -> Void ) {
-        guard let request = createRequest(url: url) else {
+        guard let request = createRequest(url: url, method: .get) else {
             completion(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
             return
         }
@@ -49,22 +47,19 @@ public class APIRequests {
         createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
     }
 
-    public static func createTask(request: URLRequest, completion: @escaping (TaskAnswer<Any>) -> Void) -> URLSessionDataTask {
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data, error == nil else {
-                completion(TaskAnswer.result([:]))
-                return
-            }
-            do {
-                //A resposta chegou
-                let response = try JSONSerialization.jsonObject(with: data, options: [])
-                completion(TaskAnswer.result(response))
-            } catch let error as NSError {
-                // Houve um erro na comunicao com o servidor
-                completion(TaskAnswer.error(error))
-            }
+    public static func postRequest(url: String, params: [String: String], completion: @escaping (TaskAnswer<Any>) -> Void) {
+        postRequest(url: url, params: params, decodableType: NilCodable.self, completion: completion)
+    }
+
+    public static func postRequest<T: Codable>(url: String, params: [String: String], decodableType: T.Type, completion: @escaping (TaskAnswer<Any>) -> Void) {
+        guard let request = createRequest(url: url, method: .post) else {
+            completion(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
+            return
         }
-        return task
+
+        let postString = params.map { "\($0.0)=\($0.1)" }.joined(separator: "&")
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
     }
 
     public static func createTask<T: Codable>(request: URLRequest, decodableType: T.Type, completion: @escaping (TaskAnswer<Any>) -> Void) -> URLSessionDataTask {
@@ -75,8 +70,13 @@ public class APIRequests {
             }
             do {
                 //A resposta chegou
-                let response = try JSONDecoder().decode(decodableType, from: data)
-                completion(TaskAnswer.result(response))
+                if decodableType != NilCodable.self {
+                    let response = try JSONDecoder().decode(decodableType, from: data)
+                    completion(TaskAnswer.result(response))
+                } else {
+                    let response = try JSONSerialization.jsonObject(with: data, options: [])
+                    completion(TaskAnswer.result(response))
+                }
             } catch let error as NSError {
                 // Houve um erro na conversão de tipo ou comunicaçao com servidor
                 completion(TaskAnswer.error(error))

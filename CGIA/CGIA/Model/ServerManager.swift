@@ -74,7 +74,6 @@ public class ServerManager {
 
     // MARK: Mockup
     private func mockDatabase() {
-        let instituicao = Instituicao()
 
         usuario = User(id: 54319, username: "54319", password: "ohYeah", type: UserType.admin.rawValue)
 

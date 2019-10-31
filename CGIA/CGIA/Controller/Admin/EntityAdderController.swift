@@ -21,7 +21,7 @@ public class EntityAdderController: UIViewController {
             break
         case is Admin.Type:
             break
-        case is Aluno.Type:
+        case is Student.Type:
             let lblUserName = makeLabel()
             let txtUsername = makeTextField()
             lblUserName.text = "Usuário"
@@ -58,6 +58,7 @@ public class EntityAdderController: UIViewController {
 
     func makeTextField() -> UITextField {
         let txt = UITextField()
+        txt.borderStyle = .roundedRect
         view.addSubview(txt)
         txt.translatesAutoresizingMaskIntoConstraints = false
         makeUpperConstraint(to: txt)
