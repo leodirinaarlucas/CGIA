@@ -13,8 +13,8 @@ public struct Instructor: Codable, Displayable {
         return name ?? ""
     }
     let id: Int?
+    var userID: Int?
     let name: String?
     let lastName: String?
-    let username: String?
     let dateOfBirth: String?
 }

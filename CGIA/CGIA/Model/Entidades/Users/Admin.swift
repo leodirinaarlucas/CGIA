@@ -10,8 +10,8 @@ import Foundation
 
 public struct Admin: Codable {
     var id: Int?
+    var userID: Int?
     var name: String?
     var lastName: String?
-    var username: String?
     var dateOfBirth: String?
 }
