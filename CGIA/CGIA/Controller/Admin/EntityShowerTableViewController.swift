@@ -29,6 +29,10 @@ public class EntityShowerTableViewController: UITableViewController {
             data = ServerManager.shared().turmas
         case is Student.Type:
             data = ServerManager.shared().alunos
+        case is Subject.Type:
+            data = ServerManager.shared().disciplinas
+        case is Classroom.Type:
+            data = ServerManager.shared().turmas
         default:
             fatalError("Não houve uma tipagem esperada para mostrar os dados")
         }

@@ -10,6 +10,7 @@ import UIKit
 
 public class EntityAdderController: UIViewController {
     public var type: Any?
+    private var textFields: [String: UITextField] = [:]
 
     public override func viewDidLoad() {
         guard let type = type else {
@@ -17,34 +18,54 @@ public class EntityAdderController: UIViewController {
         }
 
         switch type {
-        case is Instructor.Type:
-            break
-        case is Admin.Type:
-            break
-        case is Student.Type:
-            let lblUserName = makeLabel()
-            let txtUsername = makeTextField()
-            lblUserName.text = "Usuário"
+        case is Admin.Type, is Instructor.Type, is Student.Type:
+            _ = makeLabel("Usuário")
+            textFields["userID"] = makeTextField()
 
-            let lblName = makeLabel()
-            let txtName = makeTextField()
-            lblName.text = "Nome"
+            _ = makeLabel("Nome")
+            textFields["name"] = makeTextField()
 
-            let lblLastName = makeLabel()
-            let txtLastName = makeTextField()
-            lblLastName.text = "Sobrenome"
+            _ = makeLabel("Sobrenome")
+            textFields["surname"] = makeTextField()
 
-            let lblDateOfBirth = makeLabel()
-            let txtDateOfBirth = makeTextField()
-            lblDateOfBirth.text = "Data de nascimento"
+            _ = makeLabel("Data de nascimento")
+            textFields["dateOfBirth"] = makeTextField()
+        case is Subject.Type:
+            _ = makeLabel("Nome")
+            textFields["name"] = makeTextField()
+
+            _ = makeLabel("IDs de classes separados por ','")
+            textFields["classroom"] = makeTextField()
+        case is Classroom.Type:
+            _ = makeLabel("Nome")
+            textFields["name"] =  makeTextField()
+
+            _ = makeLabel("ID de matéria")
+            textFields["subjectID"] = makeTextField()
+
+            _ = makeLabel("ID de instrutor")
+            textFields["instructorID"] = makeTextField()
+
+            _ = makeLabel("IDs de estudantes separados por ','")
+            textFields["subjectID"] = makeTextField()
         default:
             fatalError("Tipagem não prevista")
         }
     }
 
+    func getPostData() -> [String: Any] {
+        var postData: [String: Any] = [:]
+        for dicEntry in textFields {
+            postData[dicEntry.key] = dicEntry.value.text
+        }
+
+        return postData
+    }
+
     private var lastView: UIView?
-    func makeLabel() -> UILabel {
+    func makeLabel(_ text: String? = nil) -> UILabel {
         let lbl = UILabel()
+        lbl.text = text
         view.addSubview(lbl)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
