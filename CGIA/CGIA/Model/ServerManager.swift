@@ -9,7 +9,7 @@
 import Foundation
 
 public class ServerManager {
-
+ 
     // MARK: Properties
     public private(set) var usuario: User?
     public private(set) var admins: [Admin] = []
