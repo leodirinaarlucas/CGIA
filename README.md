@@ -28,6 +28,7 @@
 > **NOTAS**
   - **0** ou **n** notas são atribuídas para somente cada **1** turma.
   - **0** ou **n** notas são atribuídas para somente cada **1** aluno.
+    - As notas consistem em valores do tipo double.
   
 > **PERÍODO**
   - Cada **1** período possui **0** ou **n** turmas.
@@ -44,8 +45,9 @@
   - **0** ou **n** turmas em somente **1** instituição.
   - **0** ou **n** turmas possuem **1** mesmo professor.
   - **0** ou **n** turmas possuem **0** ou **n** alunos.
-  - Cada **1** turma possui um conjunto de **0** ou **n** notas atribuídas.
   - **0** ou **n** turmas estão registrados em somente **1** período.
+  - Cada **1** turma possui um conjunto de **0** ou **n** notas atribuídas.
+    - O identificador de turma consiste no tipo string no formato SEMESTRE/ANO.
   
 > **USUÁRIO**
   - **1** opção designada somente, dentre as seguintes: administrador, aluno ou professor.
