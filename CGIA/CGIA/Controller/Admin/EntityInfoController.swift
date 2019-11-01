@@ -25,17 +25,17 @@ public class EntityInfoController: UIViewController {
         } else if let admin = entity as? Admin {
             _ = makeLabel(admin.lastName)
             _ = makeLabel(admin.dateOfBirth)
-        } else if let subject = entity as? Subject {
-            for classRoom in subject.classrooms ?? [] {
-                _ = makeLabel(classRoom.displayName)
-            }
-        } else if let classRoom = entity as? Classroom {
-            _ = makeLabel(classRoom.subject?.displayName)
-            _ = makeLabel(classRoom.instructor?.displayName)
-            for student in classRoom.students {
-                _ = makeLabel(student.displayName)
-            }
-        }
+        }// else if let subject = entity as? Subject {
+//            for classRoom in subject.classrooms ?? [] {
+//                _ = makeLabel(classRoom.displayName)
+//            }
+//        } else if let classRoom = entity as? Classroom {
+//            _ = makeLabel(classRoom.subject?.displayName)
+//            _ = makeLabel(classRoom.instructor?.displayName)
+//            for student in classRoom.students {
+//                _ = makeLabel(student.displayName)
+//            }
+//        }
     }
 
     var lastView: UIView?

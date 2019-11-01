@@ -9,18 +9,52 @@
 import UIKit
 
 public class EntityShowerTableViewController: UITableViewController {
-    public var type: Any?
+    public var profile: Any?
     private var data: [Displayable] = []
     private var selected: Displayable?
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateData), name:
+            Notification.Name("dataUpdated"), object: nil)
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        switch profile {
+        case is Instructor.Type:
+            ServerManager.shared().fetchInstructors()
+        case is Subject.Type:
+            break
+        case is Classroom.Type:
+            break
+        case is Student.Type:
+            ServerManager.shared().fetchStudents()
+        case is Subject.Type:
+            break
+        case is Classroom.Type:
+            break
+        default:
+            fatalError("Não houve uma tipagem esperada para mostrar os dados")
+        }
+    }
+
+    @objc func updateData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
     public override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let type = type else {
+        guard let profile = profile else {
             fatalError("Tipo era nulo")
         }
-        switch type {
+        switch profile {
         case is Instructor.Type:
             data = ServerManager.shared().professores
         case is Subject.Type:
@@ -59,7 +93,7 @@ public class EntityShowerTableViewController: UITableViewController {
             cont.entity = selected
         } else if let navCont = segue.destination as? UINavigationController,
             let cont = navCont.topViewController as? EntityAdderController {
-            cont.type = self.type
+            cont.profile = self.profile
         }
     }
 }
