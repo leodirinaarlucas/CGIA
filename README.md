@@ -1,6 +1,6 @@
 # CGIA - Controle Genérico de Instituição Acadêmica
 
-### O sistema deve funcionar a partir dos critérios a seguir:
+### O sistema deve funcionar considerando os critérios a seguir:
 
 > **ADMINISTRADOR**  
   - Cada **1** ou **n** administradores para gerir apenas **1** instituição.
