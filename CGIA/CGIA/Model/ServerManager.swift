@@ -29,7 +29,8 @@ public class ServerManager {
 
     /// MARK: Fetchs
     public func fetchStudents() {
-        APIRequests.getRequest(url: "https://cgia.herokuapp.com/api/students", decodableType: [Student].self) { (answer) in
+        APIRequests.getRequest(url: "https://cgia.herokuapp.com/api/students", decodableType:
+        [Student].self) { (answer) in
             switch answer {
             case .result(let retorno):
                 guard let retorno = retorno as? [Student] else {
@@ -43,7 +44,8 @@ public class ServerManager {
     }
 
     public func fetchInstructors() {
-        APIRequests.getRequest(url: "https://cgia.herokuapp.com/api/instructors", decodableType: [Instructor].self) { (answer) in
+        APIRequests.getRequest(url: "https://cgia.herokuapp.com/api/instructors", decodableType:
+        [Instructor].self) { (answer) in
             switch answer {
             case .result(let retorno):
                 guard let retorno = retorno as? [Instructor] else {
