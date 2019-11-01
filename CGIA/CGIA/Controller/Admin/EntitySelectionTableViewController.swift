@@ -33,7 +33,7 @@ public class EntitySelectionTableViewController: UITableViewController {
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cont = segue.destination as? EntityShowerTableViewController {
-            cont.type = type
+            cont.profile = type
         }
     }
 }

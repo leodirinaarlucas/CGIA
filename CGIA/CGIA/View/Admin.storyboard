@@ -193,7 +193,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="slu-vO-VZZ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="post" destination="gM0-yg-XPO" id="DBk-3M-5ga"/>
+                                <action selector="createUser" destination="gM0-yg-XPO" id="DBk-3M-5ga"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -210,6 +210,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qmr-uH-6mn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.99394112830000003" green="0.34637725349999998" blue="0.3058507144" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

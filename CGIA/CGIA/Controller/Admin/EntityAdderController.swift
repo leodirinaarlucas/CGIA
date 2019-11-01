@@ -9,24 +9,28 @@
 import UIKit
 
 public class EntityAdderController: UIViewController {
-    public var type: Any?
+    public var profile: Any?
+    private var profileStr = ""
     private var textFields: [String: UITextField] = [:]
 
     public override func viewDidLoad() {
-        guard let type = type else {
+        guard let type = profile else {
             fatalError("Não havia um tipo")
         }
 
         switch type {
         case is Admin.Type, is Instructor.Type, is Student.Type:
-            _ = makeLabel("Usuário")
-            textFields["userID"] = makeTextField()
+            _ = makeLabel("Nome de usuário")
+            textFields["username"] = makeTextField()
+
+            _ = makeLabel("Senha")
+            textFields["password"] = makeTextField()
 
             _ = makeLabel("Nome")
             textFields["name"] = makeTextField()
 
             _ = makeLabel("Sobrenome")
-            textFields["surname"] = makeTextField()
+            textFields["lastName"] = makeTextField()
 
             _ = makeLabel("Data de nascimento")
             textFields["dateOfBirth"] = makeTextField()
@@ -50,6 +54,59 @@ public class EntityAdderController: UIViewController {
             textFields["subjectID"] = makeTextField()
         default:
             fatalError("Tipagem não prevista")
+        }
+    }
+
+    @IBAction func createUser() {
+        var postData = getPostData()
+
+        switch profile {
+        case is Admin.Type:
+            profileStr = "admin"
+        case is Instructor.Type:
+            profileStr = "instructor"
+        case is Student.Type:
+            profileStr = "student"
+        case is Subject.Type:
+            profileStr = "subject"
+            return // PRECISA DE TRATAMENTO QUANDO FOR SUBJECT
+        case is Classroom.Type:
+            profileStr = "classroom"
+            return // PRECISA DE TRATAMENTO QUANDO FOR CLASSROOM
+        default:
+            fatalError("Tipagem não prevista")
+        }
+
+        postData["profile"] = profileStr
+
+        APIRequests.postRequest(url: "https://cgia.herokuapp.com/api/users", params: postData) { (answer) in
+            switch answer {
+            case .result(let data):
+                guard let dict = data as? [String: Any] else {
+                    return
+                }
+                var finalData = [String: Any]()
+                finalData["userID"] = dict["id"] as? Int ?? 0
+                finalData["username"] = dict["username"]
+                finalData["password"] = dict["password"]
+                finalData["name"] = postData["name"]
+                finalData["lastName"] = postData["lastName"]
+                finalData["dateOfBirth"] = postData["dateOfBirth"]
+                self.post(finalData)
+            default:
+                fatalError("Could not perform post")
+            }
+        }
+    }
+
+    func post(_ data: [String: Any]) {
+        APIRequests.postRequest(url: "https://cgia.herokuapp.com/api/\(profileStr)s", params: data) { (answer) in
+            switch answer {
+            case .result(let data):
+                print(data)
+            default:
+                fatalError("Could not perform post")
+            }
         }
     }
 

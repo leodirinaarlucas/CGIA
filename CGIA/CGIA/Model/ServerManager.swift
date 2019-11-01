@@ -50,6 +50,7 @@ public class ServerManager {
                     fatalError("Não foi possível dar fetch nos professores")
                 }
                 self.professores = retorno
+                NotificationCenter.default.post(name: Notification.Name("dataUpdated"), object: nil)
             case .error(let error):
                 fatalError(error.localizedDescription)
             }
@@ -58,8 +59,6 @@ public class ServerManager {
 
     // MARK: Singleton Properties
     private init() {
-        fetchStudents()
-        fetchInstructors()
     }
 
     class func shared() -> ServerManager {
