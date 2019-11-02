@@ -57,6 +57,7 @@
 		02C31589233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
 		F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
 		F26E8DD8233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
+		F2D6CFD7236BAE5800B3ADE3 /* AlunoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6CFD6236BAE5800B3ADE3 /* AlunoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		02C31582233AD6060058054D /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		02C31586233AD9130058054D /* PeriodoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodoEnum.swift; sourceTree = "<group>"; };
 		F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlunoTableViewController.swift; sourceTree = "<group>"; };
+		F2D6CFD6236BAE5800B3ADE3 /* AlunoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlunoTableViewCell.swift; path = CGIA/View/AlunoTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,7 +241,7 @@
 			children = (
 				0294E08C233AF26C00A5308C /* Admin */,
 				02C31531233AD1080058054D /* LoginController.swift */,
-				F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */,
+				F2BBCD77236A50DA00430DE1 /* Aluno */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -266,6 +268,15 @@
 				02C31575233AD56F0058054D /* Instructor.swift */,
 			);
 			path = Users;
+			sourceTree = "<group>";
+		};
+		F2BBCD77236A50DA00430DE1 /* Aluno */ = {
+			isa = PBXGroup;
+			children = (
+				F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */,
+				F2D6CFD6236BAE5800B3ADE3 /* AlunoTableViewCell.swift */,
+			);
+			path = Aluno;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,6 +454,7 @@
 				025B9747234EB4490037E64B /* NotURLProtocol.swift in Sources */,
 				02C31583233AD6060058054D /* Grade.swift in Sources */,
 				02A3646F23612B46001B626C /* EntityAdderController.swift in Sources */,
+				F2D6CFD7236BAE5800B3ADE3 /* AlunoTableViewCell.swift in Sources */,
 				02114D43235395DB004F6ADC /* Student.swift in Sources */,
 				0294E083233ADD8800A5308C /* LoginAnswer.swift in Sources */,
 			);
@@ -728,6 +740,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = PGF.CGIAUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CGIA;
@@ -748,6 +761,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = PGF.CGIAUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CGIA;
