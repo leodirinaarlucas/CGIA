@@ -16,7 +16,7 @@ public class EntityShowerTableViewController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(updateData), name:
-            Notification.Name("dataUpdated"), object: nil)
+            Notification.Name(NotifName.dataUpdated.rawValue), object: nil)
     }
 
     public override func viewWillAppear(_ animated: Bool) {
@@ -24,17 +24,17 @@ public class EntityShowerTableViewController: UITableViewController {
 
         switch profile {
         case is Instructor.Type:
-            ServerManager.shared().fetchInstructors()
+            ServerManager.shared().fetch(url: Endpoint.getInstructors.rawValue,
+                                         model: [Instructor].self)
         case is Subject.Type:
-            break
-        case is Classroom.Type:
-            break
+            ServerManager.shared().fetch(url: Endpoint.getSubjects.rawValue,
+                                         model: [Subject].self)
         case is Student.Type:
-            ServerManager.shared().fetchStudents()
-        case is Subject.Type:
-            break
+            ServerManager.shared().fetch(url: Endpoint.getStudents.rawValue,
+                                         model: [Student].self)
         case is Classroom.Type:
-            break
+            ServerManager.shared().fetch(url: Endpoint.getClassrooms.rawValue,
+                                         model: [Classroom].self)
         default:
             fatalError("Não houve uma tipagem esperada para mostrar os dados")
         }

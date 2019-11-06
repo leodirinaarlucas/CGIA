@@ -8,6 +8,26 @@
 
 import Foundation
 
+public enum NotifName: String {
+    case studentsUpdated
+    case gradesUpdated
+    case instructorsUpdated
+    case classroomsUpdated
+    case subjectsUpdated
+    case adminsUpdated
+    case dataUpdated
+}
+
+public enum Endpoint: String {
+    case getStudents = "https://cgia.herokuapp.com/api/students"
+    case getInstructors = "https://cgia.herokuapp.com/api/instructors"
+    case getAdmins = "https://cgia.herokuapp.com/api/admins"
+    case getUsers = "https://cgia.herokuapp.com/api/users"
+    case getGrades = "https://cgia.herokuapp.com/api/grades"
+    case getClassrooms = "https://cgia.herokuapp.com/api/classrooms"
+    case getSubjects = "https://cgia.herokuapp.com/api/subjects"
+}
+
 public class ServerManager {
 
     // MARK: Properties
@@ -17,6 +37,7 @@ public class ServerManager {
     public private(set) var disciplinas: [Subject] = []
     public private(set) var turmas: [Classroom] = []
     public private(set) var alunos: [Student] = []
+    public private(set) var notas: [Grade] = []
 
     // MARK: Login
     public func authenticateLogin(username: String, completionHandler: (LoginAnswer) -> Void) {
@@ -27,36 +48,34 @@ public class ServerManager {
         completionHandler(.successful(user))
     }
 
-    /// MARK: Fetchs
-    public func fetchStudents() {
-        APIRequests.getRequest(url: "https://cgia.herokuapp.com/api/students", decodableType:
-        [Student].self) { (answer) in
+    /// MARK: Fetch
+    public func fetch<T: Codable>(url: String, model: T.Type) {
+        APIRequests.getRequest(url: url, decodableType: model) { (answer) in
             switch answer {
             case .result(let retorno):
-                guard let retorno = retorno as? [Student] else {
-                    fatalError("Não foi possível dar fetch nos alunos")
+
+                if let result = retorno as? [Student] {
+                    self.alunos = result
+                } else if let result = retorno as? [Instructor] {
+                    self.professores = result
+                } else if let result = retorno as? [Subject] {
+                    self.disciplinas = result
+                } else if let result = retorno as? [Classroom] {
+                    self.turmas = result
+                } else if let result = retorno as? [Admin] {
+                    self.admins = result
                 }
-                self.alunos = retorno
+                self.notify(.dataUpdated)
+
             case .error(let error):
                 fatalError(error.localizedDescription)
             }
         }
     }
-
-    public func fetchInstructors() {
-        APIRequests.getRequest(url: "https://cgia.herokuapp.com/api/instructors", decodableType:
-        [Instructor].self) { (answer) in
-            switch answer {
-            case .result(let retorno):
-                guard let retorno = retorno as? [Instructor] else {
-                    fatalError("Não foi possível dar fetch nos professores")
-                }
-                self.professores = retorno
-                NotificationCenter.default.post(name: Notification.Name("dataUpdated"), object: nil)
-            case .error(let error):
-                fatalError(error.localizedDescription)
-            }
-        }
+    
+    /// Notifications
+    public func notify(_ name: NotifName) {
+        NotificationCenter.default.post(name: Notification.Name(name.rawValue), object: nil)
     }
 
     // MARK: Singleton Properties
