@@ -14,6 +14,8 @@ private struct NilCodable: Codable {
 public enum HttpMethods: String {
     case get = "GET"
     case post = "POST"
+    case patch = "PATCH"
+    case put = "PUT"
 }
 
 public enum TaskAnswer<T> {
@@ -34,32 +36,73 @@ public class APIRequests {
         return request
     }
 
-    public static func getRequest(url: String, completion: @escaping (TaskAnswer<Any>) -> Void) {
-        getRequest(url: url, decodableType: NilCodable.self, completion: completion)
+    public static func getRequest(url: String, header: [String: String]? = nil, completion: @escaping (TaskAnswer<Any>) -> Void) {
+        getRequest(url: url, decodableType: NilCodable.self, header: header, completion: completion)
     }
 
-    public static func getRequest<T: Codable>(url: String, decodableType: T.Type, completion:
-        @escaping (TaskAnswer<Any>) -> Void ) {
+    public static func getRequest<T: Codable>(
+        url: String,
+        decodableType: T.Type,
+        header: [String: String]? = nil,
+        completion: @escaping (TaskAnswer<Any>) -> Void ) {
+
         guard let request = createRequest(url: url, method: .get) else {
             completion(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
             return
         }
 
+        for headerParam in header ?? [:] {
+            request.addValue(headerParam.value, forHTTPHeaderField: headerParam.key)
+        }
         createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
     }
 
-    public static func postRequest(url: String, params: [String: Any], completion:
+    public static func postRequest(url: String, header: [String: String]? = nil, params: [String: Any], completion:
         @escaping (TaskAnswer<Any>) -> Void) {
         postRequest(url: url, params: params, decodableType: NilCodable.self, completion: completion)
     }
 
-    public static func postRequest<T: Codable>(url: String, params: [String: Any], decodableType:
-        T.Type, completion: @escaping (TaskAnswer<Any>) -> Void) {
+    public static func postRequest<T: Codable>(
+        url: String,
+        params: [String: Any],
+        header: [String: String]? = nil,
+        decodableType: T.Type,
+        completion: @escaping (TaskAnswer<Any>) -> Void) {
+
         guard let request = createRequest(url: url, method: .post) else {
             completion(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
             return
         }
 
+        for headerParam in header ?? [:] {
+            request.addValue(headerParam.value, forHTTPHeaderField: headerParam.key)
+        }
+        let postString = params.percentEscaped()
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
+    }
+
+    public static func request(url: String, method: HttpMethods, params: [String: Any], header: [String: String]? = nil, completion: @escaping (TaskAnswer<Any>) -> Void) {
+        return request(url: url, method: method, params: params, header: header,
+                       decodableType: NilCodable.self, completion: completion)
+    }
+
+    public static func request<T: Codable>(
+        url: String,
+        method: HttpMethods,
+        params: [String: Any],
+        header: [String: String]? = nil,
+        decodableType: T.Type,
+        completion: @escaping (TaskAnswer<Any>) -> Void) {
+
+        guard let request = createRequest(url: url, method: method) else {
+            completion(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
+            return
+        }
+
+        for headerParam in header ?? [:] {
+            request.addValue(headerParam.value, forHTTPHeaderField: headerParam.key)
+        }
         let postString = params.percentEscaped()
         request.httpBody = postString.data(using: String.Encoding.utf8)
         createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
