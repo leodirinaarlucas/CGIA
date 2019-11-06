@@ -53,8 +53,9 @@ public class APIRequests {
         postRequest(url: url, params: params, decodableType: NilCodable.self, completion: completion)
     }
 
-    public static func postRequest<T: Codable>(url: String, params: [String: Any], decodableType:
-        T.Type, completion: @escaping (TaskAnswer<Any>) -> Void) {
+    public static func postRequest<T: Codable>(url: String, params: [String: Any],
+                                               decodableType: T.Type,
+                                               completion: @escaping (TaskAnswer<Any>) -> Void) {
         guard let request = createRequest(url: url, method: .post) else {
             completion(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
             return
@@ -73,7 +74,7 @@ public class APIRequests {
                 return
             }
             do {
-                //A resposta chegou
+                // A resposta chegou
                 if decodableType != NilCodable.self {
                     let response = try JSONDecoder().decode(decodableType, from: data)
                     completion(TaskAnswer.result(response))
