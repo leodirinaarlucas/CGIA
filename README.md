@@ -35,14 +35,14 @@
  
 > **PROFESSOR**
   - Cada **1** professor é registrado em **0** ou **n** turmas.
-  - **0** ou **n** professores para somente **1** instituição de ensino.
+  - **0** ou **n** professores são registrados em apenas **1** instituição de ensino.
   - Professor atribui a nota de avaliação a partir de uma média de notas definidas.
   - Professor atribui número de faltas.
     - Frequência consiste em número de faltas considerando um total de aulas.
 
 > **TURMA**
   - **0** ou **n** turmas estão registradas em cada **1** disciplina.
-  - **0** ou **n** turmas em somente **1** instituição.
+  - **0** ou **n** turmas estão registradas em somente **1** instituição.
   - **0** ou **n** turmas possuem **1** mesmo professor.
   - **0** ou **n** turmas possuem **0** ou **n** alunos.
   - **0** ou **n** turmas estão registrados em somente **1** período.
