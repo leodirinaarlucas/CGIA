@@ -17,25 +17,42 @@ public class EntityInfoController: UIViewController {
         }
         navigationItem.title = entity.displayName
         if let aluno = entity as? CompleteStudent {
-            _ = makeLabel(aluno.lastName)
+            _ = makeLabel("\(aluno.id ?? 0)")
+            _ = makeLabel("\(aluno.displayName) \(aluno.lastName ?? "")")
             _ = makeLabel(aluno.dateOfBirth)
+            for classroom in aluno.classrooms ?? [] {
+                _ = makeLabel(classroom.displayName)
+            }
+            for grade in aluno.grades ?? [] {
+                _ = makeLabel("\(grade.grades ?? [])")
+            }
+
         } else if let instrutor = entity as? CompleteInstructor {
-            _ = makeLabel(instrutor.lastName)
+            _ = makeLabel("\(instrutor.id ?? 0)")
+            _ = makeLabel("\(instrutor.displayName) \(instrutor.lastName ?? "")")
             _ = makeLabel(instrutor.dateOfBirth)
+            for classroom in instrutor.classrooms ?? [] {
+                _ = makeLabel(classroom.displayName)
+            }
+
         } else if let admin = entity as? Admin {
             _ = makeLabel(admin.lastName)
             _ = makeLabel(admin.dateOfBirth)
-        }// else if let subject = entity as? Subject {
-//            for classRoom in subject.classrooms ?? [] {
-//                _ = makeLabel(classRoom.displayName)
-//            }
-//        } else if let classRoom = entity as? Classroom {
-//            _ = makeLabel(classRoom.subject?.displayName)
-//            _ = makeLabel(classRoom.instructor?.displayName)
-//            for student in classRoom.students {
-//                _ = makeLabel(student.displayName)
-//            }
-//        }
+        } else if let subject = entity as? CompleteSubject {
+            _ = makeLabel(subject.displayName)
+            for classroom in subject.classrooms ?? [] {
+                _ = makeLabel(classroom.displayName)
+            }
+        } else if let classroom = entity as? CompleteClassroom {
+            _ = makeLabel(classroom.subject?.displayName)
+            _ = makeLabel(classroom.instructor?.displayName)
+            guard let students = classroom.students else {
+                return
+            }
+            for student in students {
+                _ = makeLabel(student.displayName)
+            }
+        }
     }
 
     var lastView: UIView?
