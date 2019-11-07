@@ -9,12 +9,6 @@
 import Foundation
 
 public enum NotifName: String {
-    case studentsUpdated
-    case gradesUpdated
-    case instructorsUpdated
-    case classroomsUpdated
-    case subjectsUpdated
-    case adminsUpdated
     case dataUpdated
 }
 
@@ -33,10 +27,10 @@ public class ServerManager {
     // MARK: Properties
     public private(set) var usuario: User?
     public private(set) var admins: [Admin] = []
-    public private(set) var professores: [Instructor] = []
-    public private(set) var disciplinas: [Subject] = []
-    public private(set) var turmas: [Classroom] = []
-    public private(set) var alunos: [Student] = []
+    public private(set) var professores: [CompleteInstructor] = []
+    public private(set) var disciplinas: [CompleteSubject] = []
+    public private(set) var turmas: [CompleteClassroom] = []
+    public private(set) var alunos: [CompleteStudent] = []
     public private(set) var notas: [Grade] = []
 
     // MARK: Login
@@ -51,20 +45,44 @@ public class ServerManager {
     /// MARK: Fetch
     public func fetch<T: Codable>(url: String, model: T.Type) {
         APIRequests.getRequest(url: url, decodableType: model) { (answer) in
+
             switch answer {
             case .result(let retorno):
 
                 if let result = retorno as? [Student] {
-                    self.alunos = result
+                    for student in result {
+                        self.fetchCompleteEntities(url: .getStudents,
+                                                   id: student.id ?? 0,
+                                                   model: CompleteStudent.self)
+                    }
+
                 } else if let result = retorno as? [Instructor] {
-                    self.professores = result
+                    for instructor in result {
+                        self.fetchCompleteEntities(url: .getInstructors,
+                                                   id: instructor.id ?? 0,
+                                                   model: CompleteInstructor.self)
+                    }
+
                 } else if let result = retorno as? [Subject] {
-                    self.disciplinas = result
+                    for subject in result {
+                        self.fetchCompleteEntities(url: .getSubjects,
+                                                   id: subject.id ?? 0,
+                                                   model: CompleteSubject.self)
+                    }
+
                 } else if let result = retorno as? [Classroom] {
-                    self.turmas = result
+                    for classroom in result {
+                        self.fetchCompleteEntities(url: .getClassrooms,
+                                                   id: classroom.id ?? 0,
+                                                   model: CompleteClassroom.self)
+                    }
+
+                } else if let result = retorno as? [Grade] {
+                    self.notas = result
                 } else if let result = retorno as? [Admin] {
                     self.admins = result
                 }
+
                 self.notify(.dataUpdated)
 
             case .error(let error):
@@ -72,7 +90,31 @@ public class ServerManager {
             }
         }
     }
-    
+
+    public func fetchCompleteEntities<T: Codable>(url: Endpoint, id: Int, model: T.Type) {
+        APIRequests.getRequest(url: "\(url.rawValue)/\(id)", decodableType: model) { (answer) in
+
+            switch answer {
+            case .result(let retorno):
+
+                if let result = retorno as? CompleteStudent {
+                    self.alunos.append(result)
+                } else if let result = retorno as? CompleteInstructor {
+                    self.professores.append(result)
+                } else if let result = retorno as? CompleteSubject {
+                    self.disciplinas.append(result)
+                } else if let result = retorno as? CompleteClassroom {
+                    self.turmas.append(result)
+                }
+
+                self.notify(.dataUpdated)
+
+            case .error(let error):
+                fatalError(error.localizedDescription)
+            }
+        }
+    }
+
     /// Notifications
     public func notify(_ name: NotifName) {
         NotificationCenter.default.post(name: Notification.Name(name.rawValue), object: nil)
@@ -80,6 +122,20 @@ public class ServerManager {
 
     // MARK: Singleton Properties
     private init() {
+        fetch(url: Endpoint.getInstructors.rawValue,
+              model: [Instructor].self)
+
+        fetch(url: Endpoint.getSubjects.rawValue,
+              model: [Subject].self)
+
+        fetch(url: Endpoint.getStudents.rawValue,
+              model: [Student].self)
+
+        fetch(url: Endpoint.getClassrooms.rawValue,
+              model: [Classroom].self)
+
+        fetch(url: Endpoint.getGrades.rawValue,
+              model: [Grade].self)
     }
 
     class func shared() -> ServerManager {
@@ -96,5 +152,6 @@ public class ServerManager {
     private func mockDatabase() {
 
         usuario = User(id: 54319, username: "54319", password: "ohYeah", profile: UserType.admin.rawValue)
+
     }
 }

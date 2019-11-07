@@ -19,7 +19,7 @@ public class EntityAdderController: UIViewController {
         }
 
         switch type {
-        case is Admin.Type, is Instructor.Type, is Student.Type:
+        case is Admin.Type, is CompleteInstructor.Type, is CompleteStudent.Type:
             _ = makeLabel("Nome de usuário")
             textFields["username"] = makeTextField()
 
@@ -34,13 +34,13 @@ public class EntityAdderController: UIViewController {
 
             _ = makeLabel("Data de nascimento")
             textFields["dateOfBirth"] = makeTextField()
-        case is Subject.Type:
+        case is CompleteSubject.Type:
             _ = makeLabel("Nome")
             textFields["name"] = makeTextField()
 
             _ = makeLabel("IDs de classes separados por ','")
             textFields["classroom"] = makeTextField()
-        case is Classroom.Type:
+        case is CompleteClassroom.Type:
             _ = makeLabel("Nome")
             textFields["name"] =  makeTextField()
 
@@ -63,14 +63,14 @@ public class EntityAdderController: UIViewController {
         switch profile {
         case is Admin.Type:
             profileStr = "admin"
-        case is Instructor.Type:
+        case is CompleteInstructor.Type:
             profileStr = "instructor"
-        case is Student.Type:
+        case is CompleteStudent.Type:
             profileStr = "student"
-        case is Subject.Type:
+        case is CompleteSubject.Type:
             profileStr = "subject"
             return // PRECISA DE TRATAMENTO QUANDO FOR SUBJECT
-        case is Classroom.Type:
+        case is CompleteClassroom.Type:
             profileStr = "classroom"
             return // PRECISA DE TRATAMENTO QUANDO FOR CLASSROOM
         default:

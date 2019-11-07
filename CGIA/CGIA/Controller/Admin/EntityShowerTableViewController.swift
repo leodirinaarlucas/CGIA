@@ -19,27 +19,6 @@ public class EntityShowerTableViewController: UITableViewController {
             Notification.Name(NotifName.dataUpdated.rawValue), object: nil)
     }
 
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        switch profile {
-        case is Instructor.Type:
-            ServerManager.shared().fetch(url: Endpoint.getInstructors.rawValue,
-                                         model: [Instructor].self)
-        case is Subject.Type:
-            ServerManager.shared().fetch(url: Endpoint.getSubjects.rawValue,
-                                         model: [Subject].self)
-        case is Student.Type:
-            ServerManager.shared().fetch(url: Endpoint.getStudents.rawValue,
-                                         model: [Student].self)
-        case is Classroom.Type:
-            ServerManager.shared().fetch(url: Endpoint.getClassrooms.rawValue,
-                                         model: [Classroom].self)
-        default:
-            fatalError("Não houve uma tipagem esperada para mostrar os dados")
-        }
-    }
-
     @objc func updateData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -55,18 +34,14 @@ public class EntityShowerTableViewController: UITableViewController {
             fatalError("Tipo era nulo")
         }
         switch profile {
-        case is Instructor.Type:
+        case is CompleteInstructor.Type:
             data = ServerManager.shared().professores
-        case is Subject.Type:
+        case is CompleteSubject.Type:
             data = ServerManager.shared().disciplinas
-        case is Classroom.Type:
+        case is CompleteClassroom.Type:
             data = ServerManager.shared().turmas
-        case is Student.Type:
+        case is CompleteStudent.Type:
             data = ServerManager.shared().alunos
-        case is Subject.Type:
-            data = ServerManager.shared().disciplinas
-        case is Classroom.Type:
-            data = ServerManager.shared().turmas
         default:
             fatalError("Não houve uma tipagem esperada para mostrar os dados")
         }

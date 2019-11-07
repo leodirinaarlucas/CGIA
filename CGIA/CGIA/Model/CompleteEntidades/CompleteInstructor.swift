@@ -8,7 +8,10 @@
 
 import Foundation
 
-struct CompleteInstructor: Codable {
+public struct CompleteInstructor: Codable, Displayable {
+    public var displayName: String {
+        return name ?? ""
+    }
     let id: Int?
     let name: String?
     let lastName: String?

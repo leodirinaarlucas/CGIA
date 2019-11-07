@@ -8,7 +8,10 @@
 
 import Foundation
 
-struct CompleteSubject: Codable {
+public struct CompleteSubject: Codable, Displayable {
+    public var displayName: String {
+        return name ?? ""
+    }
     let id: Int?
     let name: String?
     var classrooms: [Classroom]?
