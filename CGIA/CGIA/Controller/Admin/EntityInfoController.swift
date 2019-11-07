@@ -16,10 +16,10 @@ public class EntityInfoController: UIViewController {
             fatalError("Não havia um tipo e/ou entidade")
         }
         navigationItem.title = entity.displayName
-        if let aluno = entity as? Student {
+        if let aluno = entity as? CompleteStudent {
             _ = makeLabel(aluno.lastName)
             _ = makeLabel(aluno.dateOfBirth)
-        } else if let instrutor = entity as? Instructor {
+        } else if let instrutor = entity as? CompleteInstructor {
             _ = makeLabel(instrutor.lastName)
             _ = makeLabel(instrutor.dateOfBirth)
         } else if let admin = entity as? Admin {

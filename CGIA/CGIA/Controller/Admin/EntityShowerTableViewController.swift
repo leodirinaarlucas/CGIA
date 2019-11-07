@@ -16,28 +16,7 @@ public class EntityShowerTableViewController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(updateData), name:
-            Notification.Name("dataUpdated"), object: nil)
-    }
-
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        switch profile {
-        case is Instructor.Type:
-            ServerManager.shared().fetchInstructors()
-        case is Subject.Type:
-            break
-        case is Classroom.Type:
-            break
-        case is Student.Type:
-            ServerManager.shared().fetchStudents()
-        case is Subject.Type:
-            break
-        case is Classroom.Type:
-            break
-        default:
-            fatalError("Não houve uma tipagem esperada para mostrar os dados")
-        }
+            Notification.Name(NotifName.dataUpdated.rawValue), object: nil)
     }
 
     @objc func updateData() {
@@ -55,18 +34,14 @@ public class EntityShowerTableViewController: UITableViewController {
             fatalError("Tipo era nulo")
         }
         switch profile {
-        case is Instructor.Type:
+        case is CompleteInstructor.Type:
             data = ServerManager.shared().professores
-        case is Subject.Type:
+        case is CompleteSubject.Type:
             data = ServerManager.shared().disciplinas
-        case is Classroom.Type:
+        case is CompleteClassroom.Type:
             data = ServerManager.shared().turmas
-        case is Student.Type:
+        case is CompleteStudent.Type:
             data = ServerManager.shared().alunos
-        case is Subject.Type:
-            data = ServerManager.shared().disciplinas
-        case is Classroom.Type:
-            data = ServerManager.shared().turmas
         default:
             fatalError("Não houve uma tipagem esperada para mostrar os dados")
         }

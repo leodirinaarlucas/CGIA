@@ -91,7 +91,7 @@ public class APIRequests {
                 return
             }
             do {
-                //A resposta chegou
+                // A resposta chegou
                 if decodableType != NilCodable.self {
                     let response = try JSONDecoder().decode(decodableType, from: data)
                     completion(TaskAnswer.result(response))

@@ -56,6 +56,7 @@
 		02C31587233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
 		02C31588233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
 		02C31589233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
+		B628338E2373A12400E06613 /* CompleteClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B628338D2373A12400E06613 /* CompleteClassroom.swift */; };
 		B669AF66236BAADC00D89C38 /* CompleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF65236BAADC00D89C38 /* CompleteUser.swift */; };
 		B669AF68236BAB3900D89C38 /* CompleteStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF67236BAB3900D89C38 /* CompleteStudent.swift */; };
 		B669AF6A236BAB6D00D89C38 /* CompleteInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */; };
@@ -117,6 +118,7 @@
 		02C3157E233AD5FE0058054D /* Classroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
 		02C31582233AD6060058054D /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		02C31586233AD9130058054D /* PeriodoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodoEnum.swift; sourceTree = "<group>"; };
+		B628338D2373A12400E06613 /* CompleteClassroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteClassroom.swift; sourceTree = "<group>"; };
 		B669AF65236BAADC00D89C38 /* CompleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteUser.swift; sourceTree = "<group>"; };
 		B669AF67236BAB3900D89C38 /* CompleteStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteStudent.swift; sourceTree = "<group>"; };
 		B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteInstructor.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				B669AF67236BAB3900D89C38 /* CompleteStudent.swift */,
 				B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */,
 				B669AF6B236BAC0200D89C38 /* CompleteSubject.swift */,
+				B628338D2373A12400E06613 /* CompleteClassroom.swift */,
 			);
 			path = CompleteEntidades;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				02A36467235FD3AA001B626C /* EntityInfoController.swift in Sources */,
 				02C31561233AD2C40058054D /* ServerManager.swift in Sources */,
 				02C3157A233AD5CB0058054D /* Subject.swift in Sources */,
+				B628338E2373A12400E06613 /* CompleteClassroom.swift in Sources */,
 				02C3157F233AD5FE0058054D /* Classroom.swift in Sources */,
 				02C31532233AD1080058054D /* LoginController.swift in Sources */,
 				0294E08E233AF28E00A5308C /* EntityShowerTableViewController.swift in Sources */,
