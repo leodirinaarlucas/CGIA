@@ -57,7 +57,7 @@ public class APIRequests {
         createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
     }
 
-    public static func postRequest(url: String, header: [String: String]? = nil, params: [String: Any], completion:
+    public static func postRequest(url: String, method: HttpMethods = .post, header: [String: String]? = nil, params: [String: Any], completion:
         @escaping (TaskAnswer<Any>) -> Void) {
         postRequest(url: url, params: params, decodableType: NilCodable.self, completion: completion)
     }
@@ -65,37 +65,12 @@ public class APIRequests {
     public static func postRequest<T: Codable>(
         url: String,
         params: [String: Any],
+        method: HttpMethods = .post,
         header: [String: String]? = nil,
         decodableType: T.Type,
         completion: @escaping (TaskAnswer<Any>) -> Void) {
 
         guard let request = createRequest(url: url, method: .post) else {
-            completion(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
-            return
-        }
-
-        for headerParam in header ?? [:] {
-            request.addValue(headerParam.value, forHTTPHeaderField: headerParam.key)
-        }
-        let postString = params.percentEscaped()
-        request.httpBody = postString.data(using: String.Encoding.utf8)
-        createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
-    }
-
-    public static func request(url: String, method: HttpMethods, params: [String: Any], header: [String: String]? = nil, completion: @escaping (TaskAnswer<Any>) -> Void) {
-        return request(url: url, method: method, params: params, header: header,
-                       decodableType: NilCodable.self, completion: completion)
-    }
-
-    public static func request<T: Codable>(
-        url: String,
-        method: HttpMethods,
-        params: [String: Any],
-        header: [String: String]? = nil,
-        decodableType: T.Type,
-        completion: @escaping (TaskAnswer<Any>) -> Void) {
-
-        guard let request = createRequest(url: url, method: method) else {
             completion(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
             return
         }
