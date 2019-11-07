@@ -45,7 +45,7 @@
   - **0** ou **n** turmas estão registradas em somente **1** instituição.
   - **0** ou **n** turmas possuem **1** mesmo professor.
   - **0** ou **n** turmas possuem **0** ou **n** alunos.
-  - **0** ou **n** turmas estão registrados em somente **1** período.
+  - **0** ou **n** turmas estão registradas em somente **1** período.
   - Cada **1** turma possui um conjunto de **0** ou **n** notas atribuídas.
     - O identificador de turma consiste no tipo *string* no formato *semestre/ano*.
   
