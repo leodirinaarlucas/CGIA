@@ -70,7 +70,7 @@ public class APIRequests {
         decodableType: T.Type,
         completion: @escaping (TaskAnswer<Any>) -> Void) {
 
-        guard let request = createRequest(url: url, method: .post) else {
+        guard let request = createRequest(url: url, method: method) else {
             completion(TaskAnswer.error(NotURLError(title: nil, description: "Couldn't parse argument to URL")))
             return
         }
