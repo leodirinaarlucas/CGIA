@@ -115,13 +115,34 @@ public class ServerManager {
         }
     }
 
-    /// Notifications
+    // MARK: Post
+    public func addUser(type: UserType, postData: [String: Any]) {
+        let url = "https://cgia.herokuapp.com/api/users"
+        APIRequests.postRequest(url: url, params: postData, decodableType: User.self) { (answer) in
+            switch answer {
+            case .result(let data as User):
+                var finalData = [String: Any]()
+                finalData["userID"] = data.id
+                finalData["username"] = data.username
+                finalData["password"] = data.password
+                finalData["name"] = postData["name"]
+                finalData["lastName"] = postData["lastName"]
+                finalData["dateOfBirth"] = postData["dateOfBirth"]
+                APIRequests.postRequest(url: "https://cgia.herokuapp.com/api/\(type.rawValue)s", params: finalData) { (_) in
+                    self.refreshData()
+                }
+            default:
+                return
+            }
+        }
+    }
+
+    // MARK: Notifications
     public func notify(_ name: NotifName) {
         NotificationCenter.default.post(name: Notification.Name(name.rawValue), object: nil)
     }
 
-    // MARK: Singleton Properties
-    private init() {
+    private func refreshData() {
         fetch(url: Endpoint.getInstructors.rawValue,
               model: [Instructor].self)
 
@@ -138,6 +159,11 @@ public class ServerManager {
               model: [Grade].self)
     }
 
+    // MARK: Singleton Properties
+    private init() {
+        refreshData()
+    }
+
     class func shared() -> ServerManager {
         return sharedServerManager
     }
@@ -151,7 +177,6 @@ public class ServerManager {
     // MARK: Mockup
     private func mockDatabase() {
 
-        usuario = User(id: 54319, username: "54319", password: "ohYeah", profile: UserType.admin.rawValue)
-
+        usuario = User(id: 54319, username: "54319", password: "ohYeah", profile: UserType.instructor.rawValue)
     }
 }
