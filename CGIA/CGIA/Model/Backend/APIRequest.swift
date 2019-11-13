@@ -103,6 +103,8 @@ public class APIRequests {
                 // Houve um erro na conversão de tipo ou comunicaçao com servidor
                 completion(TaskAnswer.error(error))
             }
+
+
         }
         return task
     }

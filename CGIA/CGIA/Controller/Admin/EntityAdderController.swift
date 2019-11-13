@@ -39,9 +39,6 @@ public class EntityAdderController: UIViewController {
         case is CompleteSubject.Type:
             _ = makeLabel("Nome")
             textFields["name"] = makeTextField()
-
-            _ = makeLabel("IDs de classes separados por ','")
-            textFields["classroom"] = makeTextField()
         case is CompleteClassroom.Type:
             _ = makeLabel("Nome")
             textFields["name"] =  makeTextField()
@@ -52,14 +49,17 @@ public class EntityAdderController: UIViewController {
             _ = makeLabel("ID de instrutor")
             textFields["instructorID"] = makeTextField()
 
-            _ = makeLabel("IDs de estudantes separados por ','")
-            textFields["subjectID"] = makeTextField()
+            let idsLabel = makeLabel("IDs de estudantes separados por ','")
+            idsLabel.numberOfLines = 0
+            textFields["subjectIDs"] = makeTextField()
         default:
             fatalError("Tipagem não prevista")
         }
     }
 
     @IBAction func createUser() {
+        var endpoint: Endpoint = .getUsers
+
         switch profile {
         case is Admin.Type:
             type = .admin
@@ -68,21 +68,63 @@ public class EntityAdderController: UIViewController {
         case is CompleteStudent.Type:
             type = .student
         case is CompleteSubject.Type:
-            return // PRECISA DE TRATAMENTO QUANDO FOR SUBJECT
+            endpoint = .getSubjects
         case is CompleteClassroom.Type:
-            return // PRECISA DE TRATAMENTO QUANDO FOR CLASSROOM
+            endpoint = .getClassrooms
         default:
             fatalError("Tipagem não prevista")
         }
+
+        guard let postData = getPostData() else {
+            return
+        }
+
         if let type = type {
-            ServerManager.shared().addUser(type: type, postData: getPostData())
+            ServerManager.shared().addUser(type: type, postData: postData)
+        } else {
+            APIRequests.postRequest(url: endpoint.rawValue, params: postData) { (answer) in
+                switch answer {
+                case .result:
+                    ServerManager.shared().refreshData()
+                    DispatchQueue.main.async {
+                        self.showAlert(withTitle: "Sucesso!", andBody: "Elemento adicionado.")
+                    }
+                case .error(let error):
+                    DispatchQueue.main.async {
+                        self.showAlert(withTitle: "Erro...", andBody: "Verifique os dados informados.", true)
+                    }
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
 
-    func getPostData() -> [String: Any] {
+    func showAlert(withTitle title: String, andBody body: String, _ error: Bool = false) {
+        let alertVC = UIAlertController(title: title, message: body, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel) { (_) in
+            if !error {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        alertVC.addAction(okAction)
+        self.navigationController?.present(alertVC, animated: true, completion: nil)
+    }
+
+    func getPostData() -> [String: Any]? {
         var postData: [String: Any] = [:]
         for dicEntry in textFields {
-            postData[dicEntry.key] = dicEntry.value.text
+            if dicEntry.value.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+                showAlert(withTitle: "Erro...", andBody: "Verifique os dados informados.", true)
+                return nil
+            }
+
+            if dicEntry.key != "subjectIDs" {
+                postData[dicEntry.key] = dicEntry.value.text
+            } else if let ids = dicEntry.value.text?.trimmingCharacters(in:
+                .whitespacesAndNewlines).components(separatedBy: ",") {
+                postData[dicEntry.key] = ids
+                postData["active"] = true
+            }
         }
 
         return postData
@@ -154,7 +196,9 @@ public class EntityAdderController: UIViewController {
                                        toItem: nil,
                                        attribute: .width,
                                        multiplier: 1,
-                                       constant: self.view.frame.size.width/2)
+                                       constant: view is UITextField ?
+                                                self.view.frame.size.width/2
+                                                : self.view.frame.size.width)
         const.isActive = true
     }
     func makeHeigthConstraint(to view: UIView) {

@@ -17,7 +17,7 @@ public class EntityInfoController: UIViewController {
         }
         navigationItem.title = entity.displayName
         if let aluno = entity as? CompleteStudent {
-            _ = makeLabel("\(aluno.id ?? 0)")
+            _ = makeLabel("id: \(aluno.id ?? 0)")
             _ = makeLabel("\(aluno.displayName) \(aluno.lastName ?? "")")
             _ = makeLabel(aluno.dateOfBirth)
             for classroom in aluno.classrooms ?? [] {
@@ -28,7 +28,7 @@ public class EntityInfoController: UIViewController {
             }
 
         } else if let instrutor = entity as? CompleteInstructor {
-            _ = makeLabel("\(instrutor.id ?? 0)")
+            _ = makeLabel("id: \(instrutor.id ?? 0)")
             _ = makeLabel("\(instrutor.displayName) \(instrutor.lastName ?? "")")
             _ = makeLabel(instrutor.dateOfBirth)
             for classroom in instrutor.classrooms ?? [] {
@@ -39,11 +39,16 @@ public class EntityInfoController: UIViewController {
             _ = makeLabel(admin.lastName)
             _ = makeLabel(admin.dateOfBirth)
         } else if let subject = entity as? CompleteSubject {
+            _ = makeLabel("id: \(subject.id ?? 0)")
             _ = makeLabel(subject.displayName)
             for classroom in subject.classrooms ?? [] {
-                _ = makeLabel(classroom.displayName)
+                guard let id = classroom.id else {
+                    return
+                }
+                _ = makeLabel("id: \(id) - \(classroom.displayName)")
             }
         } else if let classroom = entity as? CompleteClassroom {
+            _ = makeLabel("id: \(classroom.id ?? 0)")
             _ = makeLabel(classroom.subject?.displayName)
             _ = makeLabel(classroom.instructor?.displayName)
             guard let students = classroom.students else {
