@@ -142,7 +142,12 @@ public class ServerManager {
         NotificationCenter.default.post(name: Notification.Name(name.rawValue), object: nil)
     }
 
-    private func refreshData() {
+    public func refreshData() {
+        professores = []
+        alunos = []
+        disciplinas = []
+        turmas = []
+
         fetch(url: Endpoint.getInstructors.rawValue,
               model: [Instructor].self)
 
@@ -177,6 +182,6 @@ public class ServerManager {
     // MARK: Mockup
     private func mockDatabase() {
 
-        usuario = User(id: 54319, username: "54319", password: "ohYeah", profile: UserType.instructor.rawValue)
+        usuario = User(id: 54319, username: "54319", password: "ohYeah", profile: UserType.admin.rawValue)
     }
 }
