@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		02114D43235395DB004F6ADC /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02114D42235395DB004F6ADC /* Student.swift */; };
 		02224D87236BA2520063CB39 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02224D86236BA2520063CB39 /* Extensions.swift */; };
+		024BB7462373A5000082E848 /* ClassroomSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024BB7452373A5000082E848 /* ClassroomSelectedViewController.swift */; };
 		025B9745234EB42C0037E64B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025B9744234EB42C0037E64B /* APIRequest.swift */; };
 		025B9747234EB4490037E64B /* NotURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025B9746234EB4490037E64B /* NotURLProtocol.swift */; };
+		026117A923739F220097A42C /* ClassroomShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026117A823739F220097A42C /* ClassroomShowerTableViewController.swift */; };
 		0294E083233ADD8800A5308C /* LoginAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294E082233ADD8800A5308C /* LoginAnswer.swift */; };
 		0294E085233ADE6500A5308C /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0294E084233ADE6500A5308C /* Admin.storyboard */; };
 		0294E087233ADE7000A5308C /* Professor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0294E086233ADE7000A5308C /* Professor.storyboard */; };
@@ -85,8 +87,10 @@
 /* Begin PBXFileReference section */
 		02114D42235395DB004F6ADC /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		02224D86236BA2520063CB39 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		024BB7452373A5000082E848 /* ClassroomSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomSelectedViewController.swift; sourceTree = "<group>"; };
 		025B9744234EB42C0037E64B /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		025B9746234EB4490037E64B /* NotURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotURLProtocol.swift; sourceTree = "<group>"; };
+		026117A823739F220097A42C /* ClassroomShowerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomShowerTableViewController.swift; sourceTree = "<group>"; };
 		0294E082233ADD8800A5308C /* LoginAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAnswer.swift; sourceTree = "<group>"; };
 		0294E084233ADE6500A5308C /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		0294E086233ADE7000A5308C /* Professor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Professor.storyboard; sourceTree = "<group>"; };
@@ -159,6 +163,15 @@
 				02224D86236BA2520063CB39 /* Extensions.swift */,
 			);
 			path = Backend;
+			sourceTree = "<group>";
+		};
+		026117A723739EDB0097A42C /* Professor */ = {
+			isa = PBXGroup;
+			children = (
+				026117A823739F220097A42C /* ClassroomShowerTableViewController.swift */,
+				024BB7452373A5000082E848 /* ClassroomSelectedViewController.swift */,
+			);
+			path = Professor;
 			sourceTree = "<group>";
 		};
 		0294E08C233AF26C00A5308C /* Admin */ = {
@@ -251,6 +264,7 @@
 		02C3155F233AD2240058054D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				026117A723739EDB0097A42C /* Professor */,
 				0294E08C233AF26C00A5308C /* Admin */,
 				02C31531233AD1080058054D /* LoginController.swift */,
 				F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */,
@@ -455,6 +469,7 @@
 				B669AF6A236BAB6D00D89C38 /* CompleteInstructor.swift in Sources */,
 				02C31576233AD56F0058054D /* Instructor.swift in Sources */,
 				02C3156A233AD4E80058054D /* Admin.swift in Sources */,
+				026117A923739F220097A42C /* ClassroomShowerTableViewController.swift in Sources */,
 				02C3156E233AD4F90058054D /* User.swift in Sources */,
 				0294E092233AF89400A5308C /* DisplayableProtocol.swift in Sources */,
 				025B9745234EB42C0037E64B /* APIRequest.swift in Sources */,
@@ -473,6 +488,7 @@
 				0294E090233AF65C00A5308C /* EntitySelectionTableViewController.swift in Sources */,
 				025B9747234EB4490037E64B /* NotURLProtocol.swift in Sources */,
 				B669AF66236BAADC00D89C38 /* CompleteUser.swift in Sources */,
+				024BB7462373A5000082E848 /* ClassroomSelectedViewController.swift in Sources */,
 				02C31583233AD6060058054D /* Grade.swift in Sources */,
 				02A3646F23612B46001B626C /* EntityAdderController.swift in Sources */,
 				02114D43235395DB004F6ADC /* Student.swift in Sources */,

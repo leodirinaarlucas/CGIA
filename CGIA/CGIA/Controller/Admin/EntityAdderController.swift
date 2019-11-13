@@ -10,7 +10,7 @@ import UIKit
 
 public class EntityAdderController: UIViewController {
     public var profile: Any?
-    private var profileStr = ""
+    private var type: UserType?
     private var textFields: [String: UITextField] = [:]
 
     public override func viewDidLoad() {
@@ -24,7 +24,9 @@ public class EntityAdderController: UIViewController {
             textFields["username"] = makeTextField()
 
             _ = makeLabel("Senha")
-            textFields["password"] = makeTextField()
+            let txtSenha = makeTextField()
+            txtSenha.isSecureTextEntry = true
+            textFields["password"] = txtSenha
 
             _ = makeLabel("Nome")
             textFields["name"] = makeTextField()
@@ -58,55 +60,22 @@ public class EntityAdderController: UIViewController {
     }
 
     @IBAction func createUser() {
-        var postData = getPostData()
-
         switch profile {
         case is Admin.Type:
-            profileStr = "admin"
+            type = .admin
         case is CompleteInstructor.Type:
-            profileStr = "instructor"
+            type = .instructor
         case is CompleteStudent.Type:
-            profileStr = "student"
+            type = .student
         case is CompleteSubject.Type:
-            profileStr = "subject"
             return // PRECISA DE TRATAMENTO QUANDO FOR SUBJECT
         case is CompleteClassroom.Type:
-            profileStr = "classroom"
             return // PRECISA DE TRATAMENTO QUANDO FOR CLASSROOM
         default:
             fatalError("Tipagem não prevista")
         }
-
-        postData["profile"] = profileStr
-
-        APIRequests.postRequest(url: "https://cgia.herokuapp.com/api/users", params: postData) { (answer) in
-            switch answer {
-            case .result(let data):
-                guard let dict = data as? [String: Any] else {
-                    return
-                }
-                var finalData = [String: Any]()
-                finalData["userID"] = dict["id"] as? Int ?? 0
-                finalData["username"] = dict["username"]
-                finalData["password"] = dict["password"]
-                finalData["name"] = postData["name"]
-                finalData["lastName"] = postData["lastName"]
-                finalData["dateOfBirth"] = postData["dateOfBirth"]
-                self.post(finalData)
-            default:
-                fatalError("Could not perform post")
-            }
-        }
-    }
-
-    func post(_ data: [String: Any]) {
-        APIRequests.postRequest(url: "https://cgia.herokuapp.com/api/\(profileStr)s", params: data) { (answer) in
-            switch answer {
-            case .result(let data):
-                print(data)
-            default:
-                fatalError("Could not perform post")
-            }
+        if let type = type {
+            ServerManager.shared().addUser(type: type, postData: getPostData())
         }
     }
 
