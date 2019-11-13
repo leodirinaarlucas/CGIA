@@ -22,7 +22,7 @@ class LoginController: UIViewController {
     }()
 
     @IBOutlet weak var txtUsername: UITextField!
-    
+
     @IBAction func loginTap(_ sender: UIButton) {
         guard let txt = txtUsername.text, txt != "" else {
             self.present(alertFail, animated: true)
@@ -34,15 +34,15 @@ class LoginController: UIViewController {
                 self.present(alertFail, animated: true)
             case .successful(let user):
                 var identifier: String = ""
-                switch user {
-                case is Aluno:
+                switch user.profile {
+                case UserType.student.rawValue:
                     identifier = "aluno"
-                case is Professor:
+                case UserType.instructor.rawValue:
                     identifier = "professor"
-                case is Admin:
+                case UserType.admin.rawValue:
                     identifier = "admin"
                 default:
-                    fatalError()
+                    fatalError("No existe")
                 }
                 self.performSegue(withIdentifier: identifier, sender: self)
             }
@@ -52,7 +52,4 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
-

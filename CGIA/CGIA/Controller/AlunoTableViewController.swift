@@ -30,7 +30,6 @@ class AlunoTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "materiaCell",
                                                  for: indexPath)
         cell.textLabel?.text = "Matéria " + String(indexPath.row + 1)
-    
         return cell
     }
 

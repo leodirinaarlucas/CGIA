@@ -9,6 +9,8 @@ opt_in_rules:
   - force_unwrapping
   - implicitly_unwrapped_optional
 
+disabled_rules:
+  - identifier_name
 
 # special configuration for rules
 colon:
@@ -43,5 +45,5 @@ line_length:
   warning: 120
   error: 200
   ignores_urls: true
-  ignores_function_declarations: false
-  ignores_comments: false
+  ignores_function_declarations: true
+  ignores_comments: true

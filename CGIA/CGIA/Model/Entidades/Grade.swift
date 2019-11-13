@@ -1,5 +1,5 @@
 //
-//  Admin.swift
+//  Nota.swift
 //  CGIA
 //
 //  Created by Pedro Giuliano Farina on 24/09/19.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-public struct Admin: Codable {
+public struct Grade: Codable {
     var id: Int?
-    var userID: Int?
-    var name: String?
-    var lastName: String?
-    var dateOfBirth: String?
+    var grades: [Double]?
+    var finalGrade: Double?
+    var studentID: Int?
+    var classroomID: Int?
 }
