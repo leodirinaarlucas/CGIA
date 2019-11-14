@@ -55,6 +55,7 @@
 		02C31587233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
 		02C31588233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
 		02C31589233AD9130058054D /* PeriodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C31586233AD9130058054D /* PeriodoEnum.swift */; };
+		F25FBB21236F35080038351C /* CompleteStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25FBB20236F35080038351C /* CompleteStudent.swift */; };
 		F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
 		F26E8DD8233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
 		F2D6CFD7236BAE5800B3ADE3 /* AlunoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6CFD6236BAE5800B3ADE3 /* AlunoTableViewCell.swift */; };
@@ -112,6 +113,7 @@
 		02C3157E233AD5FE0058054D /* Classroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
 		02C31582233AD6060058054D /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		02C31586233AD9130058054D /* PeriodoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodoEnum.swift; sourceTree = "<group>"; };
+		F25FBB20236F35080038351C /* CompleteStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteStudent.swift; sourceTree = "<group>"; };
 		F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlunoTableViewController.swift; sourceTree = "<group>"; };
 		F2D6CFD6236BAE5800B3ADE3 /* AlunoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlunoTableViewCell.swift; path = CGIA/View/AlunoTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -263,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				02114D42235395DB004F6ADC /* Student.swift */,
+				F25FBB20236F35080038351C /* CompleteStudent.swift */,
 				02C3156D233AD4F90058054D /* User.swift */,
 				02C31569233AD4E80058054D /* Admin.swift */,
 				02C31575233AD56F0058054D /* Instructor.swift */,
@@ -444,6 +447,7 @@
 				F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */,
 				02A36467235FD3AA001B626C /* EntityInfoController.swift in Sources */,
 				02C31561233AD2C40058054D /* ServerManager.swift in Sources */,
+				F25FBB21236F35080038351C /* CompleteStudent.swift in Sources */,
 				02C3157A233AD5CB0058054D /* Subject.swift in Sources */,
 				02C3157F233AD5FE0058054D /* Classroom.swift in Sources */,
 				02C31532233AD1080058054D /* LoginController.swift in Sources */,

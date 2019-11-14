@@ -10,34 +10,26 @@ import UIKit
 
 class AlunoTableViewController: UITableViewController {
 
-    var myGrades: [[Grade]] = []
-    var mySubjects: [Subject] = []
-    var myStudent: Student
-
-    init() {
-        guard let student = ServerManager.shared().alunos.first(where: { (aluno) -> Bool in
-            if aluno.id ?? 0 == ServerManager.shared().usuario?.id {
-                return true
-            }
-            return false
-        }) else {
-            fatalError("Student Not Found")
+    var classrooms: [Classroom] = []
+    var grades: [[Grade]] = []
+    var student: CompleteStudent? {
+        didSet {
+            self.tableView.reloadData()
         }
-        self.myStudent = student
-        self.mySubjects =  ServerManager.shared().disciplinas
-        self.myGrades = []
-        super.init(nibName: nil, bundle: nil)
+    }
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.register(AlunoTableViewCell.self, forCellReuseIdentifier: "materiaCell")
         tableView.tableFooterView = UIView()
     }
-
     private var dateCellExpanded: Bool = false
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -59,19 +51,24 @@ class AlunoTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return mySubjects.count
+//        return classrooms.count
+        return 4
     }
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return myGrades[section - 1].count
+//        return grades[section - 1].count
+        return 6
     }
 
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "materiaCell",
-                                                 for: indexPath)
-        cell.textLabel?.text = String(indexPath.row + 1)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "materiaCell",
+                                                       for: indexPath) as? AlunoTableViewCell else {
+                                                        fatalError("failed to dequeue reusable Table View Cell")
+        }
+        cell.nome?.text = "Práticas avançadas de placeholder" + String(indexPath.row)
+        cell.nota?.text = String(10.99)
         return cell
     }
 
@@ -79,5 +76,29 @@ class AlunoTableViewController: UITableViewController {
                             canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
+}
 
+extension AlunoTableViewController {
+    func updateSubjects() {
+        guard let classes = student?.classrooms else {
+            classrooms = []
+            return
+        }
+        classrooms = classes
+    }
+    func sortGrades() {
+        grades = []
+        guard let safeStudent = student else {
+            return
+        }
+        for classroom in 0...classrooms.count - 1 {
+            grades.append([])
+            if let grade = safeStudent.grades {
+                grades[classroom] = grade.filter { (singleGrade) -> Bool in
+                    return (singleGrade.classroomID ?? -2) == (classrooms[classroom].id ?? -1)
+                }
+
+            }
+        }
+    }
 }

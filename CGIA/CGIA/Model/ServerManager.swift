@@ -9,14 +9,13 @@
 import Foundation
 
 public class ServerManager {
- 
     // MARK: Properties
     public private(set) var usuario: User?
     public private(set) var admins: [Admin] = []
     public private(set) var professores: [Instructor] = []
     public private(set) var disciplinas: [Subject] = []
     public private(set) var turmas: [Classroom] = []
-    public private(set) var alunos: [Student] = []
+    public private(set) var alunos: [CompleteStudent] = []
 
     // MARK: Login
     public func authenticateLogin(username: String, completionHandler: (LoginAnswer) -> Void) {
@@ -27,7 +26,7 @@ public class ServerManager {
         completionHandler(.successful(user))
     }
 
-    /// MARK: Fetchs
+    // MARK: Fetchs
     public func fetchStudents() {
         APIRequests.getRequest(url: "https://cgia.herokuapp.com/api/students", decodableType: [Student].self) { (answer) in
             switch answer {
@@ -35,7 +34,21 @@ public class ServerManager {
                 guard let retorno = retorno as? [Student] else {
                     fatalError("Não foi possível dar fetch nos alunos")
                 }
-                self.alunos = retorno
+                for aluno in retorno {
+                    if let userID = aluno.userID {
+                        APIRequests.getRequest(url: "https://cgia.herokuapp.com/api/students/\(userID)", decodableType: [CompleteStudent].self) { (answer) in
+                            switch answer {
+                            case .result(let retorno):
+                                guard let retorno = retorno as? [CompleteStudent] else {
+                                    fatalError("Não foi possível dar fetch nos alunos")
+                                }
+                                self.alunos = retorno
+                            case .error(let error):
+                                fatalError(error.localizedDescription)
+                            }
+                        }
+                    }
+                }
             case .error(let error):
                 fatalError(error.localizedDescription)
             }
@@ -75,6 +88,6 @@ public class ServerManager {
     // MARK: Mockup
     private func mockDatabase() {
 
-        usuario = User(id: 54319, username: "54319", password: "ohYeah", type: UserType.admin.rawValue)
+        usuario = User(id: 1, username: "54319", password: "ohYeah", type: UserType.student.rawValue)
     }
 }
