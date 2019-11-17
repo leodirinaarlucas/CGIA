@@ -163,15 +163,11 @@ public class EntityAdderController: UIViewController {
         var endpoint: Endpoint = .getUsers
 
         switch profile {
-        case is Admin.Type:
-            type = .admin
         case is CompleteInstructor.Type:
             postData["userID"] = editingUserID
-            type = .instructor
             endpoint = .getInstructors
         case is CompleteStudent.Type:
             postData["userID"] = editingUserID
-            type = .student
             endpoint = .getStudents
         case is CompleteSubject.Type:
             endpoint = .getSubjects
