@@ -10,6 +10,7 @@ import UIKit
 
 public class EntityInfoController: UIViewController {
     public var entity: Displayable?
+    public var profile: Any?
 
     public override func viewDidLoad() {
         guard let entity = entity else {
@@ -56,6 +57,15 @@ public class EntityInfoController: UIViewController {
             }
             for student in students {
                 _ = makeLabel(student.displayName)
+            }
+        }
+    }
+
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "edit" {
+            if let dest = segue.destination as? EntityAdderController {
+                dest.currentInstance = entity
+                dest.profile = profile
             }
         }
     }

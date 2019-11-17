@@ -11,22 +11,77 @@ import UIKit
 public class EntityAdderController: UIViewController {
     public var profile: Any?
     private var type: UserType?
+    public var currentInstance: Displayable?
     private var textFields: [String: UITextField] = [:]
+    private var editingID = -1
+    private var editingUserID = -1
 
     public override func viewDidLoad() {
-        guard let type = profile else {
+
+        handleProfile()
+
+        navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.white]
+        if currentInstance != nil {
+            let updateButton = UIBarButtonItem(title: "Atualizar", style: .plain, target: self, action: #selector(update))
+            navigationItem.rightBarButtonItem = updateButton
+            handleCurrentInstance()
+            navigationItem.title = "Editar"
+        } else {
+            let addButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(createUser))
+            navigationItem.rightBarButtonItem = addButton
+            navigationItem.title = "Adicionar"
+        }
+    }
+
+    func handleCurrentInstance() {
+        if let student = currentInstance as? CompleteStudent {
+            textFields["name"]?.text = student.name
+            textFields["lastName"]?.text = student.lastName
+            textFields["dateOfBirth"]?.text = student.dateOfBirth
+            editingID = student.id ?? -1
+            editingUserID = student.userID ?? -1
+
+        } else if let instructor = currentInstance as? CompleteInstructor {
+            textFields["name"]?.text = instructor.name
+            textFields["lastName"]?.text = instructor.lastName
+            textFields["dateOfBirth"]?.text = instructor.dateOfBirth
+            editingID = instructor.id ?? -1
+            editingUserID = instructor.userID ?? -1
+
+        } else if let subject = currentInstance as? CompleteSubject {
+            textFields["name"]?.text = subject.name
+            editingID = subject.id ?? -1
+
+        } else if let classroom = currentInstance as? CompleteClassroom {
+            textFields["name"]?.text = classroom.name
+            textFields["subjectID"]?.text = "\(classroom.subjectID ?? 0)"
+            textFields["instructorID"]?.text = "\(classroom.instructorID ?? 0)"
+
+            let ids = classroom.students?.map({ (student) -> Int in
+                (student.id ?? 0)
+            })
+            textFields["subjectIDs"]?.text = "\(ids ?? [])"
+            editingID = classroom.id ?? -1
+        }
+    }
+
+    func handleProfile() {
+        guard let profile = profile else {
             fatalError("Não havia um tipo")
         }
 
-        switch type {
+        switch profile {
         case is Admin.Type, is CompleteInstructor.Type, is CompleteStudent.Type:
-            _ = makeLabel("Nome de usuário")
-            textFields["username"] = makeTextField()
+            if currentInstance == nil {
+                _ = makeLabel("Nome de usuário")
+                textFields["username"] = makeTextField()
 
-            _ = makeLabel("Senha")
-            let txtSenha = makeTextField()
-            txtSenha.isSecureTextEntry = true
-            textFields["password"] = txtSenha
+                _ = makeLabel("Senha")
+                let txtSenha = makeTextField()
+                txtSenha.isSecureTextEntry = true
+                textFields["password"] = txtSenha
+            }
 
             _ = makeLabel("Nome")
             textFields["name"] = makeTextField()
@@ -57,7 +112,7 @@ public class EntityAdderController: UIViewController {
         }
     }
 
-    @IBAction func createUser() {
+    @objc func createUser() {
         var endpoint: Endpoint = .getUsers
 
         switch profile {
@@ -95,6 +150,44 @@ public class EntityAdderController: UIViewController {
                     }
                     print(error.localizedDescription)
                 }
+            }
+        }
+    }
+
+    @objc func update() {
+
+        guard var postData = getPostData() else {
+            return
+        }
+
+        var endpoint: Endpoint = .getUsers
+
+        switch profile {
+        case is Admin.Type:
+            type = .admin
+        case is CompleteInstructor.Type:
+            postData["userID"] = editingUserID
+            type = .instructor
+            endpoint = .getInstructors
+        case is CompleteStudent.Type:
+            postData["userID"] = editingUserID
+            type = .student
+            endpoint = .getStudents
+        case is CompleteSubject.Type:
+            endpoint = .getSubjects
+        case is CompleteClassroom.Type:
+            endpoint = .getClassrooms
+        default:
+            fatalError("Tipagem não prevista")
+        }
+
+        APIRequests.postRequest(url: "\(endpoint.rawValue)/\(editingID)", method: .patch, header:
+        nil, params: postData) { (answer) in
+            switch answer {
+            case .result(let result):
+                print(result)
+            case .error(let error):
+                print(error.localizedDescription)
             }
         }
     }

@@ -53,6 +53,7 @@ public class ServerManager {
                     for student in result {
                         self.fetchCompleteEntities(url: .getStudents,
                                                    id: student.id ?? 0,
+                                                   userID: student.userID ?? 0,
                                                    model: CompleteStudent.self)
                     }
 
@@ -60,6 +61,7 @@ public class ServerManager {
                     for instructor in result {
                         self.fetchCompleteEntities(url: .getInstructors,
                                                    id: instructor.id ?? 0,
+                                                   userID: instructor.userID ?? 0,
                                                    model: CompleteInstructor.self)
                     }
 
@@ -91,15 +93,16 @@ public class ServerManager {
         }
     }
 
-    public func fetchCompleteEntities<T: Codable>(url: Endpoint, id: Int, model: T.Type) {
+    public func fetchCompleteEntities<T: Codable>(url: Endpoint, id: Int, userID: Int = -1, model: T.Type) {
         APIRequests.getRequest(url: "\(url.rawValue)/\(id)", decodableType: model) { (answer) in
 
             switch answer {
             case .result(let retorno):
-
-                if let result = retorno as? CompleteStudent {
+                if var result = retorno as? CompleteStudent {
+                    result.userID = userID
                     self.alunos.append(result)
-                } else if let result = retorno as? CompleteInstructor {
+                } else if var result = retorno as? CompleteInstructor {
+                    result.userID = userID
                     self.professores.append(result)
                 } else if let result = retorno as? CompleteSubject {
                     self.disciplinas.append(result)

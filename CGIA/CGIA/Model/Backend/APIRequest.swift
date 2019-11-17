@@ -104,7 +104,6 @@ public class APIRequests {
                 completion(TaskAnswer.error(error))
             }
 
-
         }
         return task
     }

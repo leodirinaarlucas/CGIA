@@ -13,6 +13,7 @@ public struct CompleteStudent: Codable, Displayable {
         return name ?? ""
     }
     let id: Int?
+    var userID: Int?
     let name: String?
     let lastName: String?
     let dateOfBirth: String?

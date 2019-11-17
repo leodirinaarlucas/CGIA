@@ -62,6 +62,7 @@ public class EntityShowerTableViewController: UITableViewController {
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cont = segue.destination as? EntityInfoController {
+            cont.profile = profile
             guard let selected = selected else {
                 fatalError("Não havia uma entidade selecionada")
             }
