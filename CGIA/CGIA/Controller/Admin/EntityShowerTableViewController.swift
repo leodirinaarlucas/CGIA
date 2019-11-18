@@ -9,25 +9,38 @@
 import UIKit
 
 public class EntityShowerTableViewController: UITableViewController {
-    public var type: Any?
+    public var profile: Any?
     private var data: [Displayable] = []
     private var selected: Displayable?
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateData), name:
+            Notification.Name(NotifName.dataUpdated.rawValue), object: nil)
+    }
+
+    @objc func updateData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
     public override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let type = type else {
+        guard let profile = profile else {
             fatalError("Tipo era nulo")
         }
-        switch type {
-        case is Instructor.Type:
+        switch profile {
+        case is CompleteInstructor.Type:
             data = ServerManager.shared().professores
-        case is Subject.Type:
+        case is CompleteSubject.Type:
             data = ServerManager.shared().disciplinas
-        case is Classroom.Type:
+        case is CompleteClassroom.Type:
             data = ServerManager.shared().turmas
-        case is Student.Type:
+        case is CompleteStudent.Type:
             data = ServerManager.shared().alunos
         default:
             fatalError("Não houve uma tipagem esperada para mostrar os dados")
@@ -55,7 +68,7 @@ public class EntityShowerTableViewController: UITableViewController {
             cont.entity = selected
         } else if let navCont = segue.destination as? UINavigationController,
             let cont = navCont.topViewController as? EntityAdderController {
-            cont.type = self.type
+            cont.profile = self.profile
         }
     }
 }

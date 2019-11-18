@@ -14,13 +14,13 @@ public class EntitySelectionTableViewController: UITableViewController {
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            type = Instructor.self
+            type = CompleteInstructor.self
         case 1:
-            type = Subject.self
+            type = CompleteSubject.self
         case 2:
-            type = Classroom.self
-        case 3, 4:
-            type = Student.self
+            type = CompleteClassroom.self
+        case 3:
+            type = CompleteStudent.self
         default:
             fatalError("Foi selecionada uma opção não prevista")
         }
@@ -29,7 +29,7 @@ public class EntitySelectionTableViewController: UITableViewController {
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cont = segue.destination as? EntityShowerTableViewController {
-            cont.type = type
+            cont.profile = type
         }
     }
 }

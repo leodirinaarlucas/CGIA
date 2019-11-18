@@ -1,14 +1,14 @@
 //
-//  Turma.swift
+//  CompleteClassroom.swift
 //  CGIA
 //
-//  Created by Pedro Giuliano Farina on 24/09/19.
+//  Created by Lucas Fernandez Nicolau on 06/11/19.
 //  Copyright © 2019 Pedro Giuliano Farina. All rights reserved.
 //
 
 import Foundation
 
-public struct Classroom: Codable, Displayable {
+public struct CompleteClassroom: Codable, Displayable {
     public var displayName: String {
         return name ?? ""
     }
@@ -16,5 +16,8 @@ public struct Classroom: Codable, Displayable {
     let name: String?
     let subjectID: Int?
     let instructorID: Int?
-    let active: Bool?
+    var grades: [Grade]?
+    var instructor: Instructor?
+    var subject: Subject?
+    var students: [Student]?
 }

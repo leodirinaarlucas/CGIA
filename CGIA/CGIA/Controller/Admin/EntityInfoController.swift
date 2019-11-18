@@ -16,21 +16,54 @@ public class EntityInfoController: UIViewController {
             fatalError("Não havia um tipo e/ou entidade")
         }
         navigationItem.title = entity.displayName
-        if let aluno = entity as? Student {
-            let lblLastName = makeLabel()
-            lblLastName.text = aluno.lastName
-            let lblDateOfBirth = makeLabel()
-            lblDateOfBirth.text = aluno.dateOfBirth
-        } else if entity is Instructor {
+        if let aluno = entity as? CompleteStudent {
+            _ = makeLabel("id: \(aluno.id ?? 0)")
+            _ = makeLabel("\(aluno.displayName) \(aluno.lastName ?? "")")
+            _ = makeLabel(aluno.dateOfBirth)
+            for classroom in aluno.classrooms ?? [] {
+                _ = makeLabel(classroom.displayName)
+            }
+            for grade in aluno.grades ?? [] {
+                _ = makeLabel("\(grade.grades ?? [])")
+            }
 
-        } else if entity is Admin {
+        } else if let instrutor = entity as? CompleteInstructor {
+            _ = makeLabel("id: \(instrutor.id ?? 0)")
+            _ = makeLabel("\(instrutor.displayName) \(instrutor.lastName ?? "")")
+            _ = makeLabel(instrutor.dateOfBirth)
+            for classroom in instrutor.classrooms ?? [] {
+                _ = makeLabel(classroom.displayName)
+            }
 
+        } else if let admin = entity as? Admin {
+            _ = makeLabel(admin.lastName)
+            _ = makeLabel(admin.dateOfBirth)
+        } else if let subject = entity as? CompleteSubject {
+            _ = makeLabel("id: \(subject.id ?? 0)")
+            _ = makeLabel(subject.displayName)
+            for classroom in subject.classrooms ?? [] {
+                guard let id = classroom.id else {
+                    return
+                }
+                _ = makeLabel("id: \(id) - \(classroom.displayName)")
+            }
+        } else if let classroom = entity as? CompleteClassroom {
+            _ = makeLabel("id: \(classroom.id ?? 0)")
+            _ = makeLabel(classroom.subject?.displayName)
+            _ = makeLabel(classroom.instructor?.displayName)
+            guard let students = classroom.students else {
+                return
+            }
+            for student in students {
+                _ = makeLabel(student.displayName)
+            }
         }
     }
 
     var lastView: UIView?
-    func makeLabel() -> UILabel {
+    func makeLabel(_ text: String? = nil) -> UILabel {
         let lbl = UILabel()
+        lbl.text = text
         view.addSubview(lbl)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
