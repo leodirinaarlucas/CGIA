@@ -8,7 +8,7 @@
 
 import Foundation
 
-private struct NilCodable: Codable {
+public struct NilCodable: Codable {
 }
 
 public enum HttpMethods: String {
@@ -59,7 +59,8 @@ public class APIRequests {
 
     public static func postRequest(url: String, method: HttpMethods = .post, header: [String: String]? = nil, params: [String: Any], completion:
         @escaping (TaskAnswer<Any>) -> Void) {
-        postRequest(url: url, params: params, decodableType: NilCodable.self, completion: completion)
+        postRequest(url: url, params: params, method: method, header: header,
+                    decodableType: NilCodable.self, completion: completion)
     }
 
     public static func postRequest<T: Codable>(
@@ -68,6 +69,7 @@ public class APIRequests {
         method: HttpMethods = .post,
         header: [String: String]? = nil,
         decodableType: T.Type,
+        profile: Any? = nil,
         completion: @escaping (TaskAnswer<Any>) -> Void) {
 
         guard let request = createRequest(url: url, method: method) else {
@@ -78,9 +80,69 @@ public class APIRequests {
         for headerParam in header ?? [:] {
             request.addValue(headerParam.value, forHTTPHeaderField: headerParam.key)
         }
-        let postString = params.percentEscaped()
-        request.httpBody = postString.data(using: String.Encoding.utf8)
-        createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
+
+        if method == .patch {
+            request.httpBody = getPatchJSON(for: params, and: profile)
+            createTask(request: request as URLRequest, decodableType: decodableType,
+                       completion: completion).resume()
+
+        } else {
+            let postString = params.percentEscaped()
+            request.httpBody = postString.data(using: String.Encoding.utf8)
+            createTask(request: request as URLRequest, decodableType: decodableType, completion: completion).resume()
+        }
+
+    }
+
+    public static func getPatchJSON(for params: [String: Any], and profile: Any? = nil) -> Data? {
+        var json = Data()
+        do {
+            switch profile {
+            case is CompleteInstructor.Type:
+                guard let userID = params["userID"] as? Int,
+                    let name = params["name"] as? String,
+                    let lastName = params["lastName"] as? String,
+                    let dateOfBirth = params["dateOfBirth"] as? String else {
+                        return nil
+                }
+                json = try JSONEncoder().encode(EditInstructor(userID: userID, name:
+                    name, lastName: lastName, dateOfBirth: dateOfBirth))
+
+            case is CompleteStudent.Type:
+                guard let userID = params["userID"] as? Int,
+                    let name = params["name"] as? String,
+                    let lastName = params["lastName"] as? String,
+                    let dateOfBirth = params["dateOfBirth"] as? String else {
+                        return nil
+                }
+                json = try JSONEncoder().encode(EditStudent(userID: userID, name:
+                    name, lastName: lastName, dateOfBirth: dateOfBirth))
+
+            case is CompleteClassroom.Type:
+                guard let name = params["name"] as? String,
+                    let subjectID = Int(params["subjectID"] as? String ?? "0"),
+                    let instructorID = Int(params["instructorID"] as? String ?? "0"),
+                    let active = params["active"] as? Bool else {
+                        return nil
+                }
+                json = try JSONEncoder().encode(EditClassroom(name: name, subjectID:
+                    subjectID, instructorID: instructorID, active: active))
+
+            case is CompleteSubject.Type:
+                guard let name = params["name"] as? String else {
+                        return nil
+                }
+                json = try JSONEncoder().encode(EditSubject(name: name))
+
+            default:
+                fatalError("Tipagem não prevista")
+            }
+
+            return json
+        } catch let error {
+            print(error.localizedDescription)
+            return nil
+        }
     }
 
     public static func createTask<T: Codable>(request: URLRequest, decodableType: T.Type, completion:

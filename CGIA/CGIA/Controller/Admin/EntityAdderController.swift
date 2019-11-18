@@ -23,7 +23,8 @@ public class EntityAdderController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.white]
         if currentInstance != nil {
-            let updateButton = UIBarButtonItem(title: "Atualizar", style: .plain, target: self, action: #selector(update))
+            let updateButton = UIBarButtonItem(title: "Atualizar", style: .plain, target:
+                self, action: #selector(update))
             navigationItem.rightBarButtonItem = updateButton
             handleCurrentInstance()
             navigationItem.title = "Editar"
@@ -130,11 +131,12 @@ public class EntityAdderController: UIViewController {
             fatalError("Tipagem não prevista")
         }
 
-        guard let postData = getPostData() else {
+        guard var postData = getPostData() else {
             return
         }
 
         if let type = type {
+            postData["profile"] = type.rawValue
             ServerManager.shared().addUser(type: type, postData: postData)
         } else {
             APIRequests.postRequest(url: endpoint.rawValue, params: postData) { (answer) in
@@ -142,11 +144,13 @@ public class EntityAdderController: UIViewController {
                 case .result:
                     ServerManager.shared().refreshData()
                     DispatchQueue.main.async {
-                        self.showAlert(withTitle: "Sucesso!", andBody: "Elemento adicionado.")
+                        Helper.showAlert(on: self.navigationController, withTitle: "Sucesso!",
+                                       andBody: "Elemento adicionado.")
                     }
                 case .error(let error):
                     DispatchQueue.main.async {
-                        self.showAlert(withTitle: "Erro...", andBody: "Verifique os dados informados.", true)
+                        Helper.showAlert(on: self.navigationController, withTitle: "Erro...",
+                                       andBody: "Verifique os dados informados.", true)
                     }
                     print(error.localizedDescription)
                 }
@@ -177,33 +181,37 @@ public class EntityAdderController: UIViewController {
             fatalError("Tipagem não prevista")
         }
 
-        APIRequests.postRequest(url: "\(endpoint.rawValue)/\(editingID)", method: .patch, header:
-        nil, params: postData) { (answer) in
+        var headers = [String: String]()
+        headers["Content-Type"] = "application/json"
+
+        APIRequests.postRequest(url: "\(endpoint.rawValue)/\(editingID)",
+        params: postData, method: .patch, header: headers,
+        decodableType: NilCodable.self, profile: profile) { (answer) in
+
             switch answer {
             case .result(let result):
                 print(result)
+                ServerManager.shared().refreshData()
+                DispatchQueue.main.async {
+                    Helper.showAlert(on: self.navigationController, withTitle: "Sucesso!",
+                                     andBody: "Elemento atualizado.", shouldPop: true)
+                }
             case .error(let error):
+                DispatchQueue.main.async {
+                    Helper.showAlert(on: self.navigationController, withTitle: "Erro...",
+                                     andBody: "Verifique os dados informados.", shouldPop: true, true)
+                }
                 print(error.localizedDescription)
             }
         }
-    }
-
-    func showAlert(withTitle title: String, andBody body: String, _ error: Bool = false) {
-        let alertVC = UIAlertController(title: title, message: body, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .cancel) { (_) in
-            if !error {
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
-        alertVC.addAction(okAction)
-        self.navigationController?.present(alertVC, animated: true, completion: nil)
     }
 
     func getPostData() -> [String: Any]? {
         var postData: [String: Any] = [:]
         for dicEntry in textFields {
             if dicEntry.value.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-                showAlert(withTitle: "Erro...", andBody: "Verifique os dados informados.", true)
+                Helper.showAlert(on: self.navigationController, withTitle: "Erro...",
+                                 andBody: "Verifique os dados informados.", true)
                 return nil
             }
 

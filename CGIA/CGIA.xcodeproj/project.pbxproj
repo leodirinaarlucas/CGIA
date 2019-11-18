@@ -63,6 +63,11 @@
 		B669AF68236BAB3900D89C38 /* CompleteStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF67236BAB3900D89C38 /* CompleteStudent.swift */; };
 		B669AF6A236BAB6D00D89C38 /* CompleteInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */; };
 		B669AF6C236BAC0200D89C38 /* CompleteSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF6B236BAC0200D89C38 /* CompleteSubject.swift */; };
+		B685A12023821C410082C436 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B685A11F23821C410082C436 /* Helper.swift */; };
+		B685A1222382271E0082C436 /* EditStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B685A1212382271E0082C436 /* EditStudent.swift */; };
+		B685A12723823E6B0082C436 /* EditInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B685A12623823E6B0082C436 /* EditInstructor.swift */; };
+		B685A1292382420E0082C436 /* EditClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B685A1282382420E0082C436 /* EditClassroom.swift */; };
+		B685A12B238243ED0082C436 /* EditSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B685A12A238243ED0082C436 /* EditSubject.swift */; };
 		F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
 		F26E8DD8233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -127,6 +132,11 @@
 		B669AF67236BAB3900D89C38 /* CompleteStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteStudent.swift; sourceTree = "<group>"; };
 		B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteInstructor.swift; sourceTree = "<group>"; };
 		B669AF6B236BAC0200D89C38 /* CompleteSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSubject.swift; sourceTree = "<group>"; };
+		B685A11F23821C410082C436 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		B685A1212382271E0082C436 /* EditStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStudent.swift; sourceTree = "<group>"; };
+		B685A12623823E6B0082C436 /* EditInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInstructor.swift; sourceTree = "<group>"; };
+		B685A1282382420E0082C436 /* EditClassroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditClassroom.swift; sourceTree = "<group>"; };
+		B685A12A238243ED0082C436 /* EditSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubject.swift; sourceTree = "<group>"; };
 		F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlunoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +218,7 @@
 		02C3152C233AD1080058054D /* CGIA */ = {
 			isa = PBXGroup;
 			children = (
+				B685A11E23821C350082C436 /* Helpers */,
 				02C3155F233AD2240058054D /* Controller */,
 				02C3155E233AD21F0058054D /* View */,
 				02C3155D233AD21B0058054D /* Model */,
@@ -275,6 +286,7 @@
 		02C31564233AD4980058054D /* Entidades */ = {
 			isa = PBXGroup;
 			children = (
+				B685A12523823E5C0082C436 /* Editable */,
 				02C31586233AD9130058054D /* PeriodoEnum.swift */,
 				02C3157D233AD5DD0058054D /* Users */,
 				02C31579233AD5CB0058054D /* Subject.swift */,
@@ -306,6 +318,25 @@
 				B628338D2373A12400E06613 /* CompleteClassroom.swift */,
 			);
 			path = CompleteEntidades;
+			sourceTree = "<group>";
+		};
+		B685A11E23821C350082C436 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B685A11F23821C410082C436 /* Helper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B685A12523823E5C0082C436 /* Editable */ = {
+			isa = PBXGroup;
+			children = (
+				B685A1212382271E0082C436 /* EditStudent.swift */,
+				B685A12623823E6B0082C436 /* EditInstructor.swift */,
+				B685A1282382420E0082C436 /* EditClassroom.swift */,
+				B685A12A238243ED0082C436 /* EditSubject.swift */,
+			);
+			path = Editable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,17 +507,22 @@
 				F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */,
 				02A36467235FD3AA001B626C /* EntityInfoController.swift in Sources */,
 				02C31561233AD2C40058054D /* ServerManager.swift in Sources */,
+				B685A1292382420E0082C436 /* EditClassroom.swift in Sources */,
 				02C3157A233AD5CB0058054D /* Subject.swift in Sources */,
+				B685A12023821C410082C436 /* Helper.swift in Sources */,
+				B685A12723823E6B0082C436 /* EditInstructor.swift in Sources */,
 				B628338E2373A12400E06613 /* CompleteClassroom.swift in Sources */,
 				02C3157F233AD5FE0058054D /* Classroom.swift in Sources */,
 				02C31532233AD1080058054D /* LoginController.swift in Sources */,
 				0294E08E233AF28E00A5308C /* EntityShowerTableViewController.swift in Sources */,
 				B669AF6C236BAC0200D89C38 /* CompleteSubject.swift in Sources */,
 				02224D87236BA2520063CB39 /* Extensions.swift in Sources */,
+				B685A12B238243ED0082C436 /* EditSubject.swift in Sources */,
 				02C3152E233AD1080058054D /* AppDelegate.swift in Sources */,
 				02C31530233AD1080058054D /* SceneDelegate.swift in Sources */,
 				0294E090233AF65C00A5308C /* EntitySelectionTableViewController.swift in Sources */,
 				025B9747234EB4490037E64B /* NotURLProtocol.swift in Sources */,
+				B685A1222382271E0082C436 /* EditStudent.swift in Sources */,
 				B669AF66236BAADC00D89C38 /* CompleteUser.swift in Sources */,
 				024BB7462373A5000082E848 /* ClassroomSelectedViewController.swift in Sources */,
 				02C31583233AD6060058054D /* Grade.swift in Sources */,

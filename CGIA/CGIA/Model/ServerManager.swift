@@ -127,7 +127,7 @@ public class ServerManager {
                 var finalData = [String: Any]()
                 finalData["userID"] = data.id
                 finalData["username"] = data.username
-                finalData["password"] = data.password
+                finalData["password"] = postData["password"]
                 finalData["name"] = postData["name"]
                 finalData["lastName"] = postData["lastName"]
                 finalData["dateOfBirth"] = postData["dateOfBirth"]
