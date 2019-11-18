@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		02114D43235395DB004F6ADC /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02114D42235395DB004F6ADC /* Student.swift */; };
 		02224D87236BA2520063CB39 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02224D86236BA2520063CB39 /* Extensions.swift */; };
-		024BB7462373A5000082E848 /* ClassroomSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024BB7452373A5000082E848 /* ClassroomSelectedViewController.swift */; };
+		023750A4237CDA1300B07A40 /* StudentShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023750A3237CDA1300B07A40 /* StudentShowerTableViewController.swift */; };
+		0239CAB32381C4C200810F0E /* StudentGradeSetterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239CAB22381C4C200810F0E /* StudentGradeSetterController.swift */; };
+		0239CAB5238217D600810F0E /* GradeShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239CAB4238217D600810F0E /* GradeShowerTableViewController.swift */; };
+		024BB7462373A5000082E848 /* ClassroomInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024BB7452373A5000082E848 /* ClassroomInfoViewController.swift */; };
 		025B9745234EB42C0037E64B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025B9744234EB42C0037E64B /* APIRequest.swift */; };
 		025B9747234EB4490037E64B /* NotURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025B9746234EB4490037E64B /* NotURLProtocol.swift */; };
 		026117A923739F220097A42C /* ClassroomShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026117A823739F220097A42C /* ClassroomShowerTableViewController.swift */; };
@@ -87,7 +90,10 @@
 /* Begin PBXFileReference section */
 		02114D42235395DB004F6ADC /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		02224D86236BA2520063CB39 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		024BB7452373A5000082E848 /* ClassroomSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomSelectedViewController.swift; sourceTree = "<group>"; };
+		023750A3237CDA1300B07A40 /* StudentShowerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentShowerTableViewController.swift; sourceTree = "<group>"; };
+		0239CAB22381C4C200810F0E /* StudentGradeSetterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentGradeSetterController.swift; sourceTree = "<group>"; };
+		0239CAB4238217D600810F0E /* GradeShowerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeShowerTableViewController.swift; sourceTree = "<group>"; };
+		024BB7452373A5000082E848 /* ClassroomInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomInfoViewController.swift; sourceTree = "<group>"; };
 		025B9744234EB42C0037E64B /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		025B9746234EB4490037E64B /* NotURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotURLProtocol.swift; sourceTree = "<group>"; };
 		026117A823739F220097A42C /* ClassroomShowerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomShowerTableViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +161,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		023750A1237B8F4D00B07A40 /* IncompleteEntidades */ = {
+			isa = PBXGroup;
+			children = (
+				02C3157D233AD5DD0058054D /* Users */,
+				02C31579233AD5CB0058054D /* Subject.swift */,
+				02C3157E233AD5FE0058054D /* Classroom.swift */,
+				02C31582233AD6060058054D /* Grade.swift */,
+			);
+			path = IncompleteEntidades;
+			sourceTree = "<group>";
+		};
+		023750A2237B8F7900B07A40 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				B669AF67236BAB3900D89C38 /* CompleteStudent.swift */,
+				B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */,
+				B669AF65236BAADC00D89C38 /* CompleteUser.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		025B9748234EB4500037E64B /* Backend */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,7 +196,10 @@
 			isa = PBXGroup;
 			children = (
 				026117A823739F220097A42C /* ClassroomShowerTableViewController.swift */,
-				024BB7452373A5000082E848 /* ClassroomSelectedViewController.swift */,
+				024BB7452373A5000082E848 /* ClassroomInfoViewController.swift */,
+				023750A3237CDA1300B07A40 /* StudentShowerTableViewController.swift */,
+				0239CAB22381C4C200810F0E /* StudentGradeSetterController.swift */,
+				0239CAB4238217D600810F0E /* GradeShowerTableViewController.swift */,
 			);
 			path = Professor;
 			sourceTree = "<group>";
@@ -239,7 +269,6 @@
 		02C3155D233AD21B0058054D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B669AF64236BAAC400D89C38 /* CompleteEntidades */,
 				025B9748234EB4500037E64B /* Backend */,
 				0294E082233ADD8800A5308C /* LoginAnswer.swift */,
 				02C31560233AD2C40058054D /* ServerManager.swift */,
@@ -275,11 +304,9 @@
 		02C31564233AD4980058054D /* Entidades */ = {
 			isa = PBXGroup;
 			children = (
+				023750A1237B8F4D00B07A40 /* IncompleteEntidades */,
+				B669AF64236BAAC400D89C38 /* CompleteEntidades */,
 				02C31586233AD9130058054D /* PeriodoEnum.swift */,
-				02C3157D233AD5DD0058054D /* Users */,
-				02C31579233AD5CB0058054D /* Subject.swift */,
-				02C3157E233AD5FE0058054D /* Classroom.swift */,
-				02C31582233AD6060058054D /* Grade.swift */,
 				0294E091233AF89400A5308C /* DisplayableProtocol.swift */,
 			);
 			path = Entidades;
@@ -299,9 +326,7 @@
 		B669AF64236BAAC400D89C38 /* CompleteEntidades */ = {
 			isa = PBXGroup;
 			children = (
-				B669AF65236BAADC00D89C38 /* CompleteUser.swift */,
-				B669AF67236BAB3900D89C38 /* CompleteStudent.swift */,
-				B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */,
+				023750A2237B8F7900B07A40 /* Users */,
 				B669AF6B236BAC0200D89C38 /* CompleteSubject.swift */,
 				B628338D2373A12400E06613 /* CompleteClassroom.swift */,
 			);
@@ -472,6 +497,7 @@
 				026117A923739F220097A42C /* ClassroomShowerTableViewController.swift in Sources */,
 				02C3156E233AD4F90058054D /* User.swift in Sources */,
 				0294E092233AF89400A5308C /* DisplayableProtocol.swift in Sources */,
+				023750A4237CDA1300B07A40 /* StudentShowerTableViewController.swift in Sources */,
 				025B9745234EB42C0037E64B /* APIRequest.swift in Sources */,
 				F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */,
 				02A36467235FD3AA001B626C /* EntityInfoController.swift in Sources */,
@@ -480,7 +506,9 @@
 				B628338E2373A12400E06613 /* CompleteClassroom.swift in Sources */,
 				02C3157F233AD5FE0058054D /* Classroom.swift in Sources */,
 				02C31532233AD1080058054D /* LoginController.swift in Sources */,
+				0239CAB5238217D600810F0E /* GradeShowerTableViewController.swift in Sources */,
 				0294E08E233AF28E00A5308C /* EntityShowerTableViewController.swift in Sources */,
+				0239CAB32381C4C200810F0E /* StudentGradeSetterController.swift in Sources */,
 				B669AF6C236BAC0200D89C38 /* CompleteSubject.swift in Sources */,
 				02224D87236BA2520063CB39 /* Extensions.swift in Sources */,
 				02C3152E233AD1080058054D /* AppDelegate.swift in Sources */,
@@ -488,7 +516,7 @@
 				0294E090233AF65C00A5308C /* EntitySelectionTableViewController.swift in Sources */,
 				025B9747234EB4490037E64B /* NotURLProtocol.swift in Sources */,
 				B669AF66236BAADC00D89C38 /* CompleteUser.swift in Sources */,
-				024BB7462373A5000082E848 /* ClassroomSelectedViewController.swift in Sources */,
+				024BB7462373A5000082E848 /* ClassroomInfoViewController.swift in Sources */,
 				02C31583233AD6060058054D /* Grade.swift in Sources */,
 				02A3646F23612B46001B626C /* EntityAdderController.swift in Sources */,
 				02114D43235395DB004F6ADC /* Student.swift in Sources */,

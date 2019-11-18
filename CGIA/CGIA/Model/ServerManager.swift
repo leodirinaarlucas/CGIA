@@ -42,7 +42,7 @@ public class ServerManager {
         completionHandler(.successful(user))
     }
 
-    /// MARK: Fetch
+    // MARK: Fetch
     public func fetch<T: Codable>(url: String, model: T.Type) {
         APIRequests.getRequest(url: url, decodableType: model) { (answer) in
 
