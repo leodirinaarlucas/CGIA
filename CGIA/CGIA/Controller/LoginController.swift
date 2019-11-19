@@ -16,22 +16,30 @@ class LoginController: UIViewController {
 
         let act = UIAlertAction(title: "Ok", style: .cancel) { (_) in
             self.txtUsername.text = ""
+            self.txtPassword.text = ""
         }
         ale.addAction(act)
         return ale
     }()
 
     @IBOutlet weak var txtUsername: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
 
     @IBAction func loginTap(_ sender: UIButton) {
-        guard let txt = txtUsername.text, txt != "" else {
+        guard let username = txtUsername.text?.trimmingCharacters(in: .whitespacesAndNewlines), username != "",
+            let pass = txtPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines), pass != "" else {
             self.present(alertFail, animated: true)
             return
         }
-        ServerManager.shared().authenticateLogin(username: txt, completionHandler: {(authenticated) in
+
+        ServerManager.shared().authenticateLogin(username: username,
+                                                 password: pass,
+                                                 completionHandler: {(authenticated) in
             switch authenticated {
             case .fail:
-                self.present(alertFail, animated: true)
+                DispatchQueue.main.sync {
+                    self.present(self.alertFail, animated: true)
+                }
             case .successful(let user):
                 var identifier: String = ""
                 switch user.profile {
@@ -44,7 +52,10 @@ class LoginController: UIViewController {
                 default:
                     fatalError("No existe")
                 }
-                self.performSegue(withIdentifier: identifier, sender: self)
+
+                DispatchQueue.main.sync {
+                    self.performSegue(withIdentifier: identifier, sender: self)
+                }
             }
         })
     }
