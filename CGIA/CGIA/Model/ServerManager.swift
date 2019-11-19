@@ -34,12 +34,42 @@ public class ServerManager {
     public private(set) var notas: [Grade] = []
 
     // MARK: Login
-    public func authenticateLogin(username: String, completionHandler: (LoginAnswer) -> Void) {
-        guard let user = usuario else {
-            completionHandler(.fail)
+    public func authenticateLogin(username: String, password: String, completionHandler: @escaping (LoginAnswer) -> Void) {
+
+        let loginString = "\(username):\(password)"
+        guard let loginData = loginString.data(using: String.Encoding.utf8) else {
             return
         }
-        completionHandler(.successful(user))
+        let base64LoginString = loginData.base64EncodedString()
+
+        var headers = [String: String]()
+        headers["Authorization"] = "Basic \(base64LoginString)"
+
+        APIRequests.getRequest(url: "\(Endpoint.getUsers.rawValue)/\(username)", header: headers) { (answer) in
+
+            switch answer {
+            case .result(let result):
+                if let dict = result as? [String: Any] {
+                    if dict["error"] as? Int == 1 {
+                        completionHandler(.fail)
+
+                    } else {
+                        guard let id = dict["id"] as? Int,
+                            let username = dict["username"] as? String,
+                            let profile = dict["profile"] as? String else { return }
+
+                        let user = User(id: id, username: username, profile: profile)
+                        completionHandler(.successful(user))
+                    }
+
+                } else {
+                    completionHandler(.fail)
+                }
+            case .error(let error):
+                print(error.localizedDescription)
+                completionHandler(.fail)
+            }
+        }
     }
 
     // MARK: Fetch
@@ -185,6 +215,6 @@ public class ServerManager {
     // MARK: Mockup
     private func mockDatabase() {
 
-        usuario = User(id: 54319, username: "54319", password: "ohYeah", profile: UserType.admin.rawValue)
+//        usuario = User(id: 54319, username: "54319", password: "ohYeah", profile: UserType.admin.rawValue)
     }
 }
