@@ -1,21 +1,21 @@
 //
-//  ClassroomSeerTableViewController.swift
+//  StudentTableViewController.swift
 //  CGIA
 //
-//  Created by Pedro Giuliano Farina on 06/11/19.
+//  Created by Pedro Giuliano Farina on 13/11/19.
 //  Copyright © 2019 Pedro Giuliano Farina. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-public class ClassroomShowerTableViewController: UITableViewController {
-
-    var data: [CompleteClassroom] = ServerManager.shared().turmas
-    var selectedClassroom: CompleteClassroom?
+public class StudentShowerTableViewController: UITableViewController {
+    var controller: ClassroomInfoController?
+    var classroom: CompleteClassroom?
+    lazy var data: [Student] = classroom?.students ?? []
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         NotificationCenter.default.addObserver(self, selector: #selector(updateData), name:
             Notification.Name("dataUpdated"), object: nil)
     }
@@ -25,10 +25,10 @@ public class ClassroomShowerTableViewController: UITableViewController {
     }
 
     @objc func updateData() {
-        DispatchQueue.main.async {
-            self.data = ServerManager.shared().turmas
-            self.tableView.reloadData()
+        if let classroom = classroom, let students = classroom.students {
+            data = students
         }
+        tableView.reloadData()
     }
 
     public override func numberOfSections(in tableView: UITableView) -> Int {
@@ -41,18 +41,16 @@ public class ClassroomShowerTableViewController: UITableViewController {
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = data[indexPath.row].name
+        cell.textLabel?.text = data[indexPath.row].displayName
         return cell
     }
 
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedClassroom = data[indexPath.row]
-        performSegue(withIdentifier: "selected", sender: self)
-    }
-
-    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let info = segue.destination as? ClassroomInfoController {
-            info.classroom = selectedClassroom
+        let id = data[indexPath.row].id
+        if let stud = ServerManager.shared().alunos.first(where: { (stud) -> Bool in
+            return stud.id == id}) {
+            controller?.student = stud
+            controller?.performSegue(withIdentifier: "studentSelected", sender: controller)
         }
     }
 }
