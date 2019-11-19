@@ -11,54 +11,77 @@ import UIKit
 class AlunoTableViewController: UITableViewController {
 
     var classrooms: [Classroom] = []
-    var grades: [[Grade]] = []
-    var student: CompleteStudent? {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.register(AlunoTableViewCell.self, forCellReuseIdentifier: "materiaCell")
-        tableView.tableFooterView = UIView()
-    }
+    var grades: [[Double]] = []
+    var student: CompleteStudent?
     private var dateCellExpanded: Bool = false
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            if dateCellExpanded {
-                dateCellExpanded = false
-            } else {
-                dateCellExpanded = true
-            }
-            tableView.beginUpdates()
-            tableView.endUpdates()
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        student = ServerManager.shared().alunos.first(where: { (aluno) -> Bool in
+            return aluno.id ?? -1 == ServerManager.shared().usuario?.id ?? -2
+        })
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 80
+        self.tableView.tableFooterView = UIView()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateData), name:
+        Notification.Name(NotifName.dataUpdated.rawValue), object: nil)
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+    @objc func updateData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.student = ServerManager.shared().alunos.first(where: { (aluno) -> Bool in
+                return aluno.id ?? -1 == ServerManager.shared().usuario?.id ?? -2
+            })
+        }
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        return
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-//        return classrooms.count
-        return 4
+        guard let safeStudent = student else {
+            return 0
+        }
+        classrooms = safeStudent.classrooms ?? []
+        return classrooms.count
     }
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-//        return grades[section - 1].count
-        return 6
+        guard let safeStudent = student else {
+            return 0
+        }
+        guard let notas = student?.grades else {
+            return 0
+        }
+        for turma in 0...classrooms.count-1 {
+            let grade = notas.filter({ (grade) -> Bool in
+                return grade.classroomID ?? -1 == classrooms[turma].id ?? -2
+            }).filter({ (grade) -> Bool in
+                return grade.studentID ?? -1 == safeStudent.id ?? -2
+            })
+            grades = grade.map({ (grade) -> [Double] in
+                return (grade.grades ?? [])
+            })
+            if let first = grade.first {
+                grades[turma].append(first.finalGrade ?? 99.9)
+            }
+        }
+        return grades[section].count
+    }
+
+    override func tableView(_ tableView: UITableView,
+                            titleForHeaderInSection section: Int) -> String? {
+        var title: String = classrooms[section].displayName
+        let subs = ServerManager.shared().disciplinas
+        let sub = subs.first { (disciplina) -> Bool in
+            return disciplina.id ?? -1 == classrooms[section].subjectID ?? -2
+        }
+        title += " - " + (sub?.displayName ?? "")
+        return title
     }
 
     override func tableView(_ tableView: UITableView,
@@ -67,38 +90,17 @@ class AlunoTableViewController: UITableViewController {
                                                        for: indexPath) as? AlunoTableViewCell else {
                                                         fatalError("failed to dequeue reusable Table View Cell")
         }
-        cell.nome?.text = "Práticas avançadas de placeholder" + String(indexPath.row)
-        cell.nota?.text = String(10.99)
+        if indexPath.row == grades[indexPath.section].count - 1 {
+            cell.nomeLabel.text = "Média Geral"
+        } else {
+            cell.nomeLabel.text = "N" + String(indexPath.row)
+        }
+        cell.notaLabel.text = String(grades[indexPath.section][indexPath.row])
         return cell
     }
 
     override func tableView(_ tableView: UITableView,
                             canEditRowAt indexPath: IndexPath) -> Bool {
         return false
-    }
-}
-
-extension AlunoTableViewController {
-    func updateSubjects() {
-        guard let classes = student?.classrooms else {
-            classrooms = []
-            return
-        }
-        classrooms = classes
-    }
-    func sortGrades() {
-        grades = []
-        guard let safeStudent = student else {
-            return
-        }
-        for classroom in 0...classrooms.count - 1 {
-            grades.append([])
-            if let grade = safeStudent.grades {
-                grades[classroom] = grade.filter { (singleGrade) -> Bool in
-                    return (singleGrade.classroomID ?? -2) == (classrooms[classroom].id ?? -1)
-                }
-
-            }
-        }
     }
 }

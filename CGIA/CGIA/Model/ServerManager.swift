@@ -182,6 +182,6 @@ public class ServerManager {
     // MARK: Mockup
     private func mockDatabase() {
 
-        usuario = User(id: 54319, username: "54319", password: "ohYeah", profile: UserType.admin.rawValue)
+        usuario = User(id: 1, username: "54319", password: "ohYeah", profile: UserType.student.rawValue)
     }
 }

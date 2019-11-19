@@ -63,9 +63,8 @@
 		B669AF68236BAB3900D89C38 /* CompleteStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF67236BAB3900D89C38 /* CompleteStudent.swift */; };
 		B669AF6A236BAB6D00D89C38 /* CompleteInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */; };
 		B669AF6C236BAC0200D89C38 /* CompleteSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669AF6B236BAC0200D89C38 /* CompleteSubject.swift */; };
-		F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
-		F26E8DD8233AF57400D29766 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */; };
-		F2D6CFD7236BAE5800B3ADE3 /* AlunoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6CFD6236BAE5800B3ADE3 /* AlunoTableViewCell.swift */; };
+		F215241023824E2D0072B181 /* AlunoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F215240F23824E2D0072B181 /* AlunoTableViewCell.swift */; };
+		F2F58C19238248FB00C5D333 /* AlunoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F58C18238248FA00C5D333 /* AlunoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,8 +127,8 @@
 		B669AF67236BAB3900D89C38 /* CompleteStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteStudent.swift; sourceTree = "<group>"; };
 		B669AF69236BAB6D00D89C38 /* CompleteInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteInstructor.swift; sourceTree = "<group>"; };
 		B669AF6B236BAC0200D89C38 /* CompleteSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSubject.swift; sourceTree = "<group>"; };
-		F26E8DD6233AF57400D29766 /* AlunoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlunoTableViewController.swift; sourceTree = "<group>"; };
-		F2D6CFD6236BAE5800B3ADE3 /* AlunoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlunoTableViewCell.swift; path = CGIA/View/AlunoTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		F215240F23824E2D0072B181 /* AlunoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlunoTableViewCell.swift; sourceTree = "<group>"; };
+		F2F58C18238248FA00C5D333 /* AlunoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlunoTableViewController.swift; path = Aluno/AlunoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +193,7 @@
 				02C31543233AD10B0058054D /* CGIATests */,
 				02C3154E233AD10B0058054D /* CGIAUITests */,
 				02C3152B233AD1080058054D /* Products */,
+				F2F58C17238248C800C5D333 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -269,7 +269,8 @@
 				026117A723739EDB0097A42C /* Professor */,
 				0294E08C233AF26C00A5308C /* Admin */,
 				02C31531233AD1080058054D /* LoginController.swift */,
-				F2BBCD77236A50DA00430DE1 /* Aluno */,
+				F2F58C18238248FA00C5D333 /* AlunoTableViewController.swift */,
+				F215240F23824E2D0072B181 /* AlunoTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -291,7 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				02114D42235395DB004F6ADC /* Student.swift */,
-				F25FBB20236F35080038351C /* CompleteStudent.swift */,
 				02C3156D233AD4F90058054D /* User.swift */,
 				02C31569233AD4E80058054D /* Admin.swift */,
 				02C31575233AD56F0058054D /* Instructor.swift */,
@@ -309,6 +309,13 @@
 				B628338D2373A12400E06613 /* CompleteClassroom.swift */,
 			);
 			path = CompleteEntidades;
+			sourceTree = "<group>";
+		};
+		F2F58C17238248C800C5D333 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,15 +478,14 @@
 				02C31587233AD9130058054D /* PeriodoEnum.swift in Sources */,
 				B669AF6A236BAB6D00D89C38 /* CompleteInstructor.swift in Sources */,
 				02C31576233AD56F0058054D /* Instructor.swift in Sources */,
+				F2F58C19238248FB00C5D333 /* AlunoTableViewController.swift in Sources */,
 				02C3156A233AD4E80058054D /* Admin.swift in Sources */,
 				026117A923739F220097A42C /* ClassroomShowerTableViewController.swift in Sources */,
 				02C3156E233AD4F90058054D /* User.swift in Sources */,
 				0294E092233AF89400A5308C /* DisplayableProtocol.swift in Sources */,
 				025B9745234EB42C0037E64B /* APIRequest.swift in Sources */,
-				F26E8DD7233AF57400D29766 /* AlunoTableViewController.swift in Sources */,
 				02A36467235FD3AA001B626C /* EntityInfoController.swift in Sources */,
 				02C31561233AD2C40058054D /* ServerManager.swift in Sources */,
-				F25FBB21236F35080038351C /* CompleteStudent.swift in Sources */,
 				02C3157A233AD5CB0058054D /* Subject.swift in Sources */,
 				B628338E2373A12400E06613 /* CompleteClassroom.swift in Sources */,
 				02C3157F233AD5FE0058054D /* Classroom.swift in Sources */,
@@ -495,7 +501,7 @@
 				024BB7462373A5000082E848 /* ClassroomSelectedViewController.swift in Sources */,
 				02C31583233AD6060058054D /* Grade.swift in Sources */,
 				02A3646F23612B46001B626C /* EntityAdderController.swift in Sources */,
-				F2D6CFD7236BAE5800B3ADE3 /* AlunoTableViewCell.swift in Sources */,
+				F215241023824E2D0072B181 /* AlunoTableViewCell.swift in Sources */,
 				02114D43235395DB004F6ADC /* Student.swift in Sources */,
 				0294E083233ADD8800A5308C /* LoginAnswer.swift in Sources */,
 			);
@@ -515,7 +521,6 @@
 				02C3156F233AD4F90058054D /* User.swift in Sources */,
 				0294E08A233AEE4400A5308C /* LoginAnswer.swift in Sources */,
 				02C3156B233AD4E80058054D /* Admin.swift in Sources */,
-				F26E8DD8233AF57400D29766 /* AlunoTableViewController.swift in Sources */,
 				02C31580233AD5FE0058054D /* Classroom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KOz-g3-31m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KOz-g3-31m">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,13 +15,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="materiaCell" rowHeight="132" id="cp0-RO-F0X">
-                                <rect key="frame" x="0.0" y="28" width="375" height="132"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="materiaCell" id="cp0-RO-F0X" customClass="AlunoTableViewCell" customModule="CGIA" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="66.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cp0-RO-F0X" id="aku-aT-wzY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHN-cr-K9N">
+                                            <rect key="frame" x="16" y="21" width="252" height="24.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nota" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKg-nU-Tcq">
+                                            <rect key="frame" x="300" y="21" width="59" height="24.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="DHN-cr-K9N" firstAttribute="leading" secondItem="aku-aT-wzY" secondAttribute="leadingMargin" id="7rj-PM-BVf"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="iKg-nU-Tcq" secondAttribute="bottom" constant="10" id="7xg-9g-k1r"/>
+                                        <constraint firstItem="iKg-nU-Tcq" firstAttribute="top" secondItem="aku-aT-wzY" secondAttribute="topMargin" constant="10" id="9eO-pL-jcT"/>
+                                        <constraint firstItem="iKg-nU-Tcq" firstAttribute="leading" relation="lessThanOrEqual" secondItem="aku-aT-wzY" secondAttribute="centerX" multiplier="1.6" id="Mou-Vq-gr0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="iKg-nU-Tcq" secondAttribute="trailing" id="PGo-a3-obf"/>
+                                        <constraint firstAttribute="centerX" relation="lessThanOrEqual" secondItem="DHN-cr-K9N" secondAttribute="trailing" multiplier="0.7" id="bT7-KU-K6m"/>
+                                        <constraint firstItem="DHN-cr-K9N" firstAttribute="top" secondItem="aku-aT-wzY" secondAttribute="topMargin" constant="10" id="q7m-ei-oRB"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="DHN-cr-K9N" secondAttribute="bottom" constant="10" id="r3k-xg-4Fo"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nomeLabel" destination="DHN-cr-K9N" id="rCr-R3-Slt"/>
+                                    <outlet property="notaLabel" destination="iKg-nU-Tcq" id="xeZ-nN-4nq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -46,7 +74,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ilp-Gq-e7N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
