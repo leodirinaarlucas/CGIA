@@ -54,6 +54,7 @@ class LoginController: UIViewController {
                 }
 
                 DispatchQueue.main.sync {
+                    ServerManager.shared().refreshData()
                     self.performSegue(withIdentifier: identifier, sender: self)
                 }
             }
