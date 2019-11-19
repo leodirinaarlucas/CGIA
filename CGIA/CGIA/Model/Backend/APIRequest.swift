@@ -134,6 +134,14 @@ public class APIRequests {
                 }
                 json = try JSONEncoder().encode(EditSubject(name: name))
 
+            case is Grade.Type:
+                guard let grades = params["grades"] as? [Double]?,
+                      let finalGrade =  params["finalGrade"] as? Double?,
+                      let studentID = params["studentID"] as? Int?,
+                    let classroomID = params["classroomID"] as? Int? else {
+                        return nil
+                }
+                json = try JSONEncoder().encode(GradePatch(grades: grades, finalGrade: finalGrade, studentID: studentID, classroomID: classroomID))
             default:
                 fatalError("Tipagem não prevista")
             }

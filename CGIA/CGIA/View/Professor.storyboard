@@ -145,7 +145,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ny-Ps-ogc">
-                                <rect key="frame" x="42" y="209" width="331" height="627"/>
+                                <rect key="frame" x="41.5" y="209" width="331" height="627"/>
                                 <connections>
                                     <segue destination="iMx-yA-bDP" kind="embed" id="8bs-8q-Cpu"/>
                                 </connections>
@@ -170,7 +170,11 @@
                         <viewLayoutGuide key="safeArea" id="c0f-Ho-ByJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="iRv-CT-a65">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XhA-ER-TbC"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XhA-ER-TbC">
+                            <connections>
+                                <action selector="addGrade:" destination="zNG-Zq-rUb" id="QSh-DG-05r"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="lblNotaFinal" destination="3fF-Ne-4Gn" id="G3l-gR-QO3"/>

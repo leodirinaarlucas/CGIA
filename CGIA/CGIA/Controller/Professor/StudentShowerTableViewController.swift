@@ -28,7 +28,9 @@ public class StudentShowerTableViewController: UITableViewController {
         if let classroom = classroom, let students = classroom.students {
             data = students
         }
-        tableView.reloadData()
+        DispatchQueue.main.sync {
+            tableView.reloadData()
+        }
     }
 
     public override func numberOfSections(in tableView: UITableView) -> Int {
