@@ -75,11 +75,6 @@ public class StudentGradeSetterController: UIViewController {
         updateData()
     }
 
-    public override func viewDidLoad() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateData), name:
-            Notification.Name(NotifName.dataUpdated.rawValue), object: nil)
-    }
-
     @objc func updateData() {
         guard let student = student,
             let grades = student.grades,
@@ -111,7 +106,7 @@ public class StudentGradeSetterController: UIViewController {
 extension ServerManager {
     func addValueTo(_ grade: Grade, value: Double, completionHandler: @escaping () -> Void) {
         var grade = grade
-        guard var grades = grade.grades else {
+        guard var grades = grade.grades, let gradeID = grade.id else {
             fatalError("Não havia notas")
         }
         grades.append(value)
@@ -123,7 +118,7 @@ extension ServerManager {
                                      "studentID": grade.studentID as Any, "classroomID": grade.classroomID as Any ]
         var headers = [String: String]()
         headers["Content-Type"] = "application/json"
-        APIRequests.postRequest(url: Endpoint.getGrades.rawValue + "/\(grade.id ?? -1)", params: params,
+        APIRequests.postRequest(url: Endpoint.getGrades.rawValue + "/\(gradeID)", params: params,
                                 method: .patch, header: headers, decodableType: NilCodable.self,
                                 profile: Grade.self) { (answer) in
                                     print(answer)

@@ -223,9 +223,16 @@ public class EntityAdderController: UIViewController {
                     if let id = Int(id), let classroom = currentInstance as? CompleteClassroom,
                         let classID = classroom.id {
                         let params: [String: Int] = ["classroomID": classID, "studentID": id]
-                        APIRequests.postRequest(url: Endpoint.getStudentClassroom.rawValue,
-                                                params: params, method: .post, header: nil,
-                                                decodableType: NilCodable.self, profile: nil) { (answer) in
+                        APIRequests.postRequest(
+                            url: Endpoint.getStudentClassroom.rawValue,
+                            params: params, method: .post, header: nil,
+                            decodableType: NilCodable.self, profile: nil) { (_) in
+                                let grade: [String: Any] = ["grades": [], "finalGrade": 0,
+                                                            "studentID": id, "classroomID": classID]
+                                APIRequests.postRequest(url: Endpoint.getGrades.rawValue, params: grade,
+                                                        method: .post, header: nil, decodableType: NilCodable.self,
+                                                        profile: nil) { (_) in
+                                }
                         }
                     }
                 }

@@ -200,7 +200,6 @@ public class ServerManager {
 
     // MARK: Singleton Properties
     private init() {
-        refreshData()
     }
 
     class func shared() -> ServerManager {
