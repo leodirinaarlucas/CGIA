@@ -219,8 +219,17 @@ public class EntityAdderController: UIViewController {
                 postData[dicEntry.key] = dicEntry.value.text
             } else if let ids = dicEntry.value.text?.trimmingCharacters(in:
                 .whitespacesAndNewlines).components(separatedBy: ",") {
-                postData[dicEntry.key] = ids
-                postData["active"] = true
+                for id in ids {
+                    if let id = Int(id), let classroom = currentInstance as? CompleteClassroom,
+                        let classID = classroom.id {
+                        let params: [String: Int] = ["classroomID": classID, "studentID": id]
+                        APIRequests.postRequest(url: Endpoint.getStudentClassroom.rawValue,
+                                                params: params, method: .post, header: nil,
+                                                decodableType: NilCodable.self, profile: nil) { (answer) in
+                        }
+                    }
+                }
+
             }
         }
 

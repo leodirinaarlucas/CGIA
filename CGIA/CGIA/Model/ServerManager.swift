@@ -20,6 +20,7 @@ public enum Endpoint: String {
     case getGrades = "https://cgia.herokuapp.com/api/grades"
     case getClassrooms = "https://cgia.herokuapp.com/api/classrooms"
     case getSubjects = "https://cgia.herokuapp.com/api/subjects"
+    case getStudentClassroom = "https://cgia.herokuapp.com/api/studentsClassrooms"
 }
 
 public class ServerManager {
