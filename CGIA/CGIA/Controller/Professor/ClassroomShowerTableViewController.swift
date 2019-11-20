@@ -11,7 +11,18 @@ import UIKit
 
 public class ClassroomShowerTableViewController: UITableViewController {
 
-    var data: [CompleteClassroom] = ServerManager.shared().turmas
+    var data: [CompleteClassroom] = {
+        let turmas = ServerManager.shared().turmas
+        var turmaFiltrada: [CompleteClassroom] = []
+        for turma in turmas {
+            if turma.instructorID == ServerManager.shared().usuario?.id {
+                turmaFiltrada.append(turma)
+            }
+        }
+
+        return turmaFiltrada
+    }()
+    var selectedClassroom: CompleteClassroom?
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +30,24 @@ public class ClassroomShowerTableViewController: UITableViewController {
             Notification.Name("dataUpdated"), object: nil)
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     @objc func updateData() {
         DispatchQueue.main.async {
+            let turmas = ServerManager.shared().turmas
+            var turmaFiltrada: [CompleteClassroom] = []
+            if let userId = ServerManager.shared().usuario?.id,
+                let professor = ServerManager.shared().professores.first(where: { (inst) -> Bool in
+                    return inst.userID == userId
+                }) {
+                let profID = professor.id
+                for turma in turmas where turma.instructorID == profID {
+                    turmaFiltrada.append(turma)
+                }
+            }
+            self.data = turmaFiltrada
             self.tableView.reloadData()
         }
     }
@@ -37,5 +64,16 @@ public class ClassroomShowerTableViewController: UITableViewController {
         let cell = UITableViewCell()
         cell.textLabel?.text = data[indexPath.row].name
         return cell
+    }
+
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedClassroom = data[indexPath.row]
+        performSegue(withIdentifier: "selected", sender: self)
+    }
+
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let info = segue.destination as? ClassroomInfoController {
+            info.classroom = selectedClassroom
+        }
     }
 }

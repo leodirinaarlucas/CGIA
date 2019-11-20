@@ -1,5 +1,5 @@
 //
-//  CompleteInstructor.swift
+//  CompleteStudent.swift
 //  CGIA
 //
 //  Created by Lucas Fernandez Nicolau on 31/10/19.
@@ -8,14 +8,15 @@
 
 import Foundation
 
-public struct CompleteInstructor: Codable, Displayable {
+public struct CompleteStudent: Codable, Displayable {
     public var displayName: String {
         return name ?? ""
     }
     let id: Int?
+    var userID: Int?
     let name: String?
     let lastName: String?
     let dateOfBirth: String?
     var classrooms: [Classroom]?
-    var userID: Int?
+    var grades: [Grade]?
 }

@@ -20,6 +20,7 @@ public enum Endpoint: String {
     case getGrades = "https://cgia.herokuapp.com/api/grades"
     case getClassrooms = "https://cgia.herokuapp.com/api/classrooms"
     case getSubjects = "https://cgia.herokuapp.com/api/subjects"
+    case getStudentClassroom = "https://cgia.herokuapp.com/api/studentsClassrooms"
 }
 
 public class ServerManager {
@@ -34,15 +35,46 @@ public class ServerManager {
     public private(set) var notas: [Grade] = []
 
     // MARK: Login
-    public func authenticateLogin(username: String, completionHandler: (LoginAnswer) -> Void) {
-        guard let user = usuario else {
-            completionHandler(.fail)
+    public func authenticateLogin(username: String, password: String, completionHandler: @escaping (LoginAnswer) -> Void) {
+
+        let loginString = "\(username):\(password)"
+        guard let loginData = loginString.data(using: String.Encoding.utf8) else {
             return
         }
-        completionHandler(.successful(user))
+        let base64LoginString = loginData.base64EncodedString()
+
+        var headers = [String: String]()
+        headers["Authorization"] = "Basic \(base64LoginString)"
+
+        APIRequests.getRequest(url: "\(Endpoint.getUsers.rawValue)/\(username)", header: headers) { (answer) in
+
+            switch answer {
+            case .result(let result):
+                if let dict = result as? [String: Any] {
+                    if dict["error"] as? Int == 1 {
+                        completionHandler(.fail)
+
+                    } else {
+                        guard let id = dict["id"] as? Int,
+                            let username = dict["username"] as? String,
+                            let profile = dict["profile"] as? String else { return }
+
+                        let user = User(id: id, username: username, profile: profile)
+                        self.usuario = user
+                        completionHandler(.successful(user))
+                    }
+
+                } else {
+                    completionHandler(.fail)
+                }
+            case .error(let error):
+                print(error.localizedDescription)
+                completionHandler(.fail)
+            }
+        }
     }
 
-    /// MARK: Fetch
+    // MARK: Fetch
     public func fetch<T: Codable>(url: String, model: T.Type) {
         APIRequests.getRequest(url: url, decodableType: model) { (answer) in
 
@@ -53,6 +85,7 @@ public class ServerManager {
                     for student in result {
                         self.fetchCompleteEntities(url: .getStudents,
                                                    id: student.id ?? 0,
+                                                   userID: student.userID ?? 0,
                                                    model: CompleteStudent.self)
                     }
 
@@ -60,6 +93,7 @@ public class ServerManager {
                     for instructor in result {
                         self.fetchCompleteEntities(url: .getInstructors,
                                                    id: instructor.id ?? 0,
+                                                   userID: instructor.userID ?? 0,
                                                    model: CompleteInstructor.self)
                     }
 
@@ -91,15 +125,16 @@ public class ServerManager {
         }
     }
 
-    public func fetchCompleteEntities<T: Codable>(url: Endpoint, id: Int, model: T.Type) {
+    public func fetchCompleteEntities<T: Codable>(url: Endpoint, id: Int, userID: Int = -1, model: T.Type) {
         APIRequests.getRequest(url: "\(url.rawValue)/\(id)", decodableType: model) { (answer) in
 
             switch answer {
             case .result(let retorno):
-
-                if let result = retorno as? CompleteStudent {
+                if var result = retorno as? CompleteStudent {
+                    result.userID = userID
                     self.alunos.append(result)
-                } else if let result = retorno as? CompleteInstructor {
+                } else if var result = retorno as? CompleteInstructor {
+                    result.userID = userID
                     self.professores.append(result)
                 } else if let result = retorno as? CompleteSubject {
                     self.disciplinas.append(result)
@@ -124,7 +159,7 @@ public class ServerManager {
                 var finalData = [String: Any]()
                 finalData["userID"] = data.id
                 finalData["username"] = data.username
-                finalData["password"] = data.password
+                finalData["password"] = postData["password"]
                 finalData["name"] = postData["name"]
                 finalData["lastName"] = postData["lastName"]
                 finalData["dateOfBirth"] = postData["dateOfBirth"]
@@ -166,7 +201,6 @@ public class ServerManager {
 
     // MARK: Singleton Properties
     private init() {
-        refreshData()
     }
 
     class func shared() -> ServerManager {
@@ -175,13 +209,6 @@ public class ServerManager {
 
     private static var sharedServerManager: ServerManager = {
         let manager = ServerManager()
-        manager.mockDatabase()
         return manager
     }()
-
-    // MARK: Mockup
-    private func mockDatabase() {
-
-        usuario = User(id: 54319, username: "54319", password: "ohYeah", profile: UserType.admin.rawValue)
-    }
 }

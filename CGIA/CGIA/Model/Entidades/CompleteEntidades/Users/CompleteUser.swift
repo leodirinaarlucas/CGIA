@@ -10,6 +10,7 @@ import Foundation
 
 public struct CompleteUser: Codable {
     var id: Int?
+    var userID: Int?
     var username: String?
     var profile: String?
 }

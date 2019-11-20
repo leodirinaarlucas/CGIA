@@ -15,41 +15,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjW-1Y-HGo">
-                                <rect key="frame" x="186" y="352" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Usuário" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l8i-Sw-15U">
-                                <rect key="frame" x="103.5" y="377" width="207" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDW-CJ-sdy">
-                                <rect key="frame" x="268.5" y="419" width="42" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="psT-js-Ycz">
+                                <rect key="frame" x="40" y="346" width="334" height="204"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjW-1Y-HGo">
+                                        <rect key="frame" x="137" y="0.0" width="60" height="35.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Usuário" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l8i-Sw-15U">
+                                        <rect key="frame" x="16" y="50.5" width="302" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Kvg-77-PtZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3dB-yR-ZKy">
+                                        <rect key="frame" x="16" y="105.5" width="302" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="FZ8-br-4kh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDW-CJ-sdy">
+                                        <rect key="frame" x="16" y="160.5" width="302" height="43.5"/>
+                                        <state key="normal" title="Entrar">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PCc-Dj-AOd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Wbf-bM-6qe"/>
+                                    <constraint firstAttribute="trailing" secondItem="YDW-CJ-sdy" secondAttribute="trailing" constant="16" id="7WN-hs-Jeu"/>
+                                    <constraint firstAttribute="trailing" secondItem="3dB-yR-ZKy" secondAttribute="trailing" constant="16" id="MMN-fm-xb5"/>
+                                    <constraint firstItem="3dB-yR-ZKy" firstAttribute="leading" secondItem="psT-js-Ycz" secondAttribute="leading" constant="16" id="V6B-uh-iMj"/>
+                                    <constraint firstAttribute="trailing" secondItem="l8i-Sw-15U" secondAttribute="trailing" constant="16" id="lH9-5y-tOs"/>
+                                    <constraint firstItem="YDW-CJ-sdy" firstAttribute="leading" secondItem="psT-js-Ycz" secondAttribute="leading" constant="16" id="oKR-dF-IJA"/>
+                                    <constraint firstItem="l8i-Sw-15U" firstAttribute="leading" secondItem="psT-js-Ycz" secondAttribute="leading" constant="16" id="ztQ-Hi-Jpz"/>
                                 </constraints>
-                                <state key="normal" title="Entrar"/>
-                                <connections>
-                                    <action selector="loginTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PCc-Dj-AOd"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YDW-CJ-sdy" firstAttribute="top" secondItem="l8i-Sw-15U" secondAttribute="bottom" constant="8" symbolic="YES" id="5IA-bR-ulW"/>
-                            <constraint firstItem="l8i-Sw-15U" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.5" id="8e2-gk-8db"/>
-                            <constraint firstItem="l8i-Sw-15U" firstAttribute="centerX" secondItem="YjW-1Y-HGo" secondAttribute="centerX" id="GVe-L5-Jc5"/>
-                            <constraint firstItem="YjW-1Y-HGo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LX3-cY-ZRG"/>
-                            <constraint firstItem="l8i-Sw-15U" firstAttribute="firstBaseline" secondItem="YjW-1Y-HGo" secondAttribute="baseline" constant="30" id="Lvm-WV-v1O"/>
-                            <constraint firstItem="YjW-1Y-HGo" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.8" id="Lyt-ep-M2P"/>
-                            <constraint firstItem="YDW-CJ-sdy" firstAttribute="trailing" secondItem="l8i-Sw-15U" secondAttribute="trailing" id="xmu-ib-foZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="psT-js-Ycz" secondAttribute="trailing" constant="40" id="SIZ-fe-mRy"/>
+                            <constraint firstItem="psT-js-Ycz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qEI-he-hWf"/>
+                            <constraint firstItem="psT-js-Ycz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="r8W-Ao-eOQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="txtPassword" destination="3dB-yR-ZKy" id="of7-Jt-i7e"/>
                         <outlet property="txtUsername" destination="l8i-Sw-15U" id="9h2-7G-5Fs"/>
                         <segue destination="gTC-pg-2uH" kind="presentation" identifier="admin" id="ZYg-Fw-LlD"/>
                         <segue destination="osj-GV-Xn4" kind="presentation" identifier="professor" id="fel-yL-OPw"/>
