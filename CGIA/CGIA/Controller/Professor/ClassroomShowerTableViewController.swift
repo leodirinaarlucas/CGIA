@@ -11,7 +11,17 @@ import UIKit
 
 public class ClassroomShowerTableViewController: UITableViewController {
 
-    var data: [CompleteClassroom] = ServerManager.shared().turmas
+    var data: [CompleteClassroom] = {
+        let turmas = ServerManager.shared().turmas
+        var turmaFiltrada: [CompleteClassroom] = []
+        for turma in turmas {
+            if turma.instructorID == ServerManager.shared().usuario?.id {
+                turmaFiltrada.append(turma)
+            }
+        }
+
+        return turmaFiltrada
+    }()
     var selectedClassroom: CompleteClassroom?
 
     public override func viewDidLoad() {
@@ -26,7 +36,20 @@ public class ClassroomShowerTableViewController: UITableViewController {
 
     @objc func updateData() {
         DispatchQueue.main.async {
-            self.data = ServerManager.shared().turmas
+            let turmas = ServerManager.shared().turmas
+            var turmaFiltrada: [CompleteClassroom] = []
+            if let userId = ServerManager.shared().usuario?.id,
+                let professor = ServerManager.shared().professores.first(where: { (inst) -> Bool in
+                    return inst.userID == userId
+                }) {
+                let profID = professor.id
+                for turma in turmas {
+                    if turma.instructorID == profID {
+                        turmaFiltrada.append(turma)
+                    }
+                }
+            }
+            self.data = turmaFiltrada
             self.tableView.reloadData()
         }
     }

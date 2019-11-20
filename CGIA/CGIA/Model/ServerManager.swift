@@ -60,6 +60,7 @@ public class ServerManager {
                             let profile = dict["profile"] as? String else { return }
 
                         let user = User(id: id, username: username, profile: profile)
+                        self.usuario = user
                         completionHandler(.successful(user))
                     }
 
