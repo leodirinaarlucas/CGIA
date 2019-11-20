@@ -141,7 +141,8 @@ public class APIRequests {
                     let classroomID = params["classroomID"] as? Int? else {
                         return nil
                 }
-                json = try JSONEncoder().encode(GradePatch(grades: grades, finalGrade: finalGrade, studentID: studentID, classroomID: classroomID))
+                json = try JSONEncoder().encode(GradePatch(
+                    grades: grades, finalGrade: finalGrade, studentID: studentID, classroomID: classroomID))
             default:
                 fatalError("Tipagem não prevista")
             }
