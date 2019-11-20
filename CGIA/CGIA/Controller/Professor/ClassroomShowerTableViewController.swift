@@ -43,10 +43,8 @@ public class ClassroomShowerTableViewController: UITableViewController {
                     return inst.userID == userId
                 }) {
                 let profID = professor.id
-                for turma in turmas {
-                    if turma.instructorID == profID {
-                        turmaFiltrada.append(turma)
-                    }
+                for turma in turmas where turma.instructorID == profID {
+                    turmaFiltrada.append(turma)
                 }
             }
             self.data = turmaFiltrada
